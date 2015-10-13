@@ -1,3 +1,25 @@
 .content{
-	
+	margin: auto;
+
+}
+.leftheader{
+	width: 100%;
+	height: 5%;
+	background-color: red;
+}
+.leftnavbar{
+	width: 20%;
+	height: 100%;
+	float: left;
+	background-color: blue;
+}
+.calendar{
+	width: 80%;
+	height: 100%;
+	background-color: orange;
+	float: right;
+
+}
+.nav{
+	list-style-type: none;
 }
