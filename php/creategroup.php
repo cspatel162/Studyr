@@ -1,4 +1,4 @@
-<?php //we can include other PHP Files here to keep the calendar file as clear as possible 
+<?php //we can include other PHP Files here to keep the file as clear as possible 
 ?>
 <html>
 <meta charset='utf-8'>
@@ -20,9 +20,6 @@
 			<section class="upcoming">
 				<h1> UPCOMING EVENTS: </h1>
 			</section>
-		</section>
-		<section class="calendar">
-			<p> TEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXT</p>
 		</section>
 	</section>
 </body>
