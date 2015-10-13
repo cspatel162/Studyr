@@ -12,11 +12,14 @@
 				<h1> Studyr USERNAME here?</h1>
 			</section>
 			<ul class="nav">
-				<li class="navitem">Edit User's Schedule</li>
-				<li class="navitem">Create a Study Group</li>
-				<li class="navitem">Users Current Study Groups</li>
-				<li class="navitem">Join a Study Group</li>
+				<a href="#"><li class="navitem">Edit User's Schedule</li></a>
+				<a href="#"><li class="navitem">Create a Study Group</li></a>
+				<a href="#"><li class="navitem">Users Current Study Groups</li></a>
+				<a href="#"><li class="navitem">Join a Study Group</li></a>
 			</ul>
+			<section class="upcoming">
+				<h1> UPCOMING EVENTS: </h1>
+			</section>
 		</section>
 		<section class="calendar">
 			<p> TEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXT</p>
