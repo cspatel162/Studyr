@@ -16,12 +16,12 @@
 }
 .calendar{
 	width: 79%;
-	height: 100%;
+	height: 98%;
 	float: right;
 	padding-left: 1%;
 
 }
-.nav{
+ul{
 	list-style-type: none;
 	margin: 0;
 	padding:0;
@@ -33,15 +33,25 @@
 	height: 7%;
 	line-height: 3.33em;
 }
+.upcoming{
+	background-color: gray;
+	height: 60%;
+}
 .navitem:hover{
 	background-color: DarkGray;
-	font-size: 110%;
+	font-size: 107%;
 }
 .nav a{
 	color:inherit;
+	text-decoration: none;
 }
 .calendar p{
 	width: 98%;
 	height: 98%;
 	background-color: LightGray;
+}
+.calendarheader{
+	width: 100%;
+	height: 2%;
+	text-align: center;
 }

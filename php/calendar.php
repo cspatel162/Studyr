@@ -20,7 +20,17 @@
 			</ul>
 			<section class="upcoming">
 				<h1> UPCOMING EVENTS: </h1>
+				<ul class="events">
+					<li>Event1</li>
+					<li>Event2</li>
+					<li>Event3</li>
+					<li>Event4</li>
+					<li>Event5</li>
+				</ul>
 			</section>
+		</section>
+		<section class="calendarheader">
+			<h1> /NAME/ Schedule </h1>
 		</section>
 		<section class="calendar">
 			<p> TEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXT</p>
