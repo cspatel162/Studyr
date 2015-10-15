@@ -8,7 +8,7 @@
 </head>
 <body>
 	<section class="content">
-		<section class="leftnavbar">
+		<nav class="leftnavbar">
 			<section class="leftheader">
 				<h1> Studyr USERNAME here?</h1>
 			</section>
@@ -21,7 +21,7 @@
 			<section class="upcoming">
 				<h1> UPCOMING EVENTS: </h1>
 			</section>
-		</section>
+		</nav>
 	</section>
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

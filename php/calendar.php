@@ -8,7 +8,7 @@
 </head>
 <body>
 	<section class="content">
-		<section class="leftnavbar">
+		<nav class="leftnavbar">
 			<section class="leftheader">
 				<h1> Studyr USERNAME here?</h1>
 			</section>
@@ -28,7 +28,7 @@
 					<li>Event5</li>
 				</ul>
 			</section>
-		</section>
+		</nav>
 		<section class="calendarheader">
 			<h1> /NAME/ Schedule </h1>
 		</section>
