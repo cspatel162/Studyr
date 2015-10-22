@@ -1,0 +1,71 @@
+.content{
+	margin: auto;
+}
+.rightheader{
+	height:4%;
+	text-align: right;
+	color: white;
+	text-decoration: none;
+	font-family: "Arial";
+	background-color: gray;
+	padding-top:10px;
+	padding-right:10px;
+}
+a:visited{
+	color: white;
+	text-decoration: none;
+}
+a:link{
+	color: white;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	font-family: "Arial";
+}
+a:hover{
+	text-decoration: underline;
+    color: white;
+}
+a:active {
+    text-decoration: underline;
+    color: white;
+}
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding:0;
+}
+.navgrid {
+	margin-left: auto;
+	margin-right:auto;
+}
+.navl {
+	display:inline-block;
+}
+.menu {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-top: 100px;
+}
+.navitem{
+	width: 130px;
+	background-color: gray;
+	margin: 0 0 5px 0;
+	height: 7%;
+	line-height: 3.33em;
+}
+.search {
+	margin-left: auto;
+	margin-right:auto;
+	margin-top: 100px;
+	position: relative;
+	float:top;
+	text-align: center;
+}
+p{
+	font-family: "Arial";
+	text-align:center;
+}
+.navitem:hover{
+	background-color: DarkGray;
+}
