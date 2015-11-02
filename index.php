@@ -7,6 +7,9 @@
 </head>
 <body>
 	<section class="content">
+		<a href="php/calendar.php">Calendar Link </a>
+		<p></p>
+		<a href="php/splashpage.php">Splash Page after login </a>
 	</section>
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

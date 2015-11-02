@@ -10,7 +10,7 @@
 	<section class="content">
 		<nav class="leftnavbar">
 			<section class="leftheader">
-				<h1> Studyr USERNAME here?</h1>
+				<h1> Studyr       <em>Username</em></h1>
 			</section>
 			<ul class="nav">
 				<a href="myschedule.php"><li class="navitem">Edit User's Schedule</li></a>
@@ -30,10 +30,10 @@
 			</section>
 		</nav>
 		<section class="calendarheader">
-			<h1> /NAME/ Schedule </h1>
+			<h1> User's Schedule </h1>
 		</section>
 		<section class="calendar">
-			<p> TEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXT</p>
+			<p> </p>
 		</section>
 	</section>
 </body>
