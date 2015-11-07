@@ -1,11 +1,4 @@
-<?php //we can include other PHP Files here to keep the file as clear as possible 
-?>
-<html>
-<meta charset='utf-8'>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<head>
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-</head>
+<?php include_once "pageStart.php" ?>
 <body>
 	<section class="content">
 		<nav class="leftnavbar">

@@ -34,18 +34,14 @@ ul{
 	margin: 0;
 	padding:0;
 }
-.navgrid {
-	margin-left: auto;
-	margin-right:auto;
-}
-.navl {
-	display:inline-block;
-}
 .menu {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 	margin-top: 100px;
+}
+.menu li{
+		display:inline-block;
 }
 .navitem{
 	width: 130px;

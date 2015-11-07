@@ -1,90 +1,82 @@
-DROP DATABASE IF EXISTS neverland;
+DROP DATABASE IF EXISTS studyr;
 
-CREATE DATABASE neverland;
+CREATE DATABASE studyr;
 
-use rabserve_VirtualGallery;
+use studyr;
 
-DROP TABLE IF EXISTS admin CASCADE;
-DROP TABLE IF EXISTS artists CASCADE;
-DROP TABLE IF EXISTS art CASCADE;
-DROP TABLE IF EXISTS orders CASCADE;
-DROP TABLE IF EXISTS artOrders CASCADE;
-DROP TABLE IF EXISTS mailingList CASCADE;
-DROP TABLE IF EXISTS comments CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS locations CASCADE;
+DROP TABLE IF EXISTS study_groups CASCADE;
+DROP TABLE IF EXISTS events CASCADE;
+DROP TABLE IF EXISTS class CASCADE;
+DROP TABLE IF EXISTS professors CASCADE;
 
-CREATE TABLE admin (
+CREATE TABLE users (
 
- adminId INT PRIMARY KEY AUTO_INCREMENT,
- username VARCHAR(255) UNIQUE NOT NULL,
+ userID INT PRIMARY KEY AUTO_INCREMENT,
+ fname VARCHAR(255)  NOT NULL,
+ lname VARCHAR(255)  NOT NULL,
+ email VARCHAR(255) UNIQUE NOT NULL,
  password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE artists (
+CREATE TABLE professors (
 
- artistId INT PRIMARY KEY AUTO_INCREMENT,
- portrait VARCHAR(255) UNIQUE NOT NULL,
- bio BLOB NOT NULL,
- email VARCHAR(128) UNIQUE NOT NULL,
- phone VARCHAR(32) UNIQUE NOT NULL,
- name VARCHAR(255) NOT NULL
+ professorID INT PRIMARY KEY AUTO_INCREMENT,
+ fname VARCHAR(255)  NOT NULL,
+ lname VARCHAR(255)  NOT NULL
 );
 
-CREATE TABLE art (
+CREATE TABLE class (
 
- artId INT PRIMARY KEY AUTO_INCREMENT,
- artistId INT,
- name VARCHAR(255) NOT NULL,
- price NUMERIC(12,2) NOT NULL,
- description BLOB NOT NULL,
- stock INT NOT NULL,
- image VARCHAR(255) UNIQUE NOT NULL,
+ courseID INT PRIMARY KEY AUTO_INCREMENT,
+ crn INT UNIQUE NOT NULL,
+ courseType VARCHAR(6) NOT NULL,
+ description BLOB,
+ professorID INT NOT NULL,
 
- FOREIGN KEY (artistId) REFERENCES artists(artistId) ON DELETE CASCADE,
-
- CONSTRAINT stock_check CHECK(stock >= 0),
- CONSTRAINT amt_check CHECK(amtSold >= 0),
- CONSTRAINT price_check CHECK(price >= 0)
+ FOREIGN KEY (professorID) REFERENCES professors(professorID) ON DELETE CASCADE
 );
 
-CREATE TABLE orders (
+CREATE TABLE study_groups (
 
- orderId INT PRIMARY KEY AUTO_INCREMENT,
- name VARCHAR(255) NOT NULL,
- email VARCHAR(128) NOT NULL,
- phone VARCHAR(32),
- shippingCost NUMERIC(5,2) NOT NULL,
- address VARCHAR(255) NOT NULL,
- saleId INT NOT NULL,
- isFulfilled TINYINT(1) NOT NULL,
+ groupID INT PRIMARY KEY AUTO_INCREMENT,
+ privacy INT NOT NULL,
+ meetingTime DATETIME NOT NULL,
+ founderID INT NOT NULL,
+ courseID INT NOT NULL,
 
- CONSTRAINT shipping_check CHECK(shippingcost >= 0),
- CONSTRAINT fulfilled_check CHECK(isFulfilled >= 0)
+ FOREIGN KEY (founderID) REFERENCES users(userID) ON DELETE CASCADE,
+ FOREIGN KEY (courseID) REFERENCES class(courseID) ON DELETE CASCADE
 );
 
-CREATE TABLE artOrders (
+CREATE TABLE locations (
 
- artId INT,
- orderId INT,
+ locationID INT PRIMARY KEY AUTO_INCREMENT,
+ locationName VARCHAR(255) NOT NULL,
+ openTime TIME NOT NULL,
+ closeTime TIME NOT NULL
 
- CONSTRAINT pk_artOrders PRIMARY KEY (artId,orderId),
- FOREIGN KEY (artId) REFERENCES art(artId) ON DELETE CASCADE,
- FOREIGN KEY (orderId) REFERENCES orders(orderId) ON DELETE CASCADE
 );
 
-CREATE TABLE mailingList (
+CREATE TABLE events (
 
- listId INT PRIMARY KEY AUTO_INCREMENT,
- email VARCHAR(128) UNIQUE NOT NULL
+ eventID INT PRIMARY KEY AUTO_INCREMENT,
+ userID INT NOT NULL,
+ eventName VARCHAR(128) NOT NULL,
+ startTime DATETIME NOT NULL,
+ endTime DATETIME NOT NULL,
+ locationID INT NOT NULL,
+ repeating INT NOT NULL,
+ groupID INT,
+
+ FOREIGN KEY (userID) REFERENCES users(userID) ON DELETE CASCADE,
+ FOREIGN KEY (locationID) REFERENCES locations(locationID) ON DELETE CASCADE,
+ FOREIGN KEY (groupID) REFERENCES study_groups(groupID) ON DELETE CASCADE
 );
 
-CREATE TABLE comments (
+DELETE USER IF EXISTS 'phpuser1'@'localhost'; 
+CREATE USER 'phpuser1'@'localhost';
+GRANT ALL ON `studyr`.* to 'phpuser1'@'localhost';
 
- commentId INT PRIMARY KEY AUTO_INCREMENT,
- email VARCHAR(128) NOT NULL,
- name VARCHAR(255) NOT NULL,
- comment BLOB NOT NULL
-);
-
-GRANT ALL ON `neverland`.* to 'phpuser1'@'localhost';
-
-SET PASSWORD FOR 'phpuser1'@'localhost' = PASSWORD('c!ALedD54WwTcGqE3x9?p#^d?qxM@T6cp$#BCJcC2N+HRyb26DwDtgD8q#DpHR_msF7Jw#F@CAZj=*xCmr5*buGD4Ghak?Er*v!r@r$2N6wmhuchvuf@*3VmMfpX6Chy@^*6!2nrtkmnFbapE5VBAnSrpmjBp7ftQceKWJ!wzx#6jd3aJ8AtkaTX*UE+mEES!AGFtHEHZeGE4%scrcN$h%5*uddqQ6ywtr7TrG!#9ThgQmHT?g^8Ytvkaz');
+SET PASSWORD FOR 'phpuser1'@'localhost' = PASSWORD('}j(nXdJqaYF+?u9{.3/Y6nFUNzfuzFBL$cEFqE');
