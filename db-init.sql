@@ -75,7 +75,6 @@ CREATE TABLE events (
  FOREIGN KEY (groupID) REFERENCES study_groups(groupID) ON DELETE CASCADE
 );
 
-DELETE USER IF EXISTS 'phpuser1'@'localhost'; 
 CREATE USER 'phpuser1'@'localhost';
 GRANT ALL ON `studyr`.* to 'phpuser1'@'localhost';
 
