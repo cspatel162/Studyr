@@ -1,10 +1,11 @@
 <?php
+require 'connect.php';
 
-    $username = $_POST['newuser'];
+    $email = $_POST['email'];
     $passname = $_POST['newpassword'];
 
 
-    $sql = "INSERT INTO user (username, password) VALUES ('$username', '$passname')";
+    $sql = "INSERT INTO users (email, password) VALUES ('$email', '$passname')";
     
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";

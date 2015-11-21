@@ -1,4 +1,34 @@
-<?php include_once "pageStart.php" ?>
+<?php include_once "pageStart.php"; 
+			include_once "connect.php";
+
+  $name = $_POST['email2'];
+  $pass = $_POST['password'];
+  
+  $sql = "SELECT email FROM users";
+  $result = $conn->query($sql);
+
+  $sql = "SELECT email, password FROM users";
+  $result = $conn->query($sql);
+  
+  $found = false;
+  if($result->num_rows>0){
+      while($row = $result->fetch_assoc()) {
+          if($row["email"]==$name && $row["password"] == $pass){
+              echo $row["email"];
+              echo $row["password"];
+              $found = true;
+              break;
+          }
+      }
+  }
+
+  if($found)
+      echo "found";
+  else 
+      echo "not found";
+  
+  $conn->close();
+ ?>
 
 <body>
 	<section class="content">

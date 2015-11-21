@@ -75,7 +75,6 @@ CREATE TABLE events (
  FOREIGN KEY (groupID) REFERENCES study_groups(groupID) ON DELETE CASCADE
 );
 
-CREATE USER 'phpuser1'@'localhost';
-GRANT ALL ON `studyr`.* to 'phpuser1'@'localhost';
+CREATE USER 'phpuser1'@'localhost' IDENTIFIED BY '*97BAD3C7F42787ED6270EE7BE634F59E64C23DF2';
+GRANT ALL ON studyr.* to 'phpuser1'@'localhost';
 
-SET PASSWORD FOR 'phpuser1'@'localhost' = PASSWORD('}j(nXdJqaYF+?u9{.3/Y6nFUNzfuzFBL$cEFqE');

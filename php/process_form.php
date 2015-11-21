@@ -10,20 +10,20 @@ require 'connect.php';
         
 <!--        add to db if not there otherwise add-->
         <?php
-            $name = $_POST['username'];
+            $name = $_POST['email2'];
             $pass = $_POST['password'];
             
-            $sql = "SELECT username FROM user";
+            $sql = "SELECT email FROM users";
             $result = $conn->query($sql);
 
-            $sql = "SELECT username, password FROM user";
+            $sql = "SELECT email, password FROM users";
             $result = $conn->query($sql);
             
             $found = false;
             if($result->num_rows>0){
                 while($row = $result->fetch_assoc()) {
-                    if($row["username"]==$name && $row["password"] == $pass){
-                        echo $row["username"];
+                    if($row["email"]==$name && $row["password"] == $pass){
+                        echo $row["email"];
                         echo $row["password"];
                         $found = true;
                         break;
