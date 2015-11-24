@@ -7,17 +7,18 @@ require 'connect.php';
     $passname = $_POST['newpassword'];
 
 
-    $check = "SELECT email FROM users WHERE email == '$email'";
-    if($conn->query($check) === TRUE){
+    $check = "SELECT email FROM users WHERE email = '$email'";
+    $result = $conn->query($check);
+    if($result){
     	$sql = "INSERT INTO users (fname, lname, email, password) VALUES ('$fname','$lname','$email','$passname')";
 	    if ($conn->query($sql) === TRUE) {
 	        echo "New record created successfully";
 	    } else {
 	        echo "Error: " . $sql . "<br>" . $conn->error;
 	    }
-    } else {
-    	echo "Error: that email already exists!\n";
-    }
+ 	} else {
+ 		echo "Error: that email already exists\n";
+ 	}
 
 
     
