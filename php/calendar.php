@@ -26,7 +26,12 @@
       echo "found";
   else 
       echo "not found";
-  
+  $sql = "SELECT fname, lname FROM users WHERE email ='$name'";
+  $result = $conn->query($sql);
+  $row = $result->fetch_assoc();
+  $fname = $row["fname"];
+  $lname = $row["lname"];
+
   $conn->close();
  ?>
 
@@ -34,7 +39,7 @@
 	<section class="content">
 		<nav class="leftnavbar">
 			<section class="leftheader">
-				<h1> Studyr       <em>Username</em></h1>
+				<h1> Studyr       <em><?php echo $fname." ".$lname?></em></h1>
 			</section>
 			<ul class="nav">
 				<a href="myschedule.php"><li class="navitem">Edit User's Schedule</li></a>
