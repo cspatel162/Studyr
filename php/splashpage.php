@@ -12,8 +12,10 @@
 			<img src="">
 			<section class="search">
 				<p>Search for Public Study Groups:</p>
-				<input type="text" name="search" class ="find">
-				<input type="submit" value="Search" class="find">
+				<form method="POST" action="search.php">
+					<input type="text" name="search" class ="find">
+					<input type="submit" value="Search" class="find">
+				</form>
 			</section>
 			<section class="menu">
 				<p>Search Groups by Course Offerings:</p>
