@@ -32,6 +32,8 @@ CREATE TABLE class (
  courseID INT PRIMARY KEY AUTO_INCREMENT,
  crn INT UNIQUE NOT NULL,
  courseType VARCHAR(6) NOT NULL,
+ courseTitle VARCHAR(255) NOT NULL,
+ courseNumber int NOT NULL,
  description BLOB,
  professorID INT NOT NULL,
 

@@ -4,9 +4,9 @@ require "connect.php";
 function search($prefix){
 	global $conn;
 	if($prefix == '*')
-		$sql = "SELECT * FROM class";
+		$sql = "SELECT class.*, professors.fname, professors.lname FROM class INNER JOIN professors ON class.professorID = professors.professorID";
 	else
-		$sql = "SELECT * FROM class WHERE courseType = '$prefix'";
+		$sql = "SELECT class.*, professors.fname, professors.lname FROM class INNER JOIN professors ON class.professorID = professors.professorID WHERE class.courseType = '$prefix'";
 	$results = $conn->query($sql);
 	printres($results);
 }
@@ -36,7 +36,7 @@ else if($_POST['submit']=='Show All...'){search('*');}
 		<?php
 		function printres($results){
 			foreach ($results as $val){
-				printf("<li id='result'> %s %u, %s. </li>",$val['courseType'],$val['crn'],$val['description']); 
+				printf("<li id='result'>%u: %s %u, %s. Professor: %s %s </li>",$val['crn'],$val['courseType'],$val['courseNumber'],$val['courseTitle'],$val['fname'],$val['lname']); 
 			}
 		}
 		?>

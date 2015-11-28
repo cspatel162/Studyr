@@ -40,20 +40,20 @@ $servername = "localhost";
 	}
 
 	try{
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (96456, 'ASTR', 'Particle Astrophysics', 5);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (95138, 'CHME', 'Energy, Entropy, & Equilibirum', 10);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (98523, 'CHME', 'Transport Phenomena I', 4);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (98924, 'COMM', 'Intro to Visual Communication', 7);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (96499, 'CSCI', 'Intro to Algorithms', 2);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (97955, 'LANG', 'Chinese I', 6);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (95307, 'MATH', 'Intro to Differential Equations', 9);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (95097, 'PSYC', 'General Psychology', 11);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (95018, 'MGMT', 'Intro to Management', 8);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (97984, 'BIOL', 'Intro to Biology', 1);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (97819, 'ASTR', 'Observation Astronomy', 5);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (96514, 'BIOL', 'Principles of Ecology', 1);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (99015, 'COMM', 'Digital Humanities', 7);");
-	$conn->query("INSERT INTO class (crn, courseType, description, professorID) VALUES (97145, 'PSYC', 'Motivation & Performance', 11);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (96456, 'ASTR', 'Particle Astrophysics', 5, 2961);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (95138, 'CHME', 'Energy, Entropy, & Equilibirum', 10, 2020);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (98523, 'CHME', 'Transport Phenomena I', 4, 4010);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (98924, 'COMM', 'Intro to Visual Communication', 7, 2610);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (96499, 'CSCI', 'Intro to Algorithms', 2, 2300);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (97955, 'LANG', 'Chinese I', 6, 1410);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (95307, 'MATH', 'Intro to Differential Equations', 9, 2400);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (95097, 'PSYC', 'General Psychology', 11, 1200);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (95018, 'MGMT', 'Intro to Management', 8, 1100);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (97984, 'BIOL', 'Intro to Biology', 1, 1010);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (97819, 'ASTR', 'Observation Astronomy', 5, 4120);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (96514, 'BIOL', 'Principles of Ecology', 1, 4850);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (99015, 'COMM', 'Digital Humanities', 7, 2960);");
+	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (97145, 'PSYC', 'Motivation & Performance', 11, 4110);");
 	} catch (Exception $e){
 		die($e->errorMessage());
 	}
