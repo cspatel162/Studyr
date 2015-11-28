@@ -12,9 +12,9 @@
 			<img src="">
 			<section class="search">
 				<p>Search for Public Study Groups:</p>
-				<form method="POST" action="search.php">
-					<input type="text" name="search" class ="find">
-					<input type="submit" value="Search" class="find">
+				<form action="search.php" method="POST">
+					<input type="text" name="submit" class ="find">
+					<button type="submit" class="find">Search</button>
 				</form>
 			</section>
 			<section class="menu">

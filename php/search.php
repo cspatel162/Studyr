@@ -10,16 +10,8 @@ function search($prefix){
 	$results = $conn->query($sql);
 	printres($results);
 }
-if(($_POST['submit'])=='ADMN'){search('ADMN');}
-else if($_POST['submit']=='ARCH'){search('ARCH');}
-else if($_POST['submit']=='ARTS'){search('ARTS');}
-else if($_POST['submit']=='ASTR'){search('ASTR');}
-else if($_POST['submit']=='BCBP'){search('BCBP');}
-else if($_POST['submit']=='BIOL'){search('BIOL');}
-else if($_POST['submit']=='BMED'){search('BMED');}
-else if($_POST['submit']=='CHEM'){search('CHEM');}
-else if($_POST['submit']=='CHME'){search('CHME');}
-else if($_POST['submit']=='Show All...'){search('*');}
+if($_POST['submit']=='Show All...'){search('*');}
+else {search($_POST['submit']);}
 ?>
 
 
