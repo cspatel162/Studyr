@@ -17,20 +17,20 @@
 			</section>
 			<section class="menu">
 				<p>Search Groups by Course Offerings:</p>
-				<form method="POST" src="search.php">
+				<form method="POST" action="search.php">
 					<ul class="nav">
-						<li><input type="button" name="search" value="ADMN" class="navitem"></li>
-						<li><input type="button" name="search" value="ARCH" class="navitem"></li>
-						<li><input type="button" name="search" value="ARTS" class="navitem"></li>
-						<li><input type="button" name="search" value="ASTR" class="navitem"></li>
-						<li><input type="button" name="search" value="BCBP" class="navitem"></li>
+						<li><input type="submit" name="submit" value="ADMN" class="navitem"></li>
+						<li><input type="submit" name="submit" value="ARCH" class="navitem"></li>
+						<li><input type="submit" name="submit" value="ARTS" class="navitem"></li>
+						<li><input type="submit" name="submit" value="ASTR" class="navitem"></li>
+						<li><input type="submit" name="submit" value="BCBP" class="navitem"></li>
 					</ul>
 					<ul class="nav">
-						<li><input type="button" name="search" value="BIOL" class="navitem"></li>
-						<li><input type="button" name="search" value="BMED" class="navitem"></li>
-						<li><input type="button" name="search" value="CHEM" class="navitem"></li>
-						<li><input type="button" name="search" value="CHME" class="navitem"></li>
-						<li><input type="button" name="more" value="Show more..." class="navitem"></li>
+						<li><input type="submit" name="submit" value="BIOL" class="navitem"></li>
+						<li><input type="submit" name="submit" value="BMED" class="navitem"></li>
+						<li><input type="submit" name="submit" value="CHEM" class="navitem"></li>
+						<li><input type="submit" name="submit" value="CHME" class="navitem"></li>
+						<li><input type="submit" name="submit" value="Show All..." class="navitem"></li>
 					</ul>
 				</form>
 			</section>
