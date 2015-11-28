@@ -3,8 +3,8 @@ require 'connect.php';
 
 	$fname = $_POST['fname'];
 	$lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $passname = $_POST['newpassword'];
+  $email = $_POST['email'];
+  $passname = $_POST['newpassword'];
 
 
     $check = "SELECT email FROM users WHERE email = '$email'";
