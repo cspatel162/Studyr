@@ -23,4 +23,4 @@ require 'connect.php';
 
     
 ?>
-<a href="login.php">go back</a>
+<a href="login.php"> go back</a>

@@ -18,7 +18,7 @@ include_once 'connect.php';
             <li><a href="#tabs-2">Register</a></li>
           </ul>
           <section id="tabs-1">
-            <form action="calendar.php" method="post">
+            <form action="reallogin.php" method="post">
                 <ul>
                     <li class="sub"><ul>
                         <li>Email: </li>

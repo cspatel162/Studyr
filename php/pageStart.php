@@ -6,3 +6,5 @@
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   
 </head>
+<body>
+	<section class="rightheader"><a href='logout.php'>Logout</a> <a href="splashpage.php">Studyr</a></section>

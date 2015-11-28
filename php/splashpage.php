@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<section class="content">
-			<section class="rightheader"><a href="login.php" id="signin">Login or Register</a></section>
+			<section class="rightheader"><?php if(!isset($_COOKIE['username'])){echo "<a href='login.php' id='signin'>Login or Register</a>";}else{ echo "<a href='calendar.php'> My Calendars </a>";}?></section>
 			<img src="">
 			<section class="search">
 				<p>Search for Public Study Groups:</p>

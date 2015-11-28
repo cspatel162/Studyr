@@ -1,45 +1,12 @@
-<?php include_once "pageStart.php"; 
-			include_once "connect.php";
-
-  $name = $_POST['email2'];
-  $pass = $_POST['password'];
-  
-  $sql = "SELECT email FROM users";
-  $result = $conn->query($sql);
-
-  $sql = "SELECT email, password FROM users";
-  $result = $conn->query($sql);
-  
-  $found = false;
-  if($result->num_rows>0){
-      while($row = $result->fetch_assoc()) {
-          if($row["email"]==$name && $row["password"] == $pass){
-              echo $row["email"];
-              echo $row["password"];
-              $found = true;
-              break;
-          }
-      }
-  }
-
-  if($found)
-      echo "found";
-  else 
-      echo "not found";
-  $sql = "SELECT fname, lname FROM users WHERE email ='$name'";
-  $result = $conn->query($sql);
-  $row = $result->fetch_assoc();
-  $fname = $row["fname"];
-  $lname = $row["lname"];
-
-  $conn->close();
+<?php 
+	include_once "pageStart.php"; 
+	include_once "connect.php";
  ?>
 
-<body>
 	<section class="content">
 		<nav class="leftnavbar">
 			<section class="leftheader">
-				<h1> Studyr       <em><?php echo $fname." ".$lname?></em></h1>
+				<h1> Studyr       <em><?php echo $_COOKIE['fname']." ".$_COOKIE['lname'];?></em></h1>
 			</section>
 			<ul class="nav">
 				<a href="myschedule.php"><li class="navitem">Edit User's Schedule</li></a>
