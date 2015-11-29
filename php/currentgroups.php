@@ -1,21 +1,26 @@
-<?php include_once "pageStart.php" ?>
+<?php 
+	include_once "pageStart.php"; 
 
-<body>
-	<section class="content">
-		<nav class="leftnavbar">
-			<section class="leftheader">
-				<h1> Studyr USERNAME here?</h1>
-			</section>
-			<ul class="nav">
-				<a href="myschedule.php"><li class="navitem">Edit User's Schedule</li></a>
-				<a href="creategroup.php"><li class="navitem">Create a Study Group</li></a>
-				<a href="currentgroups.php"><li class="navitem">Users Current Study Groups</li></a>
-				<a href="joingroup.php"><li class="navitem">Join a Study Group</li></a>
+	function currGroup(){
+		global $conn;
+		$sql = "SELECT events.*,locations.* FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID'];
+		$results = $conn->query($sql);
+		if ($results){
+			foreach($results as $val){
+				echo "<li>Event: ".$val['eventName']." Starting: ".$val['startTime']." Ending: ".$val['endTime']." At: ".$val['locationName']."</li>";
+			}
+		}else{
+			echo "Sorry, but you're not apart of any study groups right now.";
+		}
+	}
+ ?>
+		<section id="groups">
+			<ul>
+			<?php
+				currGroup();
+			?>
 			</ul>
-			<section class="upcoming">
-				<h1> UPCOMING EVENTS: </h1>
-			</section>
-		</nav>
+		</section>
 	</section>
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

@@ -1,22 +1,20 @@
 <?php 
 	include_once "pageStart.php"; 
-	include_once "connect.php";
 
 	function createthegroup(){
 		global $conn;
+		$founderID = $_COOKIE['userID'];
 		$courseTitle = $_POST['courseTitle'];
 		$Location = $_POST['Location'];
 	  $eventTitle = $_POST['eventTitle'];
 		$email = $_COOKIE['username'];
 		$meetingTime = $_POST['startDate']." ".$_POST['startTime'];
 		$meetingDateTime = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $meetingTime)));
+		$meetingEndDateTime = date('Y-m-d H:i:s', strtotime('+1 hour',strtotime(str_replace('-', '/', $meetingTime))));
 		$repeat = $_POST['repeating'];
 		$privacy = $_POST['privacy'];
 		$courseID = $conn->query("SELECT courseID FROM class WHERE courseTitle = '$courseTitle';");
-		$founderID = $conn->query("SELECT userID FROM users WHERE email = '$email';");
 		$locationID = $conn->query("SELECT locationID FROM locations where locationName = '$Location'");
-		foreach ($founderID as $val)
-			$founderID = $val['userID'];
 		foreach ($courseID as $val)
 			$courseID = $val['courseID'];
 		foreach ($locationID as $val)
@@ -26,7 +24,7 @@
 		$groupID = $conn->query("SELECT groupID FROM study_groups WHERE founderID = '$founderID';");
 		foreach ($groupID as $val)
 			$groupID = $val['groupID'];
-		$sql = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($founderID,'$eventTitle','$meetingDateTime','$meetingDateTime',$locationID,$repeat,$groupID)";
+		$sql = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($founderID,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)";
 		$conn->query($sql);
 	}
 
@@ -34,22 +32,6 @@
 		createthegroup();
 	} 
 ?>
-
-	<section class="content">
-		<nav class="leftnavbar">
-			<section class="leftheader">
-				<h1> Studyr       <em><?php echo $_COOKIE['fname']." ".$_COOKIE['lname'];?></em></h1>
-			</section>
-			<ul class="nav">
-				<a href="myschedule.php"><li class="navitem">Edit User's Schedule</li></a>
-				<a href="creategroup.php"><li class="navitem">Create a Study Group</li></a>
-				<a href="currentgroups.php"><li class="navitem">Users Current Study Groups</li></a>
-				<a href="joingroup.php"><li class="navitem">Join a Study Group</li></a>
-			</ul>
-			<section class="upcoming">
-				<h1> UPCOMING EVENTS: </h1>
-			</section>
-		</nav>
 		<section id="creategroup">
 			<form method="post" action="creategroup.php">
 			  <select name="courseTitle">
