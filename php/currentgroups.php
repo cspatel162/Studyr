@@ -5,7 +5,7 @@
 		global $conn;
 		$sql = "SELECT events.*,locations.* FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID'];
 		$results = $conn->query($sql);
-		if ($results){
+		if ($results->num_rows > 0){
 			foreach($results as $val){
 				echo "<li>Event: ".$val['eventName']." Starting: ".$val['startTime']." Ending: ".$val['endTime']." At: ".$val['locationName']."</li>";
 			}

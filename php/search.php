@@ -1,7 +1,6 @@
 <?php 
-
+ include_once "pageStartNoNav.php";
 	$results;
-	require "connect.php";
 	function searchclasses($prefix){
 		global $conn;
 		if($prefix == '*')
@@ -29,17 +28,13 @@
 		}
 	}
 ?>
-<html>
-<head>
-	<title> Search Results </title>
-</head>
-<body>
-	<section id="results">
-		<ul id="resultlist">
-			<?php
-				printres($results);	
-			?>
-	</ul>
+		<section id="results">
+			<ul id="resultlist">
+				<?php
+					printres($results);	
+				?>
+		</ul>
+		</section>
 	</section>
 </body>
 </html>

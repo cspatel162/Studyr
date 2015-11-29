@@ -1,6 +1,5 @@
 .content{
 	margin: auto;
-
 }
 .leftheader{
 	width: 100%;
@@ -106,4 +105,26 @@ a:hover{
 a:active {
     text-decoration: underline;
     color: white;
+}
+#results{
+	text-align: center;
+	margin: auto;
+	width: 75%;
+	background: gray;
+}
+#result{
+	background-color: DarkGray;
+	width: 50%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px 0 5px 0;
+}
+#result:hover{
+	background-color: LightGray;
+}
+#resultevent{
+	margin-bottom: 10px;
+	width: 50%;
+	margin: auto;
 }
