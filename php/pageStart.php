@@ -23,7 +23,7 @@
   
 </head>
 <body>
-	<section class="rightheader"><a href='logout.php'>Logout</a> <a href="splashpage.php">Studyr</a></section>
+	<section class="rightheader"><a href='logout.php'>Logout</a> | <a href="splashpage.php">Studyr</a></section>
 	<section class="content">
 		<nav class="leftnavbar">
 			<section class="leftheader"> 
