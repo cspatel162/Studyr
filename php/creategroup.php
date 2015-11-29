@@ -12,14 +12,6 @@
 		$meetingDateTime = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $meetingTime)));
 		$repeat = $_POST['repeating'];
 		$privacy = $_POST['privacy'];
-		if($privacy == 'yes')
-			$privacy = 1;
-		else
-			$privacy = 0;
-		if($repeat == 'yes')
-			$repeat = 1;
-		else
-			$repeat = 0;
 		$courseID = $conn->query("SELECT courseID FROM class WHERE courseTitle = '$courseTitle';");
 		$founderID = $conn->query("SELECT userID FROM users WHERE email = '$email';");
 		$locationID = $conn->query("SELECT locationID FROM locations where locationName = '$Location'");
@@ -84,11 +76,11 @@
 			  <input type="date" name="startDate">
 			  <input type="time" name="startTime">
 			  Repeating?
-			  <input type="radio" name="repeating" value="yes"> Yes
-			  <input type="radio" name="repeating" value="no"> No
+			  <input type="radio" name="repeating" value="1"> Yes
+			  <input type="radio" name="repeating" value="0"> No
 			  Private Group?
-			  <input type="radio" name="privacy" value="yes"> Yes
-			  <input type="radio" name="privacy" value="no"> No
+			  <input type="radio" name="privacy" value="1"> Yes
+			  <input type="radio" name="privacy" value="0"> No
 			  <input type="submit" name="submit" value="Submit">
 			</form>
 		</section>

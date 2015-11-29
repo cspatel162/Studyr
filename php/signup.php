@@ -4,7 +4,9 @@ require 'connect.php';
 	$fname = $_POST['fname'];
 	$lname = $_POST['lname'];
   $email = $_POST['email'];
-  $passname = $_POST['newpassword'];
+  $pass = $_POST['newpassword'];
+  $passname = password_hash($pass,PASSWORD_DEFAULT);
+
 
 
     $check = "SELECT email FROM users WHERE email = '$email'";

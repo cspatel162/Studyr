@@ -10,22 +10,15 @@
 	if(isset($_POST['password'])){
 		$pass = $_POST['password'];
 	}
-   
-  $sql = "SELECT email FROM users";
-  $result = $conn->query($sql);
-
-  $sql = "SELECT email, password FROM users";
-  $result = $conn->query($sql);
   
-  $found = false;
-  if($result->num_rows>0){
-      while($row = $result->fetch_assoc()) {
-          if($row["email"]==$name && $row["password"] == $pass){
-              $found = true;
-              break;
-          }
-      }
+  $sql = "SELECT email, password FROM users WHERE email = '$name'";
+  $result = $conn->query($sql);
+  foreach ($result as $val) {
+  	if(password_verify($pass,$val['password'])){
+  		$found = true;
+  	}
   }
+
   if($found){
   	$sql = "SELECT fname, lname FROM users WHERE email ='$name'";
 	  $result = $conn->query($sql);
