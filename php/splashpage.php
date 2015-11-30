@@ -8,7 +8,16 @@
 	</head>
 	<body>
 		<section class="content">
-			<section class="rightheader"><?php if(!isset($_COOKIE['username'])){echo "<a href='login.php' id='signin'>Login or Register</a>";}else{ echo "<a href='calendar.php'> My Calendars </a>";}?></section>
+			<section class="rightheader"><!-- top nav bar -->
+				<?php 
+					if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
+						echo '<a href="logout.php">Logout</a> | <a href="splashpage.php">Studyr</a> | <a href="calendar.php"> My Calendars</a>';
+					}
+					else{
+						echo '<a href="login.php">Login or Register</a>';
+					}
+				?>
+		</section>
 			<img src="">
 			<section class="search">
 				<p>Search for Public Study Groups:</p>

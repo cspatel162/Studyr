@@ -1,15 +1,5 @@
-<?php
+<?php // used for tpages that we don't want the left side nav bar on. 
 	require "connect.php";
-	function events(){
-		global $conn;
-		$sql = "SELECT events.eventName,locations.locationName FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID'];
-		$results = $conn->query($sql);
-		if ($results->num_rows > 0){
-			foreach($results as $val){
-				echo "<li><a href='currentgroups.php' >Event: ".$val['eventName']." At: ".$val['locationName']."</a></li>";
-			}
-		}
-	}
 ?>
 
 <html>
@@ -21,5 +11,13 @@
   
 </head>
 <body>
-	<section class="rightheader"><a href='logout.php'>Logout</a> | <a href="splashpage.php">Studyr</a> | <a href="calendar.php"> My Calendars</a></section>
+	<section class="rightheader"><?php 
+		if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
+			echo '<a href="logout.php">Logout</a> | <a href="splashpage.php">Studyr</a> | <a href="calendar.php"> My Calendars</a>';
+		}
+		else{
+			echo '<a href="splashpage.php">Studyr</a>';
+		}
+			?>
+	</section> <!-- top nav bar -->
 	<section class="content">

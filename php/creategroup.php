@@ -1,34 +1,34 @@
-<?php 
+<?php // Page to create a group
 	include_once "pageStart.php"; 
 
-	function createthegroup(){
+	function createthegroup(){ // Does all the processing and data gathering for a study_group
 		global $conn;
-		$founderID = $_COOKIE['userID'];
-		$courseTitle = $_POST['courseTitle'];
-		$Location = $_POST['Location'];
-	  $eventTitle = $_POST['eventTitle'];
-		$email = $_COOKIE['username'];
-		$meetingTime = $_POST['startDate']." ".$_POST['startTime'];
-		$meetingDateTime = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $meetingTime)));
-		$meetingEndDateTime = date('Y-m-d H:i:s', strtotime('+1 hour',strtotime(str_replace('-', '/', $meetingTime))));
-		$repeat = $_POST['repeating'];
-		$privacy = $_POST['privacy'];
-		$courseID = $conn->query("SELECT courseID FROM class WHERE courseTitle = '$courseTitle';");
-		$locationID = $conn->query("SELECT locationID FROM locations where locationName = '$Location'");
-		foreach ($courseID as $val)
+		$founderID = $_COOKIE['userID']; // gather the users id from cookies
+		$courseTitle = $_POST['courseTitle']; // the title of the gclass that the group is for.
+		$Location = $_POST['Location']; // location the group will me
+	  $eventTitle = $_POST['eventTitle']; // the title of the study group
+		$email = $_COOKIE['username']; // gather the founders email address
+		$meetingTime = $_POST['startDate']." ".$_POST['startTime']; // gather the start date and time of the group
+		$meetingDateTime = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $meetingTime))); //adjust it into something that mysql can easy store
+		$meetingEndDateTime = date('Y-m-d H:i:s', strtotime('+1 hour',strtotime(str_replace('-', '/', $meetingTime)))); // add an hour to the event for the end time
+		$repeat = $_POST['repeating']; // gather whether or not the event is repeating - This may be removed...
+		$privacy = $_POST['privacy']; // is this a private study group? (something like we have for websys, only 4 member instead of open to everyone.)
+		$courseID = $conn->query("SELECT courseID FROM class WHERE courseTitle = '$courseTitle';"); // gather the courseID
+		$locationID = $conn->query("SELECT locationID FROM locations where locationName = '$Location'"); // gather the locationID
+		foreach ($courseID as $val) // only one value should be returned - take the first one and set the $courseID value to that
 			$courseID = $val['courseID'];
-		foreach ($locationID as $val)
+		foreach ($locationID as $val) // does the same thign that the courseID one does but for locations
 			$locationID = $val['locationID'];
-		$sql = "INSERT INTO study_groups (privacy,meetingTime,founderID,courseID) values($privacy,'$meetingDateTime',$founderID,$courseID)";
+		$sql = "INSERT INTO study_groups (privacy,meetingTime,founderID,courseID) values($privacy,'$meetingDateTime',$founderID,$courseID)"; // insert the study group
 		$conn->query($sql);
-		$groupID = $conn->query("SELECT groupID FROM study_groups WHERE founderID = '$founderID';");
+		$groupID = $conn->query("SELECT groupID FROM study_groups WHERE founderID = '$founderID';"); // gather that group ID based on the founder ID ... this is probably not good... - need to fix this. 
 		foreach ($groupID as $val)
 			$groupID = $val['groupID'];
-		$sql = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($founderID,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)";
+		$sql = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($founderID,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // finally add the event into the list - this needs to be adjusted as well to implement the repeating functioniality.
 		$conn->query($sql);
 	}
 
-	if(isset($_POST['submit'])){
+	if(isset($_POST['submit'])){ // only create the group when the submit is hit - this needs to be adjusted so that it's checked to make sure that values are actyually entered. 
 		createthegroup();
 	} 
 ?>

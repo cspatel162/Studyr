@@ -1,7 +1,7 @@
 <?php 
-	include_once "pageStart.php"; 
+	include_once "pageStart.php"; // Creates the nav bar and such, to be used on most pages. Waiting on the calendar functions to be finished in order to add it below. 
  ?>
-		<section class="calendar">
+		<section class="calendar"> 
 			<p> </p>
 		</section>
 	</section>
