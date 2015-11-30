@@ -53,7 +53,7 @@ $calendarID = 'primary';
 // timeMin is current time $_GET['time']
 $optionalParameters = array(
     'timeMin' => date('c'),
-	'timeMax' => "{$_GET['time']}",
+	'timeMax' => '"'.$_GET['time'].'"',
     'singleEvents' => TRUE
 );// $_GET['time']        "2016-01-01T05:00:00.000Z"
 
