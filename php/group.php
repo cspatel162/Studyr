@@ -6,7 +6,9 @@
 	$groupID = $_GET['id'];
 	$sql = "SELECT * FROM study_groups WHERE groupID = $groupID";
 	$sql2 = "SELECT * FROM events WHERE groupID = $groupID";	
-
+	$locationName;
+	$locationCity;
+	$locationState;
 	$studygroup = $conn->query($sql);
 	$events = $conn->query($sql2);
 	$passfail = false;
@@ -62,6 +64,9 @@
 	}
 
 	function displaygroupinfo($groupID,$eventbool,$passfail,$members,$events){
+		global $locationName;
+		global $locationState;
+		global $locationCity;
 		global $conn;
 		if($passfail == true){ // part of the group/public group 
 			//--- SECTION:VIEWABLE TO ALL USERS ---- 
@@ -87,9 +92,12 @@
 				foreach ($events as $vent){
 					$locationID = $vent['locationID'];
 				}
-				$locationsql = "SELECT locationName FROM locations where locationID = $locationID"; // get the location
+				$locationsql = "SELECT locationName,locationCity,locationState FROM locations where locationID = $locationID"; // get the location
 				$location = $conn->query($locationsql);
 				foreach ($location as $local){ // print the location
+					$locationName = $local['locationName'];
+					$locationCity = $local['locationCity'];
+					$locationState = $local['locationState']; 	
 					echo "<h5>".$local['locationName']."</h5>";
 				}
 
@@ -98,6 +106,7 @@
 				foreach ($meetingTimeResult as $time){
 					echo $time['meetingTime'];
 				}
+
 				//--- END SECTION ----
 			}
 			else{ // not part of the group but the group is public and therefore you can view some of the data.
@@ -113,6 +122,34 @@
 	}
 ?>
 		<?php displaygroupinfo($groupID,$eventbool,$passfail,$members,$events); ?>
+		<div id="map"></div>
 	</section>
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          center: new google.maps.LatLng(44.5403, -78.5463),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+        var geocoder = new google.maps.Geocoder();
+				var location = <?php echo '"'.$locationName.','.$locationCity.' '.$locationState.'"'; ?>;
+				geocoder.geocode( { 'address': location }, function(results, status) {
+				    if (status == google.maps.GeocoderStatus.OK) {
+				        map.setCenter(results[0].geometry.location);
+				    } else {
+				        alert("Could not find location: " + location);
+				    }
+				});
+      }
+      var booltest = 	<?php echo $eventbool ? 'true' : 'false'; ?>;
+      if(booltest){
+      	google.maps.event.addDomListener(window, 'load', initialize);
+      }
+
+      
+    </script>
 </body>
 </html>

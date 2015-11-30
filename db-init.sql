@@ -56,6 +56,8 @@ CREATE TABLE locations (
 
  locationID INT PRIMARY KEY AUTO_INCREMENT,
  locationName VARCHAR(255) NOT NULL,
+ locationCity VARCHAR (255) NOT NULL,
+ locationState VARCHAR (100) NOT NULL,
  openTime TIME NOT NULL,
  closeTime TIME NOT NULL
 

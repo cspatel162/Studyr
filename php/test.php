@@ -78,8 +78,8 @@ $servername = "localhost";
 	}
 
 	try{
-	$conn->query("INSERT INTO locations (locationName, openTime, closeTime) VALUES ('Rensselaer Student Union', '12:00:00 AM', '11:59:59 PM');");
-	$conn->query("INSERT INTO locations (locationName, openTime, closeTime) VALUES ('Folsom Library', '07:30:00 AM', '03:00:00 AM');");
+	$conn->query("INSERT INTO locations (locationName, openTime, closeTime, locationCity, locationState) VALUES ('Rensselaer Student Union', '12:00:00 AM', '11:59:59 PM','Troy','New York');");
+	$conn->query("INSERT INTO locations (locationName, openTime, closeTime, locationCity, locationState) VALUES ('Folsom Library', '07:30:00 AM', '03:00:00 AM','Troy','New York');");
 	} catch (Exception $e){
 		die($e->errorMessage());
 	}
