@@ -23,7 +23,7 @@
 			foreach ($groupresults as $val2){ // Goes through the results of the search for study_groups.
 				if($val2['privacy'] == 0){ // if there are any study_groups that are NOT private, then display them.
 					$meeting_time = date('Y-m-d H:i:s',strtotime($val2['meetingTime']));
-					printf("<li id='resultevent'>Group: %u, Meeting Time: %s </li>",$val2['groupID'],$meeting_time);
+					printf("<a href='group.php?id=%u'><li id='resultevent'>Group: %u, Meeting Time: %s </li></a>",$val2['groupID'],$val2['groupID'],$meeting_time);
 				}
 			}
 			printf("</ul></li>"); // now that all of the other display is done and we know each of the classes are finished being search add the end tags.

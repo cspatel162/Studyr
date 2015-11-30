@@ -1,5 +1,8 @@
 <?php // used for tpages that we don't want the left side nav bar on. 
 	require "connect.php";
+	if(!isset($_COOKIE['userID'])){ // checks if the user is logged in based on their cookies, if they are not force them back to the login page.
+		header("Location:login.php");
+	}
 ?>
 
 <html>
