@@ -26,6 +26,9 @@
 	$result = $conn->query("SELECT eventName FROM events WHERE userID = '$userID' AND ((startTime BETWEEN '$startTime' AND '$endTime') OR (endTime BETWEEN '$startTime' AND '$endTime') OR (startTime <= '$startTime' AND endTime >= '$endTime'));");
 	$eventName = $result->fetch_assoc()['eventName'];
 	
+	// end the connection
+	$conn->close();
+	
 	// prepare the data into an array
 	$data = array('year'=>$year, 'month'=>$month, 'day'=>$day, 'hour'=>$start_hour, 'event_name'=>$eventName);
 	
