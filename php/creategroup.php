@@ -8,9 +8,10 @@
 		$Location = $_POST['Location']; // location the group will me
 	  $eventTitle = $_POST['eventTitle']; // the title of the study group
 		$email = $_COOKIE['username']; // gather the founders email address
+		$hours = $_POST['hours'];
 		$meetingTime = $_POST['startDate']." ".$_POST['startTime']; // gather the start date and time of the group
 		$meetingDateTime = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $meetingTime))); //adjust it into something that mysql can easy store
-		$meetingEndDateTime = date('Y-m-d H:i:s', strtotime('+1 hour',strtotime(str_replace('-', '/', $meetingTime)))); // add an hour to the event for the end time
+		$meetingEndDateTime = date('Y-m-d H:i:s', strtotime("+$hours hours",strtotime(str_replace('-', '/', $meetingTime)))); // add an hour to the event for the end time
 		$repeat = $_POST['repeating']; // gather whether or not the event is repeating - This may be removed...
 		$privacy = $_POST['privacy']; // is this a private study group? (something like we have for websys, only 4 member instead of open to everyone.)
 		$courseID = $conn->query("SELECT courseID FROM class WHERE courseTitle = '$courseTitle';"); // gather the courseID
@@ -57,6 +58,8 @@
 			  <input type="text" name="eventTitle" value="Event Title">
 			  <input type="date" name="startDate">
 			  <input type="time" name="startTime">
+			  How long with the meeting last? (hours);
+			  <input type-'number' name='hours'>
 			  Repeating?
 			  <input type="radio" name="repeating" value="1"> Yes
 			  <input type="radio" name="repeating" value="0"> No
