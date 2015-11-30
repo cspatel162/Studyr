@@ -61,7 +61,7 @@
 		joingroup($events);
 	}
 
-	function displaygroupinfo($groupID,$eventbool,$passfail,$members){
+	function displaygroupinfo($groupID,$eventbool,$passfail,$members,$events){
 		global $conn;
 		if($passfail == true){ // part of the group/public group 
 			//--- SECTION:VIEWABLE TO ALL USERS ---- 
@@ -83,10 +83,13 @@
 			//--- END SECTION ----
 			if($eventbool == true){ // group public or private but you are apart of the groups
 				//--- SECTION:VIEWABLE TO ONLY MEMBERS OF THE GROUP! ----
-	
-				$locationsql = "SELECT locations.locationName FROM locations INNER JOIN events ON locations.locationID = events.locationID WHERE events.groupID = $groupID"; // get the location
+				$locationID;
+				foreach ($events as $vent){
+					$locationID = $vent['locationID'];
+				}
+				$locationsql = "SELECT locationName FROM locations where locationID = $locationID"; // get the location
 				$location = $conn->query($locationsql);
-				foreach ($location as $local){ // print the location - ISSUE - depending on the amount of events this can print MULTIPLE times... need to fix...
+				foreach ($location as $local){ // print the location
 					echo "<h5>".$local['locationName']."</h5>";
 				}
 
@@ -102,7 +105,6 @@
 				echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
 				echo "<input type='submit' name='submit' value='Join'>";
 				//--- END SECTION ----
-				//echo "Sorry, you are not apart of this group and this group is public, feel free to join!";
 			}
 		}
 		else{ // group private and not apart of the group
