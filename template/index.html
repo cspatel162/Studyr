@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		
+		
+		<link rel="stylesheet" href="main.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						<img alt="Brand" src="../images/logo.png" width="70px;">
+					</a>
+
+					
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Calander</a></li>
+					<li><a href="#">Logout</a></li>
+<!--
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</li>
+-->
+				</ul>	
+			</div>
+		</nav>
+		
+		<div id="content">
+			<div id="side">
+				<section class="leftheader"> 
+					<center><h1> Search by..</h1></center>
+				</section>
+				<br>
+				<section class="search">
+					<form action="search.php" method="POST">
+						<ul class="nav">
+							<li>	
+								
+								<div class="dropdown">
+									<strong>Subject:</strong>
+									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Classes<span class="caret"></span></button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+										<li value="admn">Administration</li>
+										<li value="arch">Architecture</li>
+										<li value="arts">Arts</li>
+										<li value="astr">Astronomy</li>
+										<li value="bcbp">Biochemistry and Biophysics</li>
+										<li value="biol">Biology</li>
+										<li value="bmed">Biomedical Engineering</li>
+										<li value="chem">Chemistry</li>
+										<li value="chme">Chemical Engineering</li>
+										<li value="civl">Civl Engineering</li>
+										<li value="cogs">Cognitive Science</li>
+										<li value="comm">Communication</li>
+										<li value="coop">Cooperative Education</li>
+										<li value="csci">Computer Science</li>
+										<li value="econ">Economics</li>
+										<li value="ecse">Electrical, Computer, and Systems Engineering</li>
+										<li value="engr">General Engineering</li>
+										<li value="enve">Environmental Engineering</li>
+										<li value="epow">Electric Power Engineering</li>
+										<li value="ERTH">Earth and Environmental Sciences</li>
+										<li value="esci">Engineering Science</li>
+										<li value="ienv">Interdisciplinary Environmental</li>
+										<li value="ihss">Interdisciplinary Studies</li>
+										<li value="isci">Interdisciplinary Science</li>
+										<li value="isye">Industrial and Systems Engineering</li>
+										<li value="itws">Information Technology and Web Science</li>
+										<li value="lang">Foreign Languages</li>
+										<li value="lght">Lighting</li>
+										<li value="mane">Mechanical, Aerospace, and Nuclear Engineering</li>
+										<li value="math">Mathematics</li>
+										<li value="matp">Mathematical Programming, Probability, and Statistics</li>
+										<li value="mgmt">Management</li>
+										<li value="mtle">Materials Science and Engineering</li>
+										<li value="phil">Philosophy</li>
+										<li value="phys">Physics</li>
+										<li value="psych">Psychology</li>
+										<li value="stsh">Science and Technology - Humanities</li>
+										<li value="stss">Science and Technology - Social Sciences</li>
+										<li value="usaf">Aerospace Studies (Air Force ROTC)</li>
+										<li value="usar">Military Science (Army ROTC)</li>
+										<li value="usna">Naval Science (Navy ROTC)</li>
+										<li value="writ">Writing</li>
+									 </ul>
+								</div>
+							</li>
+							
+							<li><strong>Title:</strong><input type="text" name="submit_title"></li>
+							<li><strong>Professor:</strong><input type="text" name="submit_prof"></li>
+							<li><strong>CRN:</strong><input type="text" name="submit_crn"></li>
+							<li><button type="submit" id="submit" class="btn btn-default">Search</button></li>
+						</ul>
+					</form>
+				</section>
+			</div>
+			<div id="main">
+				
+			</div>
+		</div>
+	</body>
+</html>

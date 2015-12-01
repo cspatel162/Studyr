@@ -1,0 +1,58 @@
+* {
+	margin: 0px;
+}
+
+#side {
+	width: 300px;
+	height: 400px;
+	padding: 10px;
+	margin-top: -20px;
+	background: #7CB4B4;
+	color: #fff;
+}
+
+#side select{
+	width: 150px;
+	margin-left: 6px;
+	margin-bottom: 5px;
+}
+
+#side input {
+	width: 150px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	outline: none;
+	font: 8px;
+	padding: 5px;
+	color: black;
+}
+
+.form_val {
+	display: inline;
+}
+
+strong {
+	width: 100px;
+	display: inline-block;
+	
+}
+
+#submit {
+	margin-top: 20px;
+	margin-left: 185px;
+}
+
+#sub_but {
+	color: black;
+}
+
+.dropdown-menu {
+	color: black;
+	margin: 5px;
+	padding: 5px;
+}
+
+#dropdownMenu1{
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
