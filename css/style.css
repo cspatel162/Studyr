@@ -18,6 +18,7 @@
 }
 .leftnavbar{
 	width: 20%;
+	min-width: 270px;
 	height: 100%;
 	float: left;
 	background-color: LightGray;
@@ -131,4 +132,17 @@ a:active {
 #map {
   width: 500px;
   height: 400px;
+}
+select {
+  width: 174px;
+}
+.search{
+	text-align:left;
+	width:90%;
+	max-width:250px;
+	margin-left:4%;
+	line-height: 25px;
+}
+.search ul {
+	display:inline-table;
 }
