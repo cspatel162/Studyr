@@ -1,8 +1,8 @@
 <?php // used for tpages that we don't want the left side nav bar on. 
 	require "connect.php";
-	if(!isset($_COOKIE['userID'])){ // checks if the user is logged in based on their cookies, if they are not force them back to the login page.
+	/*if(!isset($_COOKIE['userID'])){ // checks if the user is logged in based on their cookies, if they are not force them back to the login page.
 		header("Location:login.php");
-	}
+	}*/
 ?>
 
 <html>
@@ -16,10 +16,10 @@
 <body>
 	<section class="rightheader"><?php 
 		if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
-			echo '<a href="logout.php">Logout</a> | <a href="splashpage.php">Studyr</a> | <a href="calendar.php"> My Calendars</a>';
+			echo '<a href="calendar.php"> My Calendars</a> | <a href="splashpage.php">Studyr</a> | <a href="logout.php">Logout</a>';
 		}
 		else{
-			echo '<a href="splashpage.php">Studyr</a>';
+			echo '<a href="../index.php">Studyr</a>';
 		}
 			?>
 	</section> <!-- top nav bar -->

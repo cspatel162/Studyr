@@ -72,10 +72,11 @@
 		console.log(time.toISOString());
 		var time_string = time.toISOString();
 		// run backend code to get the user's calendar and add events to the database
-		$.get("calendar_functions.php", {time:time_string}, function() {
+		window.location='calendar_functions.php?time='+time_string;
+		//$.get("calendar_functions.php", {time:time_string}, function() {
 			// update schedule so it reflects the additions to the events table
-			updateSchedule();
-		});
+		
+		//});
 	}
 </script>
 </html>

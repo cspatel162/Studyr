@@ -34,7 +34,7 @@ TODO:
 	<section class="rightheader"><!-- top nav bar -->
 		<?php 
 			if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
-				echo '<a href="logout.php">Logout</a> | <a href="splashpage.php">Studyr</a> | <a href="calendar.php"> My Calendars</a>';
+				echo '<a href="calendar.php"> My Calendars</a> | <a href="splashpage.php">Studyr</a> | <a href="logout.php">Logout</a>';
 			}
 			else{
 				echo '<a href="splashpage.php">Studyr</a>';
@@ -50,7 +50,7 @@ TODO:
 				<a href="myschedule.php"><li class="navitem">Edit User's Schedule</li></a>
 				<a href="creategroup.php"><li class="navitem">Create a Study Group</li></a>
 				<a href="currentgroups.php"><li class="navitem">Users Current Study Groups</li></a>
-				<a href="splashpage.php"><li class="navitem">Join a Study Group</li></a>
+				<a href="../index.php"><li class="navitem">Join a Study Group</li></a>
 			</ul>
 			<section class="upcoming">
 				<h1> UPCOMING EVENTS: </h1>

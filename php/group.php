@@ -13,7 +13,11 @@
 	$events = $conn->query($sql2);
 	$passfail = false;
 	$eventbool = false;
-	$userID = $_COOKIE['userID'];
+	if (isset($_COOKIE['userID'])){
+		$userID = $_COOKIE['userID'];
+	}else{
+		$userID = 0;
+	}
 	$members = array();
 	foreach($studygroup as $val){
 		if($val['privacy'] == 1){
@@ -68,6 +72,7 @@
 		global $locationState;
 		global $locationCity;
 		global $conn;
+		global $userID;
 		if($passfail == true){ // part of the group/public group 
 			//--- SECTION:VIEWABLE TO ALL USERS ---- 
 
@@ -111,8 +116,14 @@
 			}
 			else{ // not part of the group but the group is public and therefore you can view some of the data.
 				//--- SECTION:VIEWABLE TO ALL USERS ----
-				echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
-				echo "<input type='submit' name='submit' value='Join'>";
+				if ($userID == 0){
+					echo "<form method='POST' action='../index.php'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
+					echo "<input type='submit' name='submit' value='Join'>";
+				}
+				else{
+					echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
+					echo "<input type='submit' name='submit' value='Join'>";
+				}
 				//--- END SECTION ----
 			}
 		}

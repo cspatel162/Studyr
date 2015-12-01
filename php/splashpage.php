@@ -10,7 +10,7 @@
 			<section class="rightheader"><!-- top nav bar -->
 				<?php 
 					if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
-						echo '<a href="logout.php">Logout</a> | <a href="splashpage.php">Studyr</a> | <a href="calendar.php"> My Calendars</a>';
+						echo '<a href="calendar.php"> My Calendars</a> | <a href="splashpage.php">Studyr</a> | <a href="logout.php">Logout</a>';
 					}
 					else{
 						echo '<a href="login.php">Login or Register</a>';
@@ -28,19 +28,21 @@
 			<section class="menu">
 				<p>Search Groups by Course Offerings:</p>
 				<form method="POST" action="search.php">
-					<ul class="nav">
-						<li><input type="submit" name="submit" value="ADMN" class="navitem"></li>
-						<li><input type="submit" name="submit" value="ARCH" class="navitem"></li>
-						<li><input type="submit" name="submit" value="ARTS" class="navitem"></li>
-						<li><input type="submit" name="submit" value="ASTR" class="navitem"></li>
-						<li><input type="submit" name="submit" value="BCBP" class="navitem"></li>
-					</ul>
-					<ul class="nav">
-						<li><input type="submit" name="submit" value="BIOL" class="navitem"></li>
-						<li><input type="submit" name="submit" value="BMED" class="navitem"></li>
-						<li><input type="submit" name="submit" value="CHEM" class="navitem"></li>
-						<li><input type="submit" name="submit" value="CHME" class="navitem"></li>
-						<li><input type="submit" name="submit" value="Show All..." class="navitem"></li>
+					<ul>
+						<li><ul class="nav">
+							<li><input type="submit" name="submit" value="ADMN" class="navitem"></li>
+							<li><input type="submit" name="submit" value="ARCH" class="navitem"></li>
+							<li><input type="submit" name="submit" value="ARTS" class="navitem"></li>
+							<li><input type="submit" name="submit" value="ASTR" class="navitem"></li>
+							<li><input type="submit" name="submit" value="BCBP" class="navitem"></li>
+						</ul></li>
+						<li><ul class="nav">
+							<li><input type="submit" name="submit" value="BIOL" class="navitem"></li>
+							<li><input type="submit" name="submit" value="BMED" class="navitem"></li>
+							<li><input type="submit" name="submit" value="CHEM" class="navitem"></li>
+							<li><input type="submit" name="submit" value="CHME" class="navitem"></li>
+							<li><input type="submit" name="submit" value="Show All..." class="navitem"></li>
+						</ul></li>
 					</ul>
 				</form>
 			</section>
