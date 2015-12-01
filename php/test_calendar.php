@@ -53,7 +53,7 @@
 		for (var hour = 0; hour < 24; hour++) {
 			for (var day = 0; day < 7; day++) {
 				$.get("check_for_event.php", {year:startYear, month:startMonth, day:startDay+day, hour:hour}, function(data){
-					$(".hour_" + data['hour'] + " .day_" + (data['day']-startDay)).append(data['event_name']);
+					$(".hour_" + data['hour'] + " .day_" + (data['day']-startDay)).html(data['event_name']);
 				}, "json");
 			}
 		}
