@@ -140,8 +140,9 @@ a:active {
 	margin: auto;
 }
 #map {
-  width: 500px;
-  height: 400px;
+  width: 80%;
+  height: 50%;
+  margin: auto;
 }
 select {
   width: 174px;
@@ -170,4 +171,34 @@ select {
 	margin-left:290px;
 }
 #side{
+}
+#groupinfo{
+	margin: auto;
+	text-align: center;
+	width: 75%;
+	height: 100%;
+}
+#memberlist{
+	float: left;
+	padding-left: 10%;
+}
+#memberlist h3{
+	margin: 0 0 0 0 ;
+}
+#location h1{
+	margin: 0 0 0 0;
+	display: inline;
+}
+#location {
+	width: 30%;
+	margin: auto;
+}
+#course{
+	width: 50%;
+	margin: auto;
+}
+#meetingtime{
+	width: 30%;
+	margin: auto;
+	text-align: center;
 }

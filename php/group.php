@@ -76,7 +76,7 @@
 		if($passfail == true){ // part of the group/public group 
 			//--- SECTION:VIEWABLE TO ALL USERS ---- 
 
-			echo "<ul>"; // MEMBERS LIST!
+			echo "<section id='memberlist'><h3 > Member List: </h3><ul>"; // MEMBERS LIST!
 			for($i=0;$i<count($members);$i++){ // prints out all members of this group
 					$sql = "SELECT fname,lname FROM users WHERE userID = ".$members[$i]; // select the fname and lname
 					$membernamnes = $conn->query($sql);
@@ -84,11 +84,11 @@
 						echo "<li>".$names['fname']." ".$names['lname']."</li>";	 // PRINT!
 					}
 			}
-			echo "</ul>";
+			echo "</ul></section>";
 			$classname = "SELECT class.courseTitle FROM class INNER JOIN study_groups ON class.courseID = study_groups.courseID WHERE study_groups.groupID = $groupID"; // Select the courseTitle
 			$course = $conn->query($classname);
 			foreach ($course as $name){
-				echo "<h1>".$name['courseTitle']."</h1>";//Course Title that the group is studing
+				echo "<h2 id='course'>".$name['courseTitle']."</h2>";//Course Title that the group is studing
 			}
 			//--- END SECTION ----
 			if($eventbool == true){ // group public or private but you are apart of the groups
@@ -103,13 +103,13 @@
 					$locationName = $local['locationName'];
 					$locationCity = $local['locationCity'];
 					$locationState = $local['locationState']; 	
-					echo "<h5>".$local['locationName']."</h5>";
+					echo "<section id='location'>Where:<h1>".$local['locationName']."</h1></section>";
 				}
 
 				$meetingTime = "SELECT * FROM study_groups WHERE groupID = $groupID";
 				$meetingTimeResult = $conn->query("$meetingTime");
 				foreach ($meetingTimeResult as $time){
-					echo $time['meetingTime'];
+					echo "<p id='meetingtime'>When: ".$time['meetingTime']."</p>";
 				}
 
 				//--- END SECTION ----
@@ -132,9 +132,20 @@
 		}
 	}
 ?>
+
+	<section id = "groupinfo">
 		<?php displaygroupinfo($groupID,$eventbool,$passfail,$members,$events); ?>
+
+
 		<div id="map"></div>
 	</section>
+	</section>
+
+
+
+
+
+
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
     <script>
       function initialize() {
