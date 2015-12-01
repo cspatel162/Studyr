@@ -44,6 +44,8 @@ $userID = $result->fetch_assoc()['userID'];
 
 
 // set service to Google Calendar
+
+
 $service = new Google_Service_Calendar($client);
 
 // use the user's primary calendar
@@ -53,7 +55,7 @@ $calendarID = 'primary';
 // timeMin is current time $_GET['time']
 $optionalParameters = array(
     'timeMin' => date('c'),
-	'timeMax' => '"'.$_GET['time'].'"',
+	'timeMax' => "2016-01-01T05:00:00.000Z",
     'singleEvents' => TRUE
 );// $_GET['time']        "2016-01-01T05:00:00.000Z"
 
@@ -139,5 +141,6 @@ function getMySQLFormat($dateTime, $round=0) {
 	// return the formatted string
 	return $formatstr;
 }
+	header("Location:test_calendar.php");
 
 ?>
