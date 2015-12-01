@@ -117,7 +117,7 @@
 			else{ // not part of the group but the group is public and therefore you can view some of the data.
 				//--- SECTION:VIEWABLE TO ALL USERS ----
 				if ($userID == 0){
-					echo "<form method='POST' action='../index.php'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
+					echo "<form method='POST' action='login.php'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
 					echo "<input type='submit' name='submit' value='Join'>";
 				}
 				else{
