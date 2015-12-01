@@ -1,33 +1,51 @@
-<?php //we can include other PHP Files here to keep the index as clear as possible 
-include_once 'php/connect.php';
-?>
+<?php?>
 <html>
-    <head>
-        <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <head>
-
-    <body>
-        <form action="php/calendar.php" method="post">
-            Username: <input type="text" name="email2"><br>
-            Password: <input type="password" name="password">
-            <input type="submit" value="submit">
-        </form>
-        
-        <br>
-        
-        <form action="php/signup.php" method="post">
-            Username: <input type="text" name="email"><br>
-            Password: <input type="password" name="newpassword">
-            <input type="submit" value="submit">
-        </form>
-        
-        <section class="content">
-            <a href="php/calendar.php">Calendar Link </a>
-            <p></p>
-            <a href="php/splashpage.php">Splash Page after login </a>
-        </section>
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-    </body>
+	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<link rel="stylesheet" type="text/css" href="../css/splashstyle.css">
+		<title>Studyr</title>
+	</head>
+	<body>
+		<section class="content">
+			<section class="rightheader"><!-- top nav bar -->
+				<?php 
+					if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
+						echo '<a href="logout.php">Logout</a> | <a href="splashpage.php">Studyr</a> | <a href="calendar.php"> My Calendars</a>';
+					}
+					else{
+						echo '<a href="login.php">Login or Register</a>';
+					}
+				?>
+		</section>
+			<img src="">
+			<section class="search">
+				<p>Search for Public Study Groups:</p>
+				<form action="search.php" method="POST">
+					<input type="text" name="submit" class ="find">
+					<button type="submit" class="find">Search</button>
+				</form>
+			</section>
+			<section class="menu">
+				<p>Search Groups by Course Offerings:</p>
+				<form method="POST" action="search.php">
+					<ul class="nav">
+						<li><input type="submit" name="submit" value="ADMN" class="navitem"></li>
+						<li><input type="submit" name="submit" value="ARCH" class="navitem"></li>
+						<li><input type="submit" name="submit" value="ARTS" class="navitem"></li>
+						<li><input type="submit" name="submit" value="ASTR" class="navitem"></li>
+						<li><input type="submit" name="submit" value="BCBP" class="navitem"></li>
+					</ul>
+					<ul class="nav">
+						<li><input type="submit" name="submit" value="BIOL" class="navitem"></li>
+						<li><input type="submit" name="submit" value="BMED" class="navitem"></li>
+						<li><input type="submit" name="submit" value="CHEM" class="navitem"></li>
+						<li><input type="submit" name="submit" value="CHME" class="navitem"></li>
+						<li><input type="submit" name="submit" value="Show All..." class="navitem"></li>
+					</ul>
+				</form>
+			</section>
+		</section>
+	</body>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </html>
