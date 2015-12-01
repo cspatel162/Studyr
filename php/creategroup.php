@@ -34,39 +34,40 @@
 	} 
 ?>
 		<section id="creategroup">
+			<p>Please fill out the following form:</p>
 			<form method="post" action="creategroup.php">
-			  <select name="courseTitle">
-			  	<option value=""> Course Title </option>
-			  	<?php
-			  		global $conn;
-			  		$result = $conn->query("SELECT courseTitle FROM class;");
-			  		foreach($result as $val){
-			  			echo "<option value='".$val['courseTitle']."'>".$val['courseTitle']."</option>";
-			  		}
-			  	?>
-			  </select>
-			  <select name="Location">
-			  	<option value=""> Location </option>
-			  	<?php
-			  		global $conn;
-			  		$result = $conn->query("SELECT locationName FROM locations;");
-			  		foreach($result as $val){
-			  			echo "<option value='".$val['locationName']."'>".$val['locationName']."</option>";
-			  		}
-			  	?>
-			  </select>
-			  <input type="text" name="eventTitle" value="Event Title">
-			  <input type="date" name="startDate">
-			  <input type="time" name="startTime">
-			  How long with the meeting last? (hours);
-			  <input type-'number' name='hours'>
-			  Repeating?
-			  <input type="radio" name="repeating" value="1"> Yes
-			  <input type="radio" name="repeating" value="0"> No
-			  Private Group?
-			  <input type="radio" name="privacy" value="1"> Yes
-			  <input type="radio" name="privacy" value="0"> No
-			  <input type="submit" name="submit" value="Submit">
+			  <p><select name="courseTitle">
+			  			  	<option value=""> Course Title </option>
+			  			  	<?php
+			  			  		global $conn;
+			  			  		$result = $conn->query("SELECT courseTitle FROM class;");
+			  			  		foreach($result as $val){
+			  			  			echo "<option value='".$val['courseTitle']."'>".$val['courseTitle']."</option>";
+			  			  		}
+			  			  	?>
+			  			  </select></p>
+			  <p><select name="Location">
+			  			  	<option value=""> Location </option>
+			  			  	<?php
+			  			  		global $conn;
+			  			  		$result = $conn->query("SELECT locationName FROM locations;");
+			  			  		foreach($result as $val){
+			  			  			echo "<option value='".$val['locationName']."'>".$val['locationName']."</option>";
+			  			  		}
+			  			  	?>
+			  			  </select></p>
+			  <p><input type="text" name="eventTitle" value="Event Title"></p>
+			  <p><input type="date" name="startDate"></p>
+			  <p><input type="time" name="startTime"></p>
+			  <p>How long with the meeting last? (hours):
+			  <input type-'number' name='hours'></p>
+			  <p>Repeating?
+			  			  <input type="radio" name="repeating" value="1"> Yes
+			  			  <input type="radio" name="repeating" value="0"> No</p>
+			  <p>Private Group?
+			  			  <input type="radio" name="privacy" value="1"> Yes
+			  			  <input type="radio" name="privacy" value="0"> No</p>
+			  <p><input type="submit" name="submit" value="Submit"></p>
 			</form>
 		</section>
 	</section>

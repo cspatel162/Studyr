@@ -43,6 +43,16 @@ ul{
 	height: 7%;
 	line-height: 3.33em;
 }
+.navitem1{
+	width: 130px;
+	background-color: gray;
+	margin: 0 0 5px 0;
+	height: 7%;
+	line-height: 3.33em;
+}
+.navitem1:hover{
+	background-color: DarkGray;
+}
 .upcoming{
 	background-color: gray;
 	height: 60%;
@@ -143,6 +153,21 @@ select {
 	margin-left:4%;
 	line-height: 25px;
 }
+.menu {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-top: 100px;
+	max-width:800px;
+}
+.menu li{
+		display:inline;
+}
 .search ul {
 	display:inline-table;
+}
+#creategroup {
+	margin-left:290px;
+}
+#side{
 }
