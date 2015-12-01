@@ -72,11 +72,9 @@
 		console.log(time.toISOString());
 		var time_string = time.toISOString();
 		// run backend code to get the user's calendar and add events to the database
-		window.location='calendar_functions.php?time='+time_string;
-		//$.get("calendar_functions.php", {time:time_string}, function() {
-			// update schedule so it reflects the additions to the events table
-		
-		//});
+		// cannot use a GET/POST request here since the calendar_functions.php needs to redirect
+		// to Google's authorization page
+		window.location = 'calendar_functions.php?time=' + time_string;
 	}
 </script>
 </html>

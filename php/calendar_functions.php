@@ -3,16 +3,16 @@
 include_once "connect.php";
 require_once '..\google-api-php-client-1.1.6\src\Google\autoload.php';
 
-// configure the client for google calendar
+// ---------------------------------- GOOGLE CALENDAR CONFIGURATION ----------------------------------
 $client = new Google_Client();
 $client->setApplicationName('Studyr');
 $client->setAuthConfigFile('../client_secret.json');
 $client->addScope(Google_Service_Calendar::CALENDAR_READONLY);
 $client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/studyr/php/calendar_functions.php');
+// ---------------------------------------------------------------------------------------------------
 
 
-// ----- BEGIN AUTHENTICATION CHECK -----
-
+// ------------------------- AUTHENTICATION CHECK -------------------------
 // check if the code is not set
 if (! isset($_GET['code'])) {
 	// create an Auth URL and go to it
@@ -25,12 +25,10 @@ $client->authenticate($_GET['code']);
 $_SESSION['access_token'] = $client->getAccessToken();
 // update the client with the access token
 $client->setAccessToken($_SESSION['access_token']);
-
-// -----  END AUTHENTICATION CHECK  -----
-
+// ------------------------------------------------------------------------
 
 
-// ----------------- GET USER ID -------------------------------------------------
+// --------------------------- RETRIEVE USER ID ---------------------------
 // refer $conn to the global conn
 global $conn;
 	
@@ -40,53 +38,40 @@ $email = $_COOKIE['username'];
 // get userID using email
 $result = $conn->query("SELECT userID FROM users WHERE email ='$email'");
 $userID = $result->fetch_assoc()['userID'];
-//--------------------------------------------------------------------------------
+// ------------------------------------------------------------------------
 
 
 // set service to Google Calendar
-
-
 $service = new Google_Service_Calendar($client);
 
 // use the user's primary calendar
 $calendarID = 'primary';
 
+// create a DateTime object for the max time limit
+$max_time = new DateTime();
+// the max time will be two weeks after the current day
+$max_time->add(date_interval_create_from_date_string("2 weeks"));
+
 // set the appropriate optional parameters
-// timeMin is current time $_GET['time']
+// timeMin is today
 $optionalParameters = array(
     'timeMin' => date('c'),
-	'timeMax' => "2016-01-01T05:00:00.000Z",
+	'timeMax' => $max_time->format(DateTime::RFC3339),
     'singleEvents' => TRUE
-);// $_GET['time']        "2016-01-01T05:00:00.000Z"
+);
 
 // get the results
 $results = $service->events->listEvents($calendarID, $optionalParameters);
 
 // go through each one
 foreach ($results->getItems() as $event) {
-	
-	/*
-		For Debugging Purposes
-		
-		$summary = $event->summary;
-		echo $summary;
-		$start = new DateTime($event->start->dateTime);
-		echo "<br><br>Start: {$start->format('Y-m-d H:i:s')}";
-		$formatted_start = getMySQLFormat($start, -1);
-		echo "<br>Rounded Start: $formatted_start";	
-		$end = new DateTime($event->end->dateTime);
-		echo "<br><br>End: {$end->format('Y-m-d H:i:s')}";
-	*/
+
 	// get the title
 	$title = $event->summary;
 	
 	// get the start and end date/times
 	$start = new DateTime($event->start->dateTime);
 	$end = new DateTime($event->end->dateTime);
-	
-		/*echo $title;
-		echo "<br><br>Start: {$start->format('Y-m-d H:i:s')}";
-		echo "<br><br>End: {$end->format('Y-m-d H:i:s')}<br><br><br>";*/ 
 	
 	// round the times and format them correctly
 	$formatted_start = getMySQLFormat($start, -1);	
@@ -141,6 +126,8 @@ function getMySQLFormat($dateTime, $round=0) {
 	// return the formatted string
 	return $formatstr;
 }
-	header("Location:test_calendar.php");
+
+// return to calendar page when done
+header("Location:test_calendar.php");
 
 ?>

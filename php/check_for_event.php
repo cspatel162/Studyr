@@ -22,12 +22,9 @@
 	$startTime = "$year-$month-$day $start_hour:00:00";
 	$endTime = "$year-$month-$day $end_hour:00:00";
 	
-	// check for events
-	$result = $conn->query("SELECT eventName FROM events WHERE userID = '$userID' AND ((startTime BETWEEN '$startTime' AND '$endTime') OR (endTime BETWEEN '$startTime' AND '$endTime') OR (startTime <= '$startTime' AND endTime >= '$endTime'));");
+	// check for events that make the user busy for the specified timeblock
+	$result = $conn->query("SELECT eventName FROM events WHERE userID = '$userID' AND ((startTime >= '$startTime' AND startTime < '$endTime') OR (endTime > '$startTime' AND endTime <= '$endTime') OR (startTime <= '$startTime' AND endTime >= '$endTime'));");
 	$eventName = $result->fetch_assoc()['eventName'];
-	
-	// end the connection
-	$conn->close();
 	
 	// prepare the data into an array
 	$data = array('year'=>$year, 'month'=>$month, 'day'=>$day, 'hour'=>$start_hour, 'event_name'=>$eventName);
