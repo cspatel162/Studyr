@@ -59,22 +59,12 @@
 		}
 	}
 	
+	// only imports the next 2 weeks now since GET request isn't working like we would like it to
 	function importCalendar() {
-		// for testing purposes, only import month of December
-		var year = 2015;
-		var month = 12;
-		var day = 31;
-		
-		// create Date object
-		var time = new Date(year, month-1, day);
-		// set it to the end of the day
-		time.setHours(24);
-		console.log(time.toISOString());
-		var time_string = time.toISOString();
 		// run backend code to get the user's calendar and add events to the database
 		// cannot use a GET/POST request here since the calendar_functions.php needs to redirect
 		// to Google's authorization page
-		window.location = 'calendar_functions.php?time=' + time_string;
+		window.location = 'calendar_functions.php';
 	}
 </script>
 </html>

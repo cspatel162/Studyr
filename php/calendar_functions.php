@@ -1,5 +1,4 @@
 <?php
-
 include_once "connect.php";
 require_once '..\google-api-php-client-1.1.6\src\Google\autoload.php';
 
@@ -8,7 +7,7 @@ $client = new Google_Client();
 $client->setApplicationName('Studyr');
 $client->setAuthConfigFile('../client_secret.json');
 $client->addScope(Google_Service_Calendar::CALENDAR_READONLY);
-$client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/studyr/php/calendar_functions.php');
+$client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . strtok($_SERVER["REQUEST_URI"],'?'));
 // ---------------------------------------------------------------------------------------------------
 
 
