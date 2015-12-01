@@ -101,7 +101,7 @@
 	<script>
 		$("#side").hide();
 		$("#adv").hover(function(){
-			$("#side").toggle('slide');
+			$("#side").toggle(1000);
 			$("#adv").toggleClass("ui-icon-triangle-1-e");
 		},function(){
 			$("#adv").toggleClass("ui-icon-triangle-1-w");

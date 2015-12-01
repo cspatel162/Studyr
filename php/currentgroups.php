@@ -7,13 +7,17 @@ TODO:
 
 	include_once "pageStart.php"; 
 
+
+	function fetchDate($date){
+		
+	}
 	function currGroup(){
 		global $conn;
 		$sql = "SELECT events.*,locations.* FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID']; // gets events based on user id and displays more infromation about events
 		$results = $conn->query($sql);
 		if ($results->num_rows > 0){ // checks to make sure there are events, if 0 there are none and echos that out. 
 			foreach($results as $val){
-				echo "<li>Event: ".$val['eventName']." Starting: ".$val['startTime']." Ending: ".$val['endTime']." At: ".$val['locationName']."</li>";
+				echo "<li class=\"navitem\"><h5>".$val['eventName']."</h5> Starting: ".$val['startTime']." At: ".$val['locationName']."</li>";
 			}
 		}else{
 			echo "<li>Sorry, but you're not apart of any study groups right now.</li>";
