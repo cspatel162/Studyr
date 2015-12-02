@@ -36,7 +36,7 @@ TODO:
 	<section class="rightheader"><!-- top nav bar -->
 		<?php 
 			if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
-				echo '<a href="calendar.php"> My Calendars</a> | <a href="splashpage.php">Studyr</a> | <a href="logout.php">Logout</a>';
+				echo '<a href="calendar.php"> My Calendars</a> | <a href="../index.php">Studyr</a> | <a href="logout.php">Logout</a>';
 			}
 			else{
 				echo '<a href="splashpage.php">Studyr</a>';
