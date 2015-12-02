@@ -190,4 +190,6 @@ strong {
 	background: #fff;
 	min-width: 800px;
 	border-left: 1px inset ;
+	padding-top:20px;
+	padding-left: 20px; 
 }
