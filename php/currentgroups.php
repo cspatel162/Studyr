@@ -13,11 +13,13 @@ TODO:
 	}
 	function currGroup(){
 		global $conn;
-		$sql = "SELECT events.*,locations.* FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID']; // gets events based on user id and displays more infromation about events
+		date_default_timezone_set("America/New_York");
+		$eventmax = date('Y-m-d H:i:s', strtotime("+5 days")); // add an hour to the event for the end time
+		$sql = "SELECT events.eventName,events.startTime,locations.locationName FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID']." AND events.startTime <= '$eventmax' ORDER BY events.startTime LIMIT 20 ";
 		$results = $conn->query($sql);
 		if ($results->num_rows > 0){ // checks to make sure there are events, if 0 there are none and echos that out. 
 			foreach($results as $val){
-				echo "<li class=\"navitem\"><h5>".$val['eventName']."</h5> Starting: ".$val['startTime']." At: ".$val['locationName']."</li>";
+				echo "<li class='navitem'>".$val['eventName']." Starting at: ".$val['startTime']."</li>";
 			}
 		}else{
 			echo "<li>Sorry, but you're not apart of any study groups right now.</li>";

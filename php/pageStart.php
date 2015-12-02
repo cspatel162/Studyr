@@ -12,11 +12,13 @@ TODO:
 
 	function events(){ // check for events based on the users id from the cookies. 
 		global $conn;
-		$sql = "SELECT events.eventName,locations.locationName FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID'];
+		date_default_timezone_set("America/New_York");
+		$eventmax = date('Y-m-d H:i:s', strtotime("+5 days")); // add an hour to the event for the end time
+		$sql = "SELECT events.eventName,locations.locationName FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID']." AND events.startTime <= '$eventmax' ORDER BY events.startTime LIMIT 10 ";
 		$results = $conn->query($sql);
 		if ($results->num_rows > 0){
 			foreach($results as $val){ // does a display for the events, only showing their name and location for ease of visability.
-				echo "<li><a href='currentgroups.php' >Event: ".$val['eventName']." At: ".$val['locationName']."</a></li>";
+				echo "<li><a href='currentgroups.php' >".$val['eventName']."</a></li>";
 			}
 		}
 	}
