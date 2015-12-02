@@ -32,9 +32,9 @@
 	  setcookie("fname",$fname,time()+86400,"/");
 	  setcookie("lname",$lname,time()+86400,"/");
 	  setcookie("userID",$userID,time()+86400,"/");
-	  header("Location:splashpage.php");
+	  header("Location:../index.php");
   }
   else{
-  	header("Location:splashpage.php");
+  	header("Location:../index.php");
   }
 ?>

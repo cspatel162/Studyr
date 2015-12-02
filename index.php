@@ -21,7 +21,8 @@
 				<ul class="nav navbar-nav navbar-right">
 					<?php 
 						if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
-							echo '<li><a href="php/calendar.php"> My Calendars</a></li> | <li><a href="php/logout.php">Logout</a></li>';
+							echo '<li><a href="php/calendar.php">Calendar</a></li>';
+							echo '<li><a href="php/logout.php">Logout</a></li>';
 						}
 						else{
 							echo '<li><a href="php/login.php">Login or Register</a></li>';
