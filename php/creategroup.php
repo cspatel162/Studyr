@@ -16,24 +16,28 @@
 		$meetingEndDateTime = date('Y-m-d H:i:s', strtotime("+$hours hours",strtotime(str_replace('-', '/', $meetingTime)))); // add an hour to the event for the end time
 		$repeat = $_POST['repeating']; // gather whether or not the event is repeating - This may be removed...
 		$privacy = $_POST['privacy']; // is this a private study group? (something like we have for websys, only 4 member instead of open to everyone.)
-		$courseID = $conn->query("SELECT courseID FROM class WHERE courseTitle = '$courseTitle';"); // gather the courseID
-		$locationID = $conn->query("SELECT locationID FROM locations where locationName = '$Location'"); // gather the locationID
-		foreach ($courseID as $val) // only one value should be returned - take the first one and set the $courseID value to that
+		$course = $conn->query("SELECT courseID FROM class WHERE courseTitle = '$courseTitle';"); // gather the courseID
+		$location = $conn->query("SELECT locationID FROM locations where locationName = '$Location'"); // gather the locationID
+		$val = $course->fetch_assoc();
 			$courseID = $val['courseID'];
-		foreach ($locationID as $val) // does the same thign that the courseID one does but for locations
-			$locationID = $val['locationID'];
+		$val = $location->fetch_assoc();
+		$locationID = $val['locationID'];
 		$sql = "INSERT INTO study_groups (privacy,meetingTime,founderID,courseID) values($privacy,'$meetingDateTime',$founderID,$courseID)"; // insert the study group
 		$conn->query($sql);
-		$group = $conn->query("SELECT groupID FROM study_groups WHERE founderID = '$founderID';"); // gather that group ID based on the founder ID ... this is probably not good... - need to fix this. 
-		$val = $group->fetch_assoc();
-		$groupID = $val['groupID'];
-
-		$empty=array("links"=>array());
-		$jsonstart = json_encode($empty);
-		file_put_contents("../json/studygroup_$groupID.json", $jsonstart);
-
-		$sql = "UPDATE study_groups SET json='../json/studygroup_$groupID.json' WHERE groupID = $groupID;)"; // insert the study group
-		$conn->query($sql);
+		
+		// Selects the most recently created groupID from the groups created by the founder
+		$group = $conn->query("SELECT groupID FROM study_groups WHERE founderID = $founderID ORDER BY groupID;"); // gather that group ID based on the founder ID ... this is probably not good... - need to fix this. 
+		if($group->num_rows > 0){
+			while($val = $group->fetch_row()){
+				$groupID = $val[0];
+			}
+			$empty=array("links"=>array());
+			$jsonstart = json_encode($empty);
+			file_put_contents("../json/studygroup_$groupID.json", $jsonstart);
+			$sql = "UPDATE study_groups SET json='../json/studygroup_$groupID.json' WHERE groupID = $groupID;"; // insert the study group
+			$conn->query($sql);
+		}
+		
 		$sql = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($founderID,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // finally add the event into the list - this needs to be adjusted as well to implement the repeating functioniality.
 		$conn->query($sql);
 		for($i=0;$i<count($emailarray);$i++){
