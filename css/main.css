@@ -59,16 +59,13 @@ strong {
 	color: black;
 }
 
-.dropdown-menu {
-	color: black;
-	margin: 5px;
-	padding: 5px;
-}
-
 #dropdownMenu1{
+	color: black;
 	margin-left: 5px;
 	margin-bottom: 5px;
 	width: 150px;
+	margin: 5px;
+	padding: 5px;
 }
 
 #main {

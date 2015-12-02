@@ -73,7 +73,7 @@
 		}
 	}
 ?>
-		<nav class="leftnavbar"> <!-- SIDE NAV BAT -->
+		<nav id="side" class="leftnavbar"> <!-- SIDE NAV BAT -->
 			<section class="leftheader"> 
 				<h1> Search by..</h1>
 			</section>

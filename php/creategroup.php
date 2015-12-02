@@ -24,9 +24,16 @@
 			$locationID = $val['locationID'];
 		$sql = "INSERT INTO study_groups (privacy,meetingTime,founderID,courseID) values($privacy,'$meetingDateTime',$founderID,$courseID)"; // insert the study group
 		$conn->query($sql);
-		$groupID = $conn->query("SELECT groupID FROM study_groups WHERE founderID = '$founderID';"); // gather that group ID based on the founder ID ... this is probably not good... - need to fix this. 
-		foreach ($groupID as $val)
-			$groupID = $val['groupID'];
+		$group = $conn->query("SELECT groupID FROM study_groups WHERE founderID = '$founderID';"); // gather that group ID based on the founder ID ... this is probably not good... - need to fix this. 
+		$val = $group->fetch_assoc();
+		$groupID = $val['groupID'];
+
+		$empty=array("links"=>array());
+		$jsonstart = json_encode($empty);
+		file_put_contents("../json/studygroup_$groupID.json", $jsonstart);
+
+		$sql = "UPDATE study_groups SET json='../json/studygroup_$groupID.json' WHERE groupID = $groupID;)"; // insert the study group
+		$conn->query($sql);
 		$sql = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($founderID,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // finally add the event into the list - this needs to be adjusted as well to implement the repeating functioniality.
 		$conn->query($sql);
 		for($i=0;$i<count($emailarray);$i++){

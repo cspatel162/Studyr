@@ -50,7 +50,7 @@
 								<li>	
 									<div class="dropdown">
 										<strong>Subject:</strong>
-										<select name="submit" class="dropdown-menu scrollable-menu" id="dropdownMenu1">
+										<select name="submit" id="dropdownMenu1">
 											<option value="admn">Administration</option><option value="arch">Architecture</option>
 											<option value="arts">Arts</option><option value="astr">Astronomy</option>
 											<option value="bcbp">Biochemistry and Biophysics</option><option value="biol">Biology</option>
@@ -73,51 +73,6 @@
 											<option value="usaf">Aerospace Studies (Air Force ROTC)</option><option value="usar">Military Science (Army ROTC)</option>
 											<option value="usna">Naval Science (Navy ROTC)</option><option value="writ">Writing</option>
 										</select>
-										<!-- <button name="submit" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" onclick="show_class_menu();">Classes<span class="caret"></span></button>
-										<ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu1" id="class_menu">
-											<li value="admn">Administration</li>
-											<li value="arch">Architecture</li>
-											<li value="arts">Arts</li>
-											<li value="astr">Astronomy</li>
-											<li value="bcbp">Biochemistry and Biophysics</li>
-											<li value="biol">Biology</li>
-											<li value="bmed">Biomedical Engineering</li>
-											<li value="chem">Chemistry</li>
-											<li value="chme">Chemical Engineering</li>
-											<li value="civl">Civl Engineering</li>
-											<li value="cogs">Cognitive Science</li>
-											<li value="comm">Communication</li>
-											<li value="coop">Cooperative Education</li>
-											<li value="csci">Computer Science</li>
-											<li value="econ">Economics</li>
-											<li value="ecse">Electrical, Computer, and Systems Engineering</li>
-											<li value="engr">General Engineering</li>
-											<li value="enve">Environmental Engineering</li>
-											<li value="epow">Electric Power Engineering</li>
-											<li value="ERTH">Earth and Environmental Sciences</li>
-											<li value="esci">Engineering Science</li>
-											<li value="ienv">Interdisciplinary Environmental</li>
-											<li value="ihss">Interdisciplinary Studies</li>
-											<li value="isci">Interdisciplinary Science</li>
-											<li value="isye">Industrial and Systems Engineering</li>
-											<li value="itws">Information Technology and Web Science</li>
-											<li value="lang">Foreign Languages</li>
-											<li value="lght">Lighting</li>
-											<li value="mane">Mechanical, Aerospace, and Nuclear Engineering</li>
-											<li value="math">Mathematics</li>
-											<li value="matp">Mathematical Programming, Probability, and Statistics</li>
-											<li value="mgmt">Management</li>
-											<li value="mtle">Materials Science and Engineering</li>
-											<li value="phil">Philosophy</li>
-											<li value="phys">Physics</li>
-											<li value="psych">Psychology</li>
-											<li value="stsh">Science and Technology - Humanities</li>
-											<li value="stss">Science and Technology - Social Sciences</li>
-											<li value="usaf">Aerospace Studies (Air Force ROTC)</li>
-											<li value="usar">Military Science (Army ROTC)</li>
-											<li value="usna">Naval Science (Navy ROTC)</li>
-											<li value="writ">Writing</li>
-										 </ul> -->
 									</div>
 								</li>
 
