@@ -50,7 +50,30 @@
 								<li>	
 									<div class="dropdown">
 										<strong>Subject:</strong>
-										<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" onclick="show_class_menu();">Classes<span class="caret"></span></button>
+										<select name="submit" class="dropdown-menu scrollable-menu" id="dropdownMenu1">
+											<option value="admn">Administration</option><option value="arch">Architecture</option>
+											<option value="arts">Arts</option><option value="astr">Astronomy</option>
+											<option value="bcbp">Biochemistry and Biophysics</option><option value="biol">Biology</option>
+											<option value="bmed">Biomedical Engineering</option><option value="chem">Chemistry</option>
+											<option value="chme">Chemical Engineering</option><option value="civl">Civl Engineering</option>
+											<option value="cogs">Cognitive Science</option><option value="comm">Communication</option>
+											<option value="coop">Cooperative Education</option><option value="csci">Computer Science</option>
+											<option value="econ">Economics</option><option value="ecse">Electrical, Computer, and Systems Engineering</option>
+											<option value="engr">General Engineering</option><option value="enve">Environmental Engineering</option>
+											<option value="epow">Electric Power Engineering</option><option value="ERTH">Earth and Environmental Sciences</option>
+											<option value="esci">Engineering Science</option><option value="ienv">Interdisciplinary Environmental</option>
+											<option value="ihss">Interdisciplinary Studies</option><option value="isci">Interdisciplinary Science</option>
+											<option value="isye">Industrial and Systems Engineering</option><option value="itws">Information Technology and Web Science</option>
+											<option value="lang">Foreign Languages</option><option value="lght">Lighting</option>
+											<option value="mane">Mechanical, Aerospace, and Nuclear Engineering</option><option value="math">Mathematics</option>
+											<option value="matp">Mathematical Programming, Probability, and Statistics</option><option value="mgmt">Management</option>
+											<option value="mtle">Materials Science and Engineering</option><option value="phil">Philosophy</option>
+											<option value="phys">Physics</option><option value="psych">Psychology</option>
+											<option value="stsh">Science and Technology - Humanities</option><option value="stss">Science and Technology - Social Sciences</option>
+											<option value="usaf">Aerospace Studies (Air Force ROTC)</option><option value="usar">Military Science (Army ROTC)</option>
+											<option value="usna">Naval Science (Navy ROTC)</option><option value="writ">Writing</option>
+										</select>
+										<!-- <button name="submit" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" onclick="show_class_menu();">Classes<span class="caret"></span></button>
 										<ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu1" id="class_menu">
 											<li value="admn">Administration</li>
 											<li value="arch">Architecture</li>
@@ -94,7 +117,7 @@
 											<li value="usar">Military Science (Army ROTC)</li>
 											<li value="usna">Naval Science (Navy ROTC)</li>
 											<li value="writ">Writing</li>
-										 </ul>
+										 </ul> -->
 									</div>
 								</li>
 

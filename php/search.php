@@ -38,8 +38,11 @@
 		global $results; // gets the global results and then sets them.
 		$results = $conn->query($sql);
 	}
-	if($_POST['submit']=='Show All...'){searchclasses('*');} // calling the class search based on what is submitted. 
-	else {searchclasses($_POST['submit']);}
+	if(isset($_POST['submit'])){
+		if($_POST['submit']=='Show All...'){searchclasses('*');} // calling the class search based on what is submitted. 
+		else {searchclasses($_POST['submit']);}
+	}
+	
 	if(isset($_POST['submit_crn'])){
 		if($_POST['submit_crn'] != ''){
 			searchcrn($_POST['submit_crn']);
