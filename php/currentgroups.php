@@ -36,11 +36,24 @@ TODO:
 			echo "<li>Sorry, but you're not apart of any study groups right now.</li>";
 		}
 	}
+	function CurrEvents(){
+		global $conn;
+		date_default_timezone_set("America/New_York");
+		$eventmax = date('Y-m-d H:i:s', strtotime("+5 days")); // add an hour to the event for the end time
+		$sql = "SELECT events.eventName,events.startTime FROM events WHERE events.userID = ".$_COOKIE['userID']." AND events.startTime <= '$eventmax' AND events.groupID IS NULL ORDER BY events.startTime LIMIT 20 ";
+		$results = $conn->query($sql);
+		if ($results->num_rows > 0){ // checks to make sure there are events, if 0 there are none and echos that out. 
+			foreach($results as $val){
+				echo "<li class=\"currentgroup owngroup\"><p>".$val['eventName']."</p> Starting: ".fetchDate($val['startTime'])."</li>";		
+			}
+		}
+	}
  ?>
 		<section id="groups">
 			<ul>
 			<?php
 				currGroup();
+				CurrEvents();
 			?>
 			</ul>
 		</section>
