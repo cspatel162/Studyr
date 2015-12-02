@@ -9,14 +9,14 @@ $servername = "localhost";
 
 	//Load test data into DB
 	try{
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password) VALUES ('Captain', 'America', 'ca@e.com', '11');");
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password) VALUES ('Black', 'Widow', 'bw@e.com', '12');");
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password) VALUES ('Green', 'Verde', 'gv@e.com', '13');");
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password) VALUES ('Blue', 'Azul', 'ba@e.com', '14');");
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password) VALUES ('Bruce', 'Banner', 'bb@e.com', '15');");
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password) VALUES ('Tony', 'Stark', 'ts@e.com', '16');");
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password) VALUES ('Red', 'Rojo', 'rr@e.com', '17');");
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password) VALUES ('Thor', 'Odinson', 'to@e.com', '18');");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Captain', 'America', 'ca@e.com', '11',1);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Black', 'Widow', 'bw@e.com', '12',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Green', 'Verde', 'gv@e.com', '13',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Blue', 'Azul', 'ba@e.com', '14',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Bruce', 'Banner', 'bb@e.com', '15',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Tony', 'Stark', 'ts@e.com', '16',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Red', 'Rojo', 'rr@e.com', '17',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Thor', 'Odinson', 'to@e.com', '18',0);");
 
 	} catch (Exception $e){
 		die($e->errorMessage());

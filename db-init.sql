@@ -17,7 +17,8 @@ CREATE TABLE users (
  fname VARCHAR(255)  NOT NULL,
  lname VARCHAR(255)  NOT NULL,
  email VARCHAR(255) UNIQUE NOT NULL,
- password VARCHAR(255) NOT NULL
+ password VARCHAR(255) NOT NULL,
+ admin INT NOT NULL
 );
 
 CREATE TABLE professors (

@@ -84,6 +84,7 @@ TODO:
 	if(isset($_POST['submit'])){
 		joingroup($events);
 	}
+
 	function fetchDate($datetime){
 		$pos = strrpos($datetime, " ");
 		$date = substr($datetime,0, $pos);
@@ -94,6 +95,37 @@ TODO:
 	   "09" => "September", "10" => "October", "11" => "November", "12" => "December" );
 		return $months[$datel[1]] . " ". $datel[2] . ", " . $datel[0] . " " .$time;
 	}
+	function addMember($events){
+		global $conn;
+		$userID = "SELECT userID FROM users WHERE email = '".$_POST['email']."'";
+		$results = $conn->query($userID);
+		if($results->num_rows > 0){
+			foreach($results as $userid){
+				$results = $userid['userID'];
+			}
+		}
+		global $groupID;
+		$eventTitle;
+		$meetingDateTime;
+		$meetingEndDateTime;
+		$locationID;
+		$repeat;
+		foreach ($events as $data){
+			$eventTitle = $data['eventName'];
+			$meetingDateTime = $data['startTime'];
+			$meetingEndDateTime = $data['endTime'];
+			$locationID = $data['locationID'];
+			$repeat = $data['repeating'];
+		}
+		$insertforevent = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($results,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // 
+		$insertresult = $conn->query($insertforevent);
+		unset($_POST);
+		header("Location:group.php?id=$groupID");
+	}
+	if(isset($_POST['addemail'])){
+		addMember($events);
+	}
+
 	function displaygroupinfo($groupID,$eventbool,$passfail,$members,$events){
 		global $locationName;
 		global $locationState;
@@ -156,6 +188,10 @@ TODO:
 					echo "<form id=\"add\" action=\"group.php?id=$groupID\" method=\"POST\">Name: <input type=\"text\" name=\"title\" >";
 					echo "Link: <input type=\"text\" name=\"link\"><input type=\"hidden\" name=\"jsonf\" value=\"$jsonfile.\"><button type=\"submit\">Add</button></form>";				
 				}
+				echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
+				echo "<input type='text' name='email' value='Member Email'>";
+				echo "<input type='submit' name='addemail' value='Add Member'>";
+
 
 				//--- END SECTION ----
 			}

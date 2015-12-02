@@ -6,14 +6,21 @@
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 		
-		<link rel="stylesheet" href="css/main.css">
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		
+		
+		<link rel="stylesheet" href="main.css">
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#">
-						<img alt="Brand" src="images/logo.png" width="70px;">
+						<img alt="Brand" src="../images/logo.png" width="70px;">
 					</a>
 
 					
@@ -21,13 +28,29 @@
 				<ul class="nav navbar-nav navbar-right">
 					<?php 
 						if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
-							echo '<li><a href="php/calendar.php">Calendar</a></li>';
-							echo '<li><a href="php/logout.php">Logout</a></li>';
+							echo '<li><a href="calendar.php"> My Calendars</a></li> | <li><a href="logout.php">Logout</a></li>';
 						}
 						else{
-							echo '<li><a href="php/login.php">Login or Register</a></li>';
+							echo '<li><a href="login.php">Login or Register</a></li>';
 						}
 					?>
+					
+<!--
+					<li><a href="#">Calander</a></li>
+					<li><a href="#">Logout</a></li>
+-->
+<!--
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</li>
+-->
 				</ul>	
 			</div>
 		</nav>
@@ -103,6 +126,11 @@
 						</form>
 					</section>
 				</div>
+<!--
+				<div id="bottom">
+					<center id="bot_search"><h3>Upcoming Events</h3></center>
+				</div>
+-->
 			</div>
 			<div id="main">
 				<button id="toggle" onclick="toggle();"><span class="glyphicon glyphicon-triangle-left" id="toggle"></span></button>
@@ -131,13 +159,6 @@
 				
 			</div>
 		</div>
-		
-		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-		
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-		
-		<script src="js/toggle.js"></script>
+		<script src="toggle.js"></script>
 	</body>
 </html>
