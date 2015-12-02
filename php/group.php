@@ -1,6 +1,11 @@
 <?php
+/* 
+TODO:
+	Setup pages for each study group, a page that gives facts about each group - stuff like members, meeting location, time, study materiels??? Something so this page can be useful.
+
+*/
 	require "connect.php";
-	include_once "pageStartNoNav.php";
+	include_once "pageStart.php";
 	global $conn;
 
 	$groupID = $_GET['id'];
@@ -13,6 +18,19 @@
 	$events = $conn->query($sql2);
 	$passfail = false;
 	$eventbool = false;
+
+	//Code to add a new link to the useful links section
+	if(isset($_POST['title']) && isset($_POST['link']) && isset($_POST['jsonf'])){
+		$json = file_get_contents($_POST['jsonf']);
+		$jsondata = json_decode($json,true);
+		$arr = array("title"=>$_POST['title'],"link"=>$_POST['link']);
+		array_push($jsondata['links'], $arr);
+		$jsonwrite = json_encode($jsondata);
+		file_put_contents($_POST['jsonf'], $jsonwrite);
+		unset($_POST['title']);
+		unset($_POST['link']);
+		unset($_POST['jsonf']);
+	}
 	if (isset($_COOKIE['userID'])){
 		$userID = $_COOKIE['userID'];
 	}else{
@@ -66,13 +84,23 @@
 	if(isset($_POST['submit'])){
 		joingroup($events);
 	}
-
+	function fetchDate($datetime){
+		$pos = strrpos($datetime, " ");
+		$date = substr($datetime,0, $pos);
+		$time = substr($datetime,$pos+1,5);
+		$datel =  explode("-",$date);
+		$months = array("00" => "notfound", "01" => "January", "02" => "February", "03" => "March",
+	   "04" => "April", "05" => "May", "06" => "June", "07" => "July", "08" => "August",
+	   "09" => "September", "10" => "October", "11" => "November", "12" => "December" );
+		return $months[$datel[1]] . " ". $datel[2] . ", " . $datel[0] . " " .$time;
+	}
 	function displaygroupinfo($groupID,$eventbool,$passfail,$members,$events){
 		global $locationName;
 		global $locationState;
 		global $locationCity;
 		global $conn;
 		global $userID;
+		$isfounder = false;
 		if($passfail == true){ // part of the group/public group 
 			//--- SECTION:VIEWABLE TO ALL USERS ---- 
 
@@ -108,8 +136,25 @@
 
 				$meetingTime = "SELECT * FROM study_groups WHERE groupID = $groupID";
 				$meetingTimeResult = $conn->query("$meetingTime");
-				foreach ($meetingTimeResult as $time){
-					echo "<p id='meetingtime'>When: ".$time['meetingTime']."</p>";
+				$time = $meetingTimeResult->fetch_assoc();
+				echo "<p id='meetingtime'>When: ".fetchDate($time['meetingTime'])."</p>";
+				if($time['founderID'] == $userID){
+					$isfounder = true;
+				}
+				$jsonfile = $time['json'];
+				$json = file_get_contents($jsonfile);
+				$jsondata = json_decode($json,true);
+
+				echo "<p id='usefullinks'>Useful Links: </p><ul>";
+				foreach($jsondata as $links){
+					foreach($links as $anchor){
+						echo "<li><a class=\"grouplinks\" href=\"".$anchor['link']."\">".$anchor['title']."</a></li>";
+					}
+				}
+				echo "</ul>";
+				if($isfounder){
+					echo "<form id=\"add\" action=\"group.php?id=$groupID\" method=\"POST\">Name: <input type=\"text\" name=\"title\" >";
+					echo "Link: <input type=\"text\" name=\"link\"><input type=\"hidden\" name=\"jsonf\" value=\"$jsonfile.\"><button type=\"submit\">Add</button></form>";				
 				}
 
 				//--- END SECTION ----
@@ -123,6 +168,7 @@
 				else{
 					echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
 					echo "<input type='submit' name='submit' value='Join'>";
+
 				}
 				//--- END SECTION ----
 			}

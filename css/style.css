@@ -219,3 +219,7 @@ select {
 .owngroup {
 	background-color: lightblue;
 }
+
+a.grouplinks{
+	color:black;
+}
