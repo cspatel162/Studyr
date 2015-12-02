@@ -1,5 +1,7 @@
 * {
 	margin: 0px;
+	font-family: 'Lato', sans-serif;
+    font-weight: 400;
 }
 
 body {
@@ -11,6 +13,7 @@ body {
 	width: 25%;
 	float: left;
 	height: 700px;
+	
 /*
 	padding: 10px;
 	margin-top: -20px;
@@ -136,4 +139,29 @@ strong {
     height: auto;
     max-height: 300px;
     overflow-x: hidden;
+}
+
+
+/**/
+#top {
+	padding: 0px;
+	
+}
+
+#top a {
+	background: #E0EEF1;
+	width: 100%;
+/*	font-size:15px;*/
+	padding: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: inline-block;
+	margin-top: 5px;
+	text-decoration: none;
+	color: black;
+}
+
+#top a:hover {
+	width: 140%;
+	color: #6A0648;
 }
