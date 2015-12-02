@@ -61,18 +61,23 @@ $servername = "localhost";
 
 	//privacy = 0 is public, privacy = 1 is private
 	try{
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (1, '2015-12-01 07:00:00 PM', 1, 3);");
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (0, '2015-12-01 09:00:00 PM', 2, 3);");
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (0, '2015-12-02 06:00:00 PM', 3, 1);");
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (0, '2015-12-03 09:00:00 PM', 4, 12);");
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (0, '2015-12-04 06:00:00 PM', 5, 14);");
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (1, '2015-12-02 10:30:00 AM', 6, 11);");
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (0, '2015-12-01 07:00:00 PM', 7, 7);");
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (1, '2015-12-05 11:00:00 AM', 8, 6);");
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (1, '2015-12-06 07:00:00 PM', 9, 5);");
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (0, '2015-11-30 06:00:00 PM', 10, 4);");
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (0, '2015-12-03 12:00:00 PM', 11, 4);");
-	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID) VALUES (0, '2015-12-01 07:00:00 PM', 12, 3);");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (1, '2015-12-01 07:00:00 PM', 1, 3, '../json/studygroup_1.json');");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (0, '2015-12-01 09:00:00 PM', 2, 3, '../json/studygroup_2.json');");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (0, '2015-12-02 06:00:00 PM', 3, 1, '../json/studygroup_3.json');");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (0, '2015-12-03 09:00:00 PM', 4, 12, '../json/studygroup_4.json');");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (0, '2015-12-04 06:00:00 PM', 5, 14, '../json/studygroup_5.json');");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (1, '2015-12-02 10:30:00 AM', 6, 11, '../json/studygroup_6.json');");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (0, '2015-12-01 07:00:00 PM', 7, 7, '../json/studygroup_7.json');");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (1, '2015-12-05 11:00:00 AM', 8, 6, '../json/studygroup_8.json');");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (1, '2015-12-06 07:00:00 PM', 2, 5, '../json/studygroup_9.json');");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (0, '2015-11-30 06:00:00 PM', 4, 4, '../json/studygroup_10.json');");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (0, '2015-12-03 12:00:00 PM', 1, 4, '../json/studygroup_11.json');");
+	$conn->query("INSERT INTO study_groups (privacy, meetingTime, founderID, courseID,json) VALUES (0, '2015-12-01 07:00:00 PM', 8, 3, '../json/studygroup_12.json');");
+	$empty=array("links"=>array());
+	$jsonstart = json_encode($empty);
+	for($i=1; $i<13;$i++){
+		file_put_contents("../json/studygroup_$i.json", $jsonstart);
+	}
 	} catch (Exception $e){
 		die($e->errorMessage());
 	}
