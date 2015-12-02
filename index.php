@@ -119,7 +119,7 @@
 
 					<center id="buttons">
 						<?php 
-						$stmt = "SELECT courseType FROM class ORDER BY courseType";
+						$stmt = "SELECT DISTINCT courseType FROM class ORDER BY courseType";
 						$results= $conn->query($stmt);
 						echo "<form method='POST' action='php/search.php'>";
 						echo "<ul class='input_group'>";
