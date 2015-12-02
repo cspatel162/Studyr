@@ -67,6 +67,37 @@
 		joingroup($events);
 	}
 
+	function addMember($events){
+		global $conn;
+		$userID = "SELECT userID FROM users WHERE email = '".$_POST['email']."'";
+		$results = $conn->query($userID);
+		if($results->num_rows > 0){
+			foreach($results as $userid){
+				$results = $userid['userID'];
+			}
+		}
+		global $groupID;
+		$eventTitle;
+		$meetingDateTime;
+		$meetingEndDateTime;
+		$locationID;
+		$repeat;
+		foreach ($events as $data){
+			$eventTitle = $data['eventName'];
+			$meetingDateTime = $data['startTime'];
+			$meetingEndDateTime = $data['endTime'];
+			$locationID = $data['locationID'];
+			$repeat = $data['repeating'];
+		}
+		$insertforevent = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($results,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // 
+		$insertresult = $conn->query($insertforevent);
+		unset($_POST);
+		header("Location:group.php?id=$groupID");
+	}
+	if(isset($_POST['addemail'])){
+		addMember($events);
+	}
+
 	function displaygroupinfo($groupID,$eventbool,$passfail,$members,$events){
 		global $locationName;
 		global $locationState;
@@ -111,6 +142,10 @@
 				foreach ($meetingTimeResult as $time){
 					echo "<p id='meetingtime'>When: ".$time['meetingTime']."</p>";
 				}
+				echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
+				echo "<input type='text' name='email' value='Member Email'>";
+				echo "<input type='submit' name='addemail' value='Add Member'>";
+
 
 				//--- END SECTION ----
 			}

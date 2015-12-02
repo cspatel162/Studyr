@@ -4,4 +4,4 @@
   setcookie("fname"," ",time()-3600,'/');
   setcookie("lname"," ",time()-3600,'/');
   setcookie("userID"," ",time()-3600,'/');
-  header("Location:splashpage.php");
+  header("Location:s../index.php");
