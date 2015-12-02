@@ -1,7 +1,9 @@
 <?php // Page to create a group
 	include_once "pageStart.php"; 
-
+	$emailarray = array();
 	function createthegroup(){ // Does all the processing and data gathering for a study_group
+		global $emailarray;
+		$emailarray = unserialize($_POST['input_name']);
 		global $conn;
 		$founderID = $_COOKIE['userID']; // gather the users id from cookies
 		$courseTitle = $_POST['courseTitle']; // the title of the gclass that the group is for.
@@ -27,17 +29,43 @@
 			$groupID = $val['groupID'];
 		$sql = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($founderID,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // finally add the event into the list - this needs to be adjusted as well to implement the repeating functioniality.
 		$conn->query($sql);
+		for($i=0;$i<count($emailarray);$i++){
+			$userID = "SELECT userID FROM users WHERE email = '$emailarray[$i]'";
+			$results = $conn->query($userID);
+			if($results->num_rows > 0){
+				foreach($results as $userid){
+					$results = $userid['userID'];
+				}
+			$insertevent = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($results,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // finally add the event into the list - this needs to be adjusted as well to implement the repeating functioniality.
+			$results = $conn->query($insertevent);
+			}
+
+		}
+		
 	}
 
 	if(isset($_POST['submit'])){ // only create the group when the submit is hit - this needs to be adjusted so that it's checked to make sure that values are actyually entered. 
 		createthegroup();
 	} 
+
+	function addemail(){
+		global $emailarray;
+		$emailarray = unserialize($_POST['input_name']);
+		array_push($emailarray,$_POST['emails']);
+		for($i=0;$i<count($emailarray);$i++){
+			echo $emailarray[$i];
+		}
+	}
+
+	if(isset($_POST['addemail'])){ // only create the group when the submit is hit - this needs to be adjusted so that it's checked to make sure that values are actyually entered. 
+		addemail();
+	} 
 ?>
 		<section id="creategroup">
 			<p>Please fill out the following form:</p>
 			<form method="post" action="creategroup.php">
-			  <p><select name="courseTitle">
-			  			  	<option value=""> Course Title </option>
+			  <p><select name="courseTitle" value="Course Title">
+			  			  	<option value="<?php if(isset($_POST['courseTitle'])){echo $_POST['courseTitle'];}else{ echo "Course Title";}?>"><?php if(isset($_POST['courseTitle'])){echo $_POST['courseTitle'];}else{ echo "Course Title";}?> </option>
 			  			  	<?php
 			  			  		global $conn;
 			  			  		$result = $conn->query("SELECT courseTitle FROM class;");
@@ -47,7 +75,7 @@
 			  			  	?>
 			  			  </select></p>
 			  <p><select name="Location">
-			  			  	<option value=""> Location </option>
+			  			  	<option value="<?php if(isset($_POST['Location'])){echo $_POST['Location'];}else{ echo "Location";}?>"> <?php if(isset($_POST['Location'])){echo $_POST['Location'];}else{ echo "Location";}?> </option>
 			  			  	<?php
 			  			  		global $conn;
 			  			  		$result = $conn->query("SELECT locationName FROM locations;");
@@ -56,17 +84,20 @@
 			  			  		}
 			  			  	?>
 			  			  </select></p>
-			  <p><input type="text" name="eventTitle" value="Event Title"></p>
-			  <p><input type="date" name="startDate"></p>
-			  <p><input type="time" name="startTime"></p>
+			  <p><input type="text" name="eventTitle" value="<?php if(isset($_POST['eventTitle'])){echo $_POST['eventTitle'];}else{ echo "Event Title";}?>"></p>
+			  <p><input type="date" name="startDate" value="<?php if(isset($_POST['startDate'])){echo $_POST['startDate'];}else{ echo "";}?>"></p>
+			  <p><input type="time" name="startTime" value="<?php if(isset($_POST['startTime'])){echo $_POST['startTime'];}else{ echo "";}?>"></p>
 			  <p>How long with the meeting last? (hours):
-			  <input type-'number' name='hours'></p>
+			  <input type-'number' name='hours' value="<?php if(isset($_POST['hours'])){echo $_POST['hours'];}else{ echo "";}?>"></p>
 			  <p>Repeating?
-			  			  <input type="radio" name="repeating" value="1"> Yes
-			  			  <input type="radio" name="repeating" value="0"> No</p>
+			  			  <input type="radio" name="repeating" value="1" <?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==1)?'checked':'' ;}else{ echo "";}?>> Yes
+			  			  <input type="radio" name="repeating" value="0"<?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
 			  <p>Private Group?
-			  			  <input type="radio" name="privacy" value="1"> Yes
-			  			  <input type="radio" name="privacy" value="0"> No</p>
+			  			  <input type="radio" name="privacy" value="1" <?php if(isset($_POST['privacy'])){echo ($_POST['privacy']==1)?'checked':'' ;}else{ echo "";}?>> Yes
+			  			  <input type="radio" name="privacy" value="0" <?php if(isset($_POST['privacy'])){echo ($_POST['privacy']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
+			  <p><input type="text" name="emails" value="Group Member Email">
+			  	 <input type="submit" name="addemail" value="Add Member"></p>
+			  	 <input type='hidden' name='input_name' value="<?php echo htmlentities(serialize($emailarray)); ?>" />
 			  <p><input type="submit" name="submit" value="Submit"></p>
 			</form>
 		</section>
