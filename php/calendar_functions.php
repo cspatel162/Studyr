@@ -1,6 +1,6 @@
 <?php
 include_once "connect.php";
-require_once '..\google-api-php-client-1.1.6\src\Google\autoload.php';
+require_once '../google-api-php-client-1.1.6/src/Google/autoload.php';
 
 // ---------------------------------- GOOGLE CALENDAR CONFIGURATION ----------------------------------
 $client = new Google_Client();
