@@ -146,6 +146,7 @@ strong {
 
 
 /**/
+/*
 #top_calendar {
 	padding: 0px;
 	width: 100%;
@@ -159,7 +160,7 @@ strong {
 #top_calendar a {
 	background: #E0EEF1;
 	width: 100%;
-/*	font-size:15px;*/
+	font-size:15px;
 	padding: 10px;
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -173,3 +174,4 @@ strong {
 	width: 140%;
 	color: #6A0648;
 }
+*/
