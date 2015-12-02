@@ -1,7 +1,6 @@
 <?php // This page displays all of the study groups the user is apart of. 
 /* 
 TODO:
-	Setup pages for each study group, a page that gives facts about each group - stuff like members, meeting location, time, study materiels??? Something so this page can be useful.
 
 */
 

@@ -89,29 +89,29 @@ $servername = "localhost";
 	//repeating = 0 is not repeating, repeating = 1 is recurring
 	try{
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (1,'Event1', '07:00:00 PM', '08:00:00 PM',1,1,1);");
+				VALUES (1,'Event1', '2015-12-01 07:00:00 PM', '2015-12-01 08:00:00 PM',1,1,1);");
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (2,'Event2', '09:00:00 PM', '10:00:00 PM',2,0,2);");
+				VALUES (2,'Event2', '2015-12-01 09:00:00 PM', '2015-12-01 10:00:00 PM',2,0,2);");
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (3,'Event3', '06:00:00 PM', '07:30:00 PM',1,0,3);");
+				VALUES (3,'Event3', '2015-12-02 06:00:00 PM', '2015-12-02 07:30:00 PM',1,0,3);");
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (4,'Event4', '09:00:00 PM', '09:30:00 PM',2,1,4);");
+				VALUES (4,'Event4', '2015-12-03 09:00:00 PM', '2015-12-03 09:30:00 PM',2,1,4);");
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (5,'Event5', '06:00:00 PM', '07:00:00 PM',2,1,5);");
+				VALUES (5,'Event5', '2015-12-04 06:00:00 PM', '2015-12-04 07:00:00 PM',2,1,5);");
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (6,'Event6', '10:30:00 AM', '12:00:00 PM',2,0,6);");
+				VALUES (6,'Event6', '2015-12-02 10:30:00 AM', '2015-12-02 12:00:00 PM',2,0,6);");
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (7,'Event7', '07:00:00 PM', '09:00:00 PM',1,0,7);");
+				VALUES (7,'Event7', '2015-12-01 07:00:00 PM', '2015-12-01 09:00:00 PM',1,0,7);");
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (8,'Event8', '11:00:00 AM', '11:30:00 AM',1,0,8);");
+				VALUES (8,'Event8', '2015-12-05 11:00:00 AM', '2015-12-05 11:30:00 AM',1,0,8);");
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (9,'Event9', '07:00:00 PM', '09:00:00 PM',2,0,9);");
+				VALUES (9,'Event9', '2015-12-06 07:00:00 PM', '2015-12-06 09:00:00 PM',2,0,9);");
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (10,'Event10', '06:00:00 PM', '07:00:00 PM',2,1,10);");
+				VALUES (10,'Event10', '2015-11-30 06:00:00 PM', '2015-12-01 07:00:00 PM',2,1,10);");
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (11,'Event11', '12:00:00 PM', '1:00:00 PM',1,0,11);");
+				VALUES (11,'Event11', '2015-12-03 12:00:00 PM', '2015-12-03 1:00:00 PM',1,0,11);");
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
-				VALUES (12,'Event12', '07:00:00 PM', '09:00:00 PM',2,0,12);");
+				VALUES (12,'Event12', '2015-12-01 07:00:00 PM', '2015-12-01 09:00:00 PM',2,0,12);");
 	} catch (Exception $e){
 		die($e->errorMessage());
 	}

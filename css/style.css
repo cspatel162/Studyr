@@ -1,5 +1,6 @@
 .content{
 	margin: auto;
+	min-width:1000px;
 }
 .leftheader{
 	width: 100%;
@@ -15,10 +16,12 @@
 	background-color: gray;
 	padding-top:10px;
 	padding-right:10px;
+	min-height: 30px;
 }
 .leftnavbar{
 	width: 20%;
 	min-width: 270px;
+	min-height: 650px;
 	height: 100%;
 	float: left;
 	background-color: LightGray;
@@ -198,4 +201,21 @@ select {
 	width: 30%;
 	margin: auto;
 	text-align: center;
+}
+.currentgroup{
+	line-height: 7px;
+	float:left;
+	display: list-item;
+	margin-left:5px;
+	margin-top:5px;
+	padding-left: 5px;
+	padding-top:1px;
+	padding-bottom: 7px;
+	min-width: 670px;
+	width:72%;
+	background-color: lightgray;
+}
+
+.owngroup {
+	background-color: lightblue;
 }
