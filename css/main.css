@@ -86,19 +86,29 @@ strong {
 	color: #7CB4B4;
 }
 
-#search {
+#search{
+	visibility: hidden;
+}
+
+#searchbox {
 	width: 500px;
 	padding: 10px;
 	margin-top: 50px;
 	outline: none;
 	border: 1px solid black;
+	text-align: center;
 }
 
-.input_group {
+ul.input_group {
 	margin-top: 10px;
+	list-style-type: none;
+	padding-left:0px;
+}
+.input_group li{
+	display:inline;
 }
 
-.input_group button{
+.input_group input[type="submit"]{
 	width: 100px;
 	background: white;
 	color: #6A0648;

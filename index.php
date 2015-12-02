@@ -1,3 +1,6 @@
+<?php 
+	require "php/connect.php";
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -42,7 +45,7 @@
 					</section>
 					<br>
 					<section class="search">
-						<form action="search.php" method="POST">
+						<form action="php/search.php" method="POST">
 							<ul class="nav">
 								<li>	
 									<div class="dropdown">
@@ -107,25 +110,29 @@
 			<div id="main">
 				<button id="toggle" onclick="toggle();"><span class="glyphicon glyphicon-triangle-left" id="toggle"></span></button>
 				<div id="main_contents">
-					<center id="welcome"><h1>Search For Public Study Group</h1></center>
-					<center><input id="search" type="search"></center>
+					<center id="welcome"><h1>Search For Public Study Groups</h1></center>
+					<center>
+						<form method='POST' action='php/search.php'>
+							<input id="searchbox" name="submit" type="text">
+						</form>
+					</center>
 
 					<center id="buttons">
-						<div class="input_group">
-							<button class="btn btn-default">ADMN</button>
-							<button class="btn btn-default">ARCH</button>
-							<button class="btn btn-default">ARTS</button>
-							<button class="btn btn-default">ASTR</button>
-							<button class="btn btn-default">BCBP</button>
-						</div>
-
-						<div class="input_group">
-							<button class="btn btn-default">BIOL</button>
-							<button class="btn btn-default">BMED</button>
-							<button class="btn btn-default">CHEM</button>
-							<button class="btn btn-default">CHME</button>
-							<button class="btn btn-default">Show More</button>
-						</div>
+						<?php 
+						$stmt = "SELECT courseType FROM class ORDER BY courseType";
+						$results= $conn->query($stmt);
+						echo "<form method='POST' action='php/search.php'>";
+						echo "<ul class='input_group'>";
+						$i=0;
+						while($prefixes = $results->fetch_row()){
+							if($i != 0 && $i % 5 == 0){
+								echo "</ul><ul class='input_group'>";
+							}
+							echo "<li><input type='submit' name='submit' class='btn btn-default' value='".$prefixes[0]."'></li>";
+							$i += 1;
+						}
+						echo "</ul></form>";
+						?>
 					</center>
 				</div>
 				
