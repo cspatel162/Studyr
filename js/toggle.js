@@ -31,8 +31,12 @@ function show_class_menu() {
 
 if(toggled){
 	$("#side *").hide();
+
 	$("#side").css("width","0%");
 	$("#main").css("width","100%");
+
+
+
 }
 else {
 	$("#side").show();

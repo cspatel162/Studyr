@@ -10,7 +10,7 @@ body {
 }
 
 #side {
-	width: 0%;
+	width: 25%;
 	float: left;
 	height: 700px;
 	
@@ -72,7 +72,7 @@ strong {
 }
 
 #main {
-	width: 100%;
+	width: 75%;
 	float: left;
 	margin-top: -20px;
 	min-height: 720px;
@@ -117,7 +117,6 @@ strong {
 	background: #7CB4B4;
 	color: #fff;
 	padding-left: 20px;
-	
 }
 
 #bottom {
