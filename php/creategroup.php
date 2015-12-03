@@ -54,7 +54,10 @@
 		}
 
 		if($_POST['repeating'] == 1){
-
+			echo $meetingTime;
+			$endDateTimeCopy = date('Y-m-d H:i:s', strtotime($_POST['howoften'],$meetingEndDateTime));
+			$startDateTimeCopy =date('Y-m-d H:i:s', strtotime($_POST['howoften'],strtotime(str_replace('-', '/', $meetingTime))));
+			echo $startDateTimeCopy;
 		}
 		unset($_POST);
 		
@@ -111,12 +114,12 @@
 			  <p class="show-repeat-info">
 			  	How Often?
 			  	<select name="howoften">
-			  		<option value="+1 day"> Every Day</option>
-			  		<option value="+2 days"> Every Other Day </option>
-			  		<option value="+3 days"> Every Three Days </option>
-			  		<option value="+5 days"> Every Five Days </option>
-			  		<option value="+7 days"> Every Week </option>
-			  		<option value="+14 days"> Every Two Weeks </option>
+			  		<option value="+ 1 days"> Every Day</option>
+			  		<option value="+ 2 days"> Every Other Day </option>
+			  		<option value="+ 3 days"> Every Three Days </option>
+			  		<option value="+ 5 days"> Every Five Days </option>
+			  		<option value="+ 7 days"> Every Week </option>
+			  		<option value="+ 14 days"> Every Two Weeks </option>
 			  	</select>
 			  	<p class="show-repeat-info">
 			  	Till When?
