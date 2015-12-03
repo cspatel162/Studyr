@@ -77,7 +77,7 @@ foreach ($results->getItems() as $event) {
 	$formatted_end = getMySQLFormat($end, 1);	
 	
 	// insert the event into the database
-	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating) values ($userID, '$title', '$formatted_start', '$formatted_end', 1, 1)");
+	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating) values ($userID, '$title', '$formatted_start', '$formatted_end', 1, 1);");
 }
 
 /* 
