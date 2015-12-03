@@ -1,7 +1,6 @@
 <?php
 /* 
 TODO:
-	Setup pages for each study group, a page that gives facts about each group - stuff like members, meeting location, time, study materiels??? Something so this page can be useful.
 
 */
 	require "connect.php";
@@ -125,6 +124,21 @@ TODO:
 		addMember($events);
 	}
 
+
+	function removeself(){
+		global $conn;
+		$groupID  = $_GET['id'];
+		$sql = "DELETE FROM events WHERE userID = ".$_COOKIE['userID']." AND groupID = $groupID";
+		$results = $conn->query($sql);
+		unset($_POST);
+		header("Location:group.php?id=$groupID");
+	}
+
+
+	if(isset($_POST['removeself'])){
+		removeself();
+	}
+
 	function displaygroupinfo($groupID,$eventbool,$passfail,$members,$events){
 		global $locationName;
 		global $locationState;
@@ -187,22 +201,27 @@ TODO:
 					echo "<h5 class='settingshead'>Add a link</h5>";
 					echo "<form id=\"add\" action=\"group.php?id=$groupID\" method=\"POST\">Name: <input  id='txtpadname' type=\"text\" name=\"title\" ><button class='btn btn-default btnright' type=\"submit\">Add</button><br>";
 					echo "Link: <input id='txtpadlink' type=\"text\" name=\"link\"><input type=\"hidden\" name=\"jsonf\" value=\"$jsonfile.\"></form>";				
-				}
-				echo "<h5 class='settingshead'>Add a member</h5>";
-				echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
-				echo "<input type='text' name='email' value='Member Email'>";
-				echo "<input class='btn btn-default btnright' type='submit' name='addemail' value='Add Member'>";
+					echo "<h5 class='settingshead'>Add a member</h5>";
+					echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
+					echo "<input type='text' name='email' value='Member Email'>";
+					echo "<input class='btn btn-default btnright' type='submit' name='addemail' value='Add Member'>";
 
+				}
+					echo "<h5 class='settingshead'>Leave Group</h5>";
+					echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
+					echo "<input class='btn btn-default btnright' type='submit' name='removeself' value='Remove Me'>";
 
 				//--- END SECTION ----
 			}
 			else{ // not part of the group but the group is public and therefore you can view some of the data.
 				//--- SECTION:VIEWABLE TO ALL USERS ----
 				if ($userID == 0){
+					echo "<h5 class='settingshead'> Join this Group </h5>";
 					echo "<form method='POST' action='login.php'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
 					echo "<input class='btn btn-default' type='submit' name='submit' value='Join'>";
 				}
 				else{
+					echo "<h5 class='settingshead'> Join this Group </h5>";
 					echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
 					echo "<input class='btn btn-default' type='submit' name='submit' value='Join'>";
 
