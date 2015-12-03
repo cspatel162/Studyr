@@ -84,6 +84,9 @@ CREATE TABLE events (
 CREATE USER 'phpuser1'@'localhost' IDENTIFIED BY '*97BAD3C7F42787ED6270EE7BE634F59E64C23DF2';
 GRANT ALL ON studyr.* to 'phpuser1'@'localhost';
 
+/*
+	levenshtein function found http://ask.webatall.com/mysql/10636_how-to-add-levenshtein-function-in-mysql.html - gives an error about a delimeter but still works
+*/
 DELIMITER $$
 CREATE FUNCTION levenshtein( s1 VARCHAR(255), s2 VARCHAR(255) )
 RETURNS INT

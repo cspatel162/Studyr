@@ -72,7 +72,7 @@ TODO:
 			$meetingEndDateTime = $data['endTime'];
 			$locationID = $data['locationID'];
 			$repeat = $data['repeating'];
-		}
+		}	
 		$insertforevent = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($userID,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // 
 		$insertresult = $conn->query($insertforevent);
 		unset($_POST);
@@ -210,7 +210,7 @@ TODO:
 				echo "<strong>Useful Links:</strong><ul>";
 				foreach($jsondata as $links){
 					foreach($links as $anchor){
-						echo "<li><a class=\"grouplinks\" href=\"".$anchor['link']."\">".$anchor['title']."</a></li>";
+						echo "<li><a class=\"grouplinks\" target='_blank' href=\"".$anchor['link']."\">".$anchor['title']."</a></li>";
 					}
 				}
 				echo "</ul>";
@@ -264,43 +264,7 @@ TODO:
 	<body>
 		<section id = "groupinfo">
 			<?php displaygroupinfo($groupID,$eventbool,$passfail,$members,$events); ?>
-
-
-			<div id="map"></div>
 		</section>
 		</section>
-
-
-
-
-
-
-		<script src="https://maps.googleapis.com/maps/api/js"></script>
-	    <script>
-	      function initialize() {
-	        var mapCanvas = document.getElementById('map');
-	        var mapOptions = {
-	          center: new google.maps.LatLng(44.5403, -78.5463),
-	          zoom: 15,
-	          mapTypeId: google.maps.MapTypeId.ROADMAP
-	        }
-	        var map = new google.maps.Map(mapCanvas, mapOptions)
-	        var geocoder = new google.maps.Geocoder();
-					var location = <?php echo '"'.$locationName.','.$locationCity.' '.$locationState.'"'; ?>;
-					geocoder.geocode( { 'address': location }, function(results, status) {
-					    if (status == google.maps.GeocoderStatus.OK) {
-					        map.setCenter(results[0].geometry.location);
-					    } else {
-					        alert("Could not find location: " + location);
-					    }
-					});
-	      }
-	      var booltest = 	<?php echo $eventbool ? 'true' : 'false'; ?>;
-	      if(booltest){
-	      	google.maps.event.addDomListener(window, 'load', initialize);
-	      }
-
-	      
-	    </script>
 	</body>
 </html>
