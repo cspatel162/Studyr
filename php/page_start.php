@@ -11,7 +11,7 @@ TODO:
 		global $conn;
 		date_default_timezone_set("America/New_York");
 		$eventmax = date('Y-m-d H:i:s', strtotime("+5 days")); // add an hour to the event for the end time
-		$sql = "SELECT events.eventName,locations.locationName FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID']." AND events.startTime <= '$eventmax' ORDER BY events.startTime LIMIT 10 ";
+		$sql = "SELECT events.eventName,locations.locationName FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID']." AND events.startTime <= '$eventmax' ORDER BY events.startTime LIMIT 15 ";
 		$results = $conn->query($sql);
 		if ($results->num_rows > 0){
 			foreach($results as $val){ // does a display for the events, only showing their name and location for ease of visability.
@@ -66,11 +66,11 @@ TODO:
 					<section class="leftheader"> 
 						<center><h3><em><?php echo $_COOKIE['fname']." ".$_COOKIE['lname'];?></em></h3></center>
 					</section>
-		
-					<a href="#"><center>Edit Schedule</center></a><br>
-					<a href="#"><center>Create a Study Group</center></a><br>
-					<a href="#"><center>My Study Groups</center></a><br>
-					<a href="#"><center>Join a Study Group</center></a>
+					<br>
+<!--					<a href="#"><center>Edit Schedule</center></a><br>-->
+					<a href="creategroup.php"><center>Create a Study Group</center></a><br>
+					<a href="currentgroups.php"><center>My Study Groups</center></a><br>
+					<a href="../index.php"><center>Join a Study Group</center></a>
 				</div>
 				<div id="bottom">
 					<center id="bot_search"><h3>Upcoming Events</h3></center>
@@ -84,7 +84,3 @@ TODO:
 			<div id="calendar">
 				
 				
-			</div>
-		</div>
-	</body>
-</html>

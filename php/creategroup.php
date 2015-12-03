@@ -1,5 +1,5 @@
 <?php // Page to create a group
-	include_once "pageStart.php"; 
+	include_once "page_start.php"; 
 	$emailarray = array();
 	function createthegroup(){ // Does all the processing and data gathering for a study_group
 		global $emailarray;
@@ -72,47 +72,48 @@
 		addemail();
 	} 
 ?>
-		<section id="creategroup">
-			<p>Please fill out the following form:</p>
-			<form method="post" action="creategroup.php">
-			  <p><select name="courseTitle" value="Course Title">
-			  			  	<option value="<?php if(isset($_POST['courseTitle'])){echo $_POST['courseTitle'];}else{ echo "Course Title";}?>"><?php if(isset($_POST['courseTitle'])){echo $_POST['courseTitle'];}else{ echo "Course Title";}?> </option>
-			  			  	<?php
-			  			  		global $conn;
-			  			  		$result = $conn->query("SELECT courseTitle FROM class;");
-			  			  		foreach($result as $val){
-			  			  			echo "<option value='".$val['courseTitle']."'>".$val['courseTitle']."</option>";
-			  			  		}
-			  			  	?>
-			  			  </select></p>
-			  <p><select name="Location">
-			  			  	<option value="<?php if(isset($_POST['Location'])){echo $_POST['Location'];}else{ echo "Location";}?>"> <?php if(isset($_POST['Location'])){echo $_POST['Location'];}else{ echo "Location";}?> </option>
-			  			  	<?php
-			  			  		global $conn;
-			  			  		$result = $conn->query("SELECT locationName FROM locations;");
-			  			  		foreach($result as $val){
-			  			  			echo "<option value='".$val['locationName']."'>".$val['locationName']."</option>";
-			  			  		}
-			  			  	?>
-			  			  </select></p>
-			  <p><input type="text" name="eventTitle" value="<?php if(isset($_POST['eventTitle'])){echo $_POST['eventTitle'];}else{ echo "Event Title";}?>"></p>
-			  <p><input type="date" name="startDate" value="<?php if(isset($_POST['startDate'])){echo $_POST['startDate'];}else{ echo "";}?>"></p>
-			  <p><input type="time" name="startTime" value="<?php if(isset($_POST['startTime'])){echo $_POST['startTime'];}else{ echo "";}?>"></p>
-			  <p>How long with the meeting last? (hours):
-			  <input type-'number' name='hours' value="<?php if(isset($_POST['hours'])){echo $_POST['hours'];}else{ echo "";}?>"></p>
-			  <p>Repeating?
-			  			  <input type="radio" name="repeating" value="1" <?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==1)?'checked':'' ;}else{ echo "";}?>> Yes
-			  			  <input type="radio" name="repeating" value="0"<?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
-			  <p>Private Group?
-			  			  <input type="radio" name="privacy" value="1" <?php if(isset($_POST['privacy'])){echo ($_POST['privacy']==1)?'checked':'' ;}else{ echo "";}?>> Yes
-			  			  <input type="radio" name="privacy" value="0" <?php if(isset($_POST['privacy'])){echo ($_POST['privacy']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
-			  <p><input type="text" name="emails" value="Group Member Email">
-			  	 <input type="submit" name="addemail" value="Add Member"></p>
-			  	 <input type='hidden' name='input_name' value="<?php echo htmlentities(serialize($emailarray)); ?>" />
-			  <p><input type="submit" name="submit" value="Submit"></p>
-			</form>
-		</section>
-	</section>
-</body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+				<section id="creategroup">
+					<p>Please fill out the following form:</p>
+					<form method="post" action="creategroup.php">
+					  <p><select name="courseTitle" value="Course Title">
+									<option value="<?php if(isset($_POST['courseTitle'])){echo $_POST['courseTitle'];}else{ echo "Course Title";}?>"><?php if(isset($_POST['courseTitle'])){echo $_POST['courseTitle'];}else{ echo "Course Title";}?> </option>
+									<?php
+										global $conn;
+										$result = $conn->query("SELECT courseTitle FROM class;");
+										foreach($result as $val){
+											echo "<option value='".$val['courseTitle']."'>".$val['courseTitle']."</option>";
+										}
+									?>
+								  </select></p>
+					  <p><select name="Location">
+									<option value="<?php if(isset($_POST['Location'])){echo $_POST['Location'];}else{ echo "Location";}?>"> <?php if(isset($_POST['Location'])){echo $_POST['Location'];}else{ echo "Location";}?> </option>
+									<?php
+										global $conn;
+										$result = $conn->query("SELECT locationName FROM locations;");
+										foreach($result as $val){
+											echo "<option value='".$val['locationName']."'>".$val['locationName']."</option>";
+										}
+									?>
+								  </select></p>
+					  <p><input type="text" name="eventTitle" value="<?php if(isset($_POST['eventTitle'])){echo $_POST['eventTitle'];}else{ echo "Event Title";}?>"></p>
+					  <p><input type="date" name="startDate" value="<?php if(isset($_POST['startDate'])){echo $_POST['startDate'];}else{ echo "";}?>"></p>
+					  <p><input type="time" name="startTime" value="<?php if(isset($_POST['startTime'])){echo $_POST['startTime'];}else{ echo "";}?>"></p>
+					  <p>How long with the meeting last? (hours):
+					  <input type-'number' name='hours' value="<?php if(isset($_POST['hours'])){echo $_POST['hours'];}else{ echo "";}?>"></p>
+					  <p>Repeating?
+								  <input type="radio" name="repeating" value="1" <?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==1)?'checked':'' ;}else{ echo "";}?>> Yes
+								  <input type="radio" name="repeating" value="0"<?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
+					  <p>Private Group?
+								  <input type="radio" name="privacy" value="1" <?php if(isset($_POST['privacy'])){echo ($_POST['privacy']==1)?'checked':'' ;}else{ echo "";}?>> Yes
+								  <input type="radio" name="privacy" value="0" <?php if(isset($_POST['privacy'])){echo ($_POST['privacy']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
+					  <p><input type="text" name="emails" value="Group Member Email">
+						 <input type="submit" name="addemail" value="Add Member"></p>
+						 <input type='hidden' name='input_name' value="<?php echo htmlentities(serialize($emailarray)); ?>" />
+					  <p><input type="submit" name="submit" value="Submit"></p>
+					</form>
+				</section>
+			</div>
+		</div>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	</body>
 </html>

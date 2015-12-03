@@ -5,7 +5,7 @@ TODO:
 
 */
 
-	include_once "pageStart.php"; 
+	include_once "page_start.php"; 
 
 
 	function fetchDate($datetime){
@@ -49,15 +49,18 @@ TODO:
 		}
 	}
  ?>
-		<section id="groups">
-			<ul>
-			<?php
-				currGroup();
-				CurrEvents();
-			?>
-			</ul>
-		</section>
-	</section>
-</body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+				<section id="groups">
+					<ul>
+						<?php
+							currGroup();
+							CurrEvents();
+						?>
+					</ul>
+				</section>
+
+			</div>
+		</div>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	</body>
 </html>
