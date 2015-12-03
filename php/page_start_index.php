@@ -94,7 +94,7 @@ TODO:
 									<div class="dropdown">
 										<strong>Subject:</strong>
 										<select name="submit" id="dropdownMenu1">
-											<option value="">Subject</option>
+<!--											<option value=""></option>-->
 											<option value="<?php if(isset($_POST['submit'])){echo $_POST['submit'];}else{ echo '';}?>">
 												<?php if(isset($_POST['submit']) && $_POST['submit'] != ""){
 														$json = file_get_contents("../json/courseprefixes.json");

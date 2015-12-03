@@ -105,7 +105,7 @@
 					<center id="welcome"><h1>Search For Public Study Groups</h1></center>
 					<center>
 						<form method='POST' action='php/search.php'>
-							<input id="searchbox" name="submit" type="text">
+							<input id="searchbox" name="submit_title" type="text">
 						</form>
 					</center>
 
