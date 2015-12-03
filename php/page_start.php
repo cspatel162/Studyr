@@ -6,20 +6,30 @@ TODO:
 	if(!isset($_COOKIE['userID'])){ // checks if the user is logged in based on their cookies, if they are not force them back to the login page.
 		header("Location:login.php");
 	}
+	function fetchDate2($datetime){
+		$pos = strrpos($datetime, " ");
+		$date = substr($datetime,0, $pos);
+		$time = substr($datetime,$pos+1,5);
+		$datel =  explode("-",$date);
+		$months = array("00" => "notfound", "01" => "Jan.", "02" => "Feb.", "03" => "Mar.",
+	   "04" => "Apr.", "05" => "May", "06" => "June", "07" => "July", "08" => "Aug.",
+	   "09" => "Sept.", "10" => "Oct.", "11" => "Nov.", "12" => "Dec." );
+		return $months[$datel[1]] . " ". $datel[2] . ", " . $datel[0] . " " .$time;
+	}
 
 	function events(){ // check for events based on the users id from the cookies. 
 		global $conn;
 		date_default_timezone_set("America/New_York");
 		$eventmax = date('Y-m-d H:i:s', strtotime("+5 days")); // add an hour to the event for the end time
 		$eventmin = date('Y-m-d H:i:s');
-		$sql = "SELECT events.eventName,locations.locationName, events.groupID FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID']." AND events.startTime <= '$eventmax' AND events.startTime >= '$eventmin' ORDER BY events.startTime LIMIT 15 ";
+		$sql = "SELECT events.eventName,events.startTime,locations.locationName, events.groupID FROM events INNER JOIN locations ON events.locationID = locations.locationID WHERE events.userID = ".$_COOKIE['userID']." AND events.startTime <= '$eventmax' AND events.startTime >= '$eventmin' ORDER BY events.startTime LIMIT 15 ";
 		$results = $conn->query($sql);
 		if ($results->num_rows > 0){
 			foreach($results as $val){ // does a display for the events, only showing their name and location for ease of visability.
 				if(!is_null($val['groupID'])){
-					echo "<li><a href='group.php?id=".$val['groupID']."'>".$val['eventName']."</a></li>";
+					echo "<li><a href='group.php?id=".$val['groupID']."'>".$val['eventName']." - ".fetchDate2($val['startTime'])."</a></li>";
 				}else{
-					echo "<li><a href='currentgroups.php'>".$val['eventName']."</a></li>";
+					echo "<li><a href='currentgroups.php'>".$val['eventName']." - ".fetchDate2($val['startTime'])."</a></li>";
 				}
 			}
 		}
