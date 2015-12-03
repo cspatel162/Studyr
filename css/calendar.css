@@ -340,3 +340,21 @@ strong {
 	width:400px;
 	margin-top:20px;
 }
+
+.upcoming {
+	list-style-type: none;
+	padding: 20px;
+	font-size: 15px;
+	
+	width: 100%;
+}
+
+.upcoming a{
+	color: black;
+}
+
+.upcoming a:hover{
+	text-decoration: none;
+	color: #6B0048;
+	
+}

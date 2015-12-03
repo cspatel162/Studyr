@@ -29,7 +29,7 @@
 								 
 			
 			if($week['year']==$val['year']){
-				$day = 7-($jd2-$jd1-1);
+				$day = 7-($jd2-$jd1);
 
 				if($day<7 && $day>-1){
 					$diff = $val2["hour"]-$val["hour"];

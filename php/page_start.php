@@ -27,9 +27,9 @@ TODO:
 		if ($results->num_rows > 0){
 			foreach($results as $val){ // does a display for the events, only showing their name and location for ease of visability.
 				if(!is_null($val['groupID'])){
-					echo "<li><a href='group.php?id=".$val['groupID']."'>".$val['eventName']." - ".fetchDate2($val['startTime'])."</a></li>";
+					echo "<li class='upcoming'><a href='group.php?id=".$val['groupID']."'>".$val['eventName']." - ".fetchDate2($val['startTime'])."</a></li>";
 				}else{
-					echo "<li><a href='currentgroups.php'>".$val['eventName']." - ".fetchDate2($val['startTime'])."</a></li>";
+					echo "<li class='upcoming'><a href='currentgroups.php'>".$val['eventName']." - ".fetchDate2($val['startTime'])."</a></li>";
 				}
 			}
 		}
