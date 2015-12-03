@@ -332,3 +332,11 @@ strong {
 .removeButton:hover {
 	background: red;
 }
+.settingshead{
+	border-bottom-style:solid;
+	border-bottom-color:#6A0648;
+	font-size:1.2em;
+	font-weight: bold;
+	width:400px;
+	margin-top:20px;
+}

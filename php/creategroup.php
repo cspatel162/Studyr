@@ -122,7 +122,7 @@
 
 ?>
 				<section id="creategroup">
-					<p>Please fill out the following form:</p>
+					<h5 class='settingshead'>Please fill out the following form</h5>
 					<form method="post" action="creategroup.php">
 					  <p><select name="courseTitle" value="Course Title">
 									<option value="<?php if(isset($_POST['courseTitle'])){echo $_POST['courseTitle'];}else{ echo "Course Title";}?>"><?php if(isset($_POST['courseTitle'])){echo $_POST['courseTitle'];}else{ echo "Course Title";}?> </option>
