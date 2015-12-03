@@ -53,10 +53,10 @@
 		for($i=0;$i<24;$i++){
 			for($j=0;$j<7;$j++){
 				if(!$array[$i][$j]){
-					echo "<button onclick='settime(".$i.",".$j.")' class='yes'>Y</button>" ;
+					echo "<button onclick='settime(".$i.",".$j."); return false;' class='yes'>Y</button>" ;
 				}
 				else {
-					echo "<button class='no'>N</button>" ;
+					echo "<button class='no' disabled>N</button>" ;
 				}
 			}
 			echo " ".$i;

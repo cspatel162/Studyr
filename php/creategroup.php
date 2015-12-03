@@ -98,7 +98,7 @@
 			}
 		}
 		//echo json_encode($userIDarray);
-
+ 
 		return $userIDarray;
 	}
 
@@ -146,8 +146,8 @@
 								  </select></p>
 					  <p><input type="text" name="eventTitle" value="<?php if(isset($_POST['eventTitle'])){echo $_POST['eventTitle'];}else{ echo "Event Title";}?>"></p>
 					  <p><input type="date" name="startDate" value="<?php if(isset($_POST['startDate'])){echo $_POST['startDate'];}else{ echo "";}?>"></p>
-					  <p><?php if(isset($_POST['addemail'])){get_times(getuserID()); }?></p>
 					  <p><input type="time" name="startTime" value="<?php if(isset($_POST['startTime'])){echo $_POST['startTime'];}else{ echo "";}?>"></p>
+ 					  <p><?php if(isset($_POST['addemail'])){get_times(getuserID()); }?></p>
 					  <p>How long with the meeting last? (hours):
 					  <input type-'number' name='hours' value="<?php if(isset($_POST['hours'])){echo $_POST['hours'];}else{ echo "";}?>"></p>
 					  <!--<p>Repeating?
@@ -160,7 +160,7 @@
 								  <input type="radio" name="privacy" value="0" <?php if(isset($_POST['privacy'])){echo ($_POST['privacy']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
 					  <p><input type="text" name="emails" value="Group Member Email">
 						 <input type="submit" name="addemail" value="Add Member"></p>
-						 <input type='hidden' name='input_name' value="<?php echo htmlentities(serialize($emailarray)); ?>" />
+						 <input type='hidden' name='input_name' value="<?php if(isset($_POST['input_name'])){echo htmlentities(serialize($emailarray));}else{ echo htmlentities(serialize($emailarray));} ?>" />
 					  <p><input type="submit" name="submit" value="Submit"></p>
 					</form>
 					<p id="timeschart"><ul><?php if(isset($_POST['addemail'])){returnemailarray(); } ?></ul></p>
