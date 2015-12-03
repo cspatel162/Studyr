@@ -155,7 +155,6 @@ function validateForm(event) {
 function addEvent(day, hour) {
 	// set day to the actual day
 	day += startDay;
-	$.post();
 	// initialize the start value to the start time of the timeblock that was clicked
 	$("#popupForm #startDateTime").val("2015-12-" + pad(day) + "T" + pad(hour) + ":00:00");//" + day + "T" + hour + "00:00.00")
 	// add an hour
