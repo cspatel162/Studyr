@@ -106,9 +106,14 @@ include_once 'connect.php';
             function validateEmail(email, check){
                 document.getElementById("email").className = "";                    
                 document.getElementById("echeck").className = "";
+                var ind = email.indexOf("@");
                 if(email == '' || check == ''){
                     document.getElementById("email").className = "error";
                     return "enter and confirm email address\n"
+                }
+                if(ind == -1 || email.substring(ind) != "@rpi.edu"){
+                    document.getElementById("email").className = "error";
+                    return "enter a valid rpi.edu\n"
                 }
                 if(email != check){                    
                     document.getElementById("email").className = "error";                    
@@ -123,7 +128,7 @@ include_once 'connect.php';
                 document.getElementById("pwcheck").className = "";
                 if(password == '' || check == ''){
                     document.getElementById("pw").className = "error";
-                    return "enter and confirm password"
+                    return "enter and confirm password";
                 }
                 if(password != check){                    
                     document.getElementById("pw").className = "error";                    
@@ -141,18 +146,19 @@ include_once 'connect.php';
 
                 if (reason != ''){
                     alert("Please correct the following errors:\n" + reason);
+                    return false;
                 } else{
+                    var regdata = $("#reg").serialize();
+                    $.post('signup.php', regdata,function(data){
+                        $("#returns").html(data);
+                    });
                     return true;
                 }
                 return false;
             }
-            $("#reg").submit(function() {
-                var regdata = $(this).serialize();
-                $.post('signup.php', regdata,function(data){
-                    $("#returns").html(data);
-                });
-                return false;
-            });
+            // $("#reg").submit(function() {
+            //         return false;
+            // });
         </script>
     </body>
 </html>
