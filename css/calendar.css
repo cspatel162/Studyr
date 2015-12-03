@@ -362,3 +362,10 @@ strong {
 	color: #6B0048;
 	
 }
+.yes{
+	width: 40px;
+}
+.no{
+	width: 40px;
+	font-weight: bold;
+}

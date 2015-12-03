@@ -167,7 +167,6 @@ include_once 'connect.php';
                 });
                 return false;
             });
-            });
         </script>
     </body>
 </html>

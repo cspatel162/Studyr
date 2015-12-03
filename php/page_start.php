@@ -72,6 +72,8 @@ TODO:
 		
 		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="../css/calendar.css">
+		<script src="../js/creategrouptime.js"></script>
+
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
