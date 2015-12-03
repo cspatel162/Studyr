@@ -1,5 +1,6 @@
 <?php // Page to create a group
 	include_once "page_start.php"; 
+	include_once "get_times.php";
 	$emailarray = array();
 	function createthegroup(){ // Does all the processing and data gathering for a study_group
 		global $emailarray;
@@ -83,7 +84,9 @@
 	function getuserID(){
 		global $conn;
 		global $emailarray;
+		$userID = $_COOKIE['userID'];
 		$userIDarray = array();
+		array_push($userIDarray,$userID);
 		for($i=0;$i<count($emailarray);$i++){
 			$sql = "SELECT userID FROM users WHERE email = '".$emailarray[$i]."'";
 			$results = $conn->query($sql);
@@ -95,6 +98,7 @@
 			}
 		}
 		//echo json_encode($userIDarray);
+
 		return $userIDarray;
 	}
 
@@ -106,13 +110,9 @@
 			for($i=0;$i<count($emailarray);$i++){
 				//echo $emailarray[$i];
 			}
-		}else{
-			for($i=0;$i<count($emailarray1);$i++){
-				//echo $emailarray[$i];
-			}
 		}	
-		getuserID();	
-	}
+	}	
+		//get_times(getuserID());	
 
 
 
@@ -146,6 +146,7 @@
 								  </select></p>
 					  <p><input type="text" name="eventTitle" value="<?php if(isset($_POST['eventTitle'])){echo $_POST['eventTitle'];}else{ echo "Event Title";}?>"></p>
 					  <p><input type="date" name="startDate" value="<?php if(isset($_POST['startDate'])){echo $_POST['startDate'];}else{ echo "";}?>"></p>
+					  <p><?php if(isset($_POST['addemail'])){get_times(getuserID()); }?></p>
 					  <p><input type="time" name="startTime" value="<?php if(isset($_POST['startTime'])){echo $_POST['startTime'];}else{ echo "";}?>"></p>
 					  <p>How long with the meeting last? (hours):
 					  <input type-'number' name='hours' value="<?php if(isset($_POST['hours'])){echo $_POST['hours'];}else{ echo "";}?>"></p>
@@ -162,7 +163,7 @@
 						 <input type='hidden' name='input_name' value="<?php echo htmlentities(serialize($emailarray)); ?>" />
 					  <p><input type="submit" name="submit" value="Submit"></p>
 					</form>
-					<p><ul><?php if(isset($_POST['addemail'])){returnemailarray();} ?></ul></p>
+					<p id="timeschart"><ul><?php if(isset($_POST['addemail'])){returnemailarray(); } ?></ul></p>
 				</section>
 			</div>
 		</div>
