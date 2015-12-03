@@ -27,9 +27,8 @@ TODO:
 		array_push($jsondata['links'], $arr);
 		$jsonwrite = json_encode($jsondata);
 		file_put_contents($_POST['jsonf'], $jsonwrite);
-		unset($_POST['title']);
-		unset($_POST['link']);
-		unset($_POST['jsonf']);
+		unset($_POST);
+		header("Location:group.php?id=$groupID");
 	}
 	if (isset($_COOKIE['userID'])){
 		$userID = $_COOKIE['userID'];
