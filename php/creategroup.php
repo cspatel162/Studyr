@@ -52,6 +52,8 @@
 			}
 
 		}
+		unset($_POST);
+		header("Location:group.php?id=$groupID");
 		
 	}
 

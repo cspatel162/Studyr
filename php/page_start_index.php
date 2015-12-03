@@ -93,8 +93,14 @@ TODO:
 									<div class="dropdown">
 										<strong>Subject:</strong>
 										<select name="submit" id="dropdownMenu1">
-											<option value="<?php if(isset($_POST['submit'])){echo $_POST['submit'];}else{ echo "";}?>">
-												<?php if(isset($_POST['submit'])){$json = file_get_contents("../json/courseprefixes.json");$jsondata = json_decode($json,true); echo $jsondata[$_POST['submit']];}else{ echo "";}?>
+											<option value="<?php if(isset($_POST['submit'])){echo $_POST['submit'];}else{ echo '';}?>">
+												<?php if(isset($_POST['submit']) && $_POST['submit'] != ""){
+														$json = file_get_contents("../json/courseprefixes.json");
+														$jsondata = json_decode($json,true);
+														echo $jsondata[$_POST['submit']];
+													}else{
+														echo "Subject";
+													}?>
 											</option>
 											<?php
 											$stmt = "SELECT DISTINCT courseType FROM class ORDER BY courseType";

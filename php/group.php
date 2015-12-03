@@ -135,9 +135,26 @@ TODO:
 	}
 
 
+	function deletegroup(){
+		global $conn;
+		$groupID  = $_GET['id'];
+		$sql = "DELETE FROM events WHERE groupID = $groupID";
+		$results = $conn->query($sql);
+		$sql2 = "DELETE FROM study_groups WHERE groupID = $groupID";
+		$results2 = $conn->query($sql2);
+		unset($_POST);
+		header("Location:../index.php");
+	}
+
+
 	if(isset($_POST['removeself'])){
 		removeself();
 	}
+
+		if(isset($_POST['removegroup'])){
+		deletegroup();
+	}
+
 
 	function displaygroupinfo($groupID,$eventbool,$passfail,$members,$events){
 		global $locationName;
@@ -205,11 +222,15 @@ TODO:
 					echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
 					echo "<input type='text' name='email' value='Member Email'>";
 					echo "<input class='btn btn-default btnright' type='submit' name='addemail' value='Add Member'>";
+					echo "<h5 class='settingshead'>Leave Group</h5>";
+					echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
+					echo "<input class='btn btn-default btnright' type='submit' name='removegroup' value='Delete Group'>";
 
-				}
+				}else{
 					echo "<h5 class='settingshead'>Leave Group</h5>";
 					echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
 					echo "<input class='btn btn-default btnright' type='submit' name='removeself' value='Remove Me'>";
+				}
 
 				//--- END SECTION ----
 			}
