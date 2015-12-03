@@ -100,7 +100,7 @@
 				</div>
 			</div>
 			<div id="main">
-				<button id="toggle" onclick="toggle();"><span class="glyphicon glyphicon-triangle-left" id="toggle"></span></button>
+				<button id="toggle" onclick="toggle();"><span class="glyphicon glyphicon-search" id="toggle"></span></button>
 				<div id="main_contents">
 					<center id="welcome"><h1>Search For Public Study Groups</h1></center>
 					<center>
