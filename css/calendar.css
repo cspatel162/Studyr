@@ -321,11 +321,12 @@ strong {
 }
 
 .addButton {
-	background: LimeGreen;
+	background: #E0EEF1;
+	color: black;
 }
 
 .addButton:hover {
-	background: Lime;
+	background: #fff;
 }
 
 .removeButton {
