@@ -62,7 +62,7 @@
 	function searcheventsandprint($results){ // does the search for groups that are public for each class - then does all the displaying.
 		global $conn;
 		global $searchingfor;
-		if($results->num_rows > 0){
+		if($results){
 			echo "<h3 style=\"color: #7CB4B4;\">Showing results for $searchingfor ...</h3>";
 			foreach ($results as $val){//FIRST prints out the class - THEN searching that courseID within all the study_groups, IF any groups are not private for that class then print them out, otherwise end it. 
 				printf("<li id='result'>%u: %s %u, %s. Professor: %s %s <ul>",$val['crn'],$val['courseType'],$val['courseNumber'],$val['courseTitle'],$val['fname'],$val['lname']);
