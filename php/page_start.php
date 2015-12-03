@@ -42,7 +42,7 @@ TODO:
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">
+					<a class="navbar-brand" href="../index.php">
 						<img alt="Brand" src="../images/logo.png" width="70px;">
 					</a>
 

@@ -170,7 +170,8 @@ strong {
 }
 
 #top_calendar a:hover {
-	width: 140%;
+/*	width: 140%;*/
+	font-size: 140%;
 	color: #6A0648;
 }
 
