@@ -216,7 +216,23 @@ strong {
 #txtpadname{
 	margin-left:4px;
 }
-#memberlist{
+#memberlist h4{
 	line-height: 0px;
-	margin-bottom: 15px;
+}
+#groups ul{
+	list-style-type: none;
+	padding-left: 0px;
+}
+.currentgroup{
+	border-bottom-style:solid;
+	border-bottom-color:#6A0648;
+	margin-left: -10px;
+	padding:10px 10px 5px 10px;
+}
+.owngroup{
+	background-color: #E0EEF1; 
+}
+.atitle{
+	font-size: 1.3em;
+	padding-right:10px;
 }

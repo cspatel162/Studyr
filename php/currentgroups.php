@@ -27,9 +27,9 @@ TODO:
 		if ($results->num_rows > 0){ // checks to make sure there are events, if 0 there are none and echos that out. 
 			foreach($results as $val){
 				if($val['founderID'] == $id) {
-					echo "<li class=\"currentgroup owngroup\"><p>".$val['eventName']."</p> Starting: ".fetchDate($val['startTime'])." At: ".$val['locationName']."</li>";
+					echo "<li class=\"currentgroup owngroup\"><a class='atitle' href='group.php?id=".$val['groupID']."'>".$val['eventName']."</a> When: ".fetchDate($val['startTime'])." At: ".$val['locationName']."</li>";
 				} else {
-					echo "<li class=\"currentgroup\"><p>".$val['eventName']."</p> Starting: ".fetchDate($val['startTime'])." At: ".$val['locationName']."</li>";
+					echo "<li class=\"currentgroup\"><a class='atitle' href='group.php?id=".$val['groupID']."'>".$val['eventName']."</a> When: ".fetchDate($val['startTime'])." At: ".$val['locationName']."</li>";
 				}
 			}
 		}else{
@@ -49,7 +49,12 @@ TODO:
 		}
 	}
  ?>
-
+<html>
+	<head>
+		<title> My Study Groups </title>
+		<link rel="stylesheet" href="../css/group.css">
+	</head>
+	<body>
 				<section id="groups">
 					<ul>
 						<?php
