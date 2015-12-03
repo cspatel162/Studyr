@@ -55,22 +55,69 @@
 		
 	}
 
+
 	if(isset($_POST['submit'])){ // only create the group when the submit is hit - this needs to be adjusted so that it's checked to make sure that values are actyually entered. 
 		createthegroup();
 	} 
 
-	function addemail(){
-		global $emailarray;
-		$emailarray = unserialize($_POST['input_name']);
-		array_push($emailarray,$_POST['emails']);
-		for($i=0;$i<count($emailarray);$i++){
-			echo $emailarray[$i];
+	function checkemail($email){
+		global $conn;
+		$sql = "SELECT * FROM users WHERE email = '$email'";
+		$results = $conn->query($sql);
+		if($results->num_rows>0 && $results->num_rows<2){
+			return true;
+		}else{
+			return false;
 		}
 	}
 
+	function returnemailarray(){	
+		global $emailarray;
+		for($i=0;$i<count($emailarray);$i++){
+				echo "<li>".$emailarray[$i]."</li>";
+		}
+	}
+
+	function getuserID(){
+		global $conn;
+		global $emailarray;
+		$userIDarray = array();
+		for($i=0;$i<count($emailarray);$i++){
+			$sql = "SELECT userID FROM users WHERE email = '".$emailarray[$i]."'";
+			$results = $conn->query($sql);
+			if($results->num_rows>0){
+				foreach($results as $val){
+					array_push($userIDarray,$val['userID']);
+					//echo $val['userID'];
+				}
+			}
+		}
+		//echo json_encode($userIDarray);
+		return $userIDarray;
+	}
+
+	function addemail(){
+		global $emailarray;
+		$emailarray = unserialize($_POST['input_name']);
+		if (checkemail($_POST['emails'])){
+			array_push($emailarray,$_POST['emails']);
+			for($i=0;$i<count($emailarray);$i++){
+				//echo $emailarray[$i];
+			}
+		}else{
+			for($i=0;$i<count($emailarray1);$i++){
+				//echo $emailarray[$i];
+			}
+		}	
+		getuserID();	
+	}
+
+
+
 	if(isset($_POST['addemail'])){ // only create the group when the submit is hit - this needs to be adjusted so that it's checked to make sure that values are actyually entered. 
 		addemail();
-	} 
+	}
+
 ?>
 				<section id="creategroup">
 					<p>Please fill out the following form:</p>
@@ -101,8 +148,9 @@
 					  <p>How long with the meeting last? (hours):
 					  <input type-'number' name='hours' value="<?php if(isset($_POST['hours'])){echo $_POST['hours'];}else{ echo "";}?>"></p>
 					  <p>Repeating?
-								  <input type="radio" name="repeating" value="1" <?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==1)?'checked':'' ;}else{ echo "";}?>> Yes
-								  <input type="radio" name="repeating" value="0"<?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
+			  			  <input type="radio" name="repeating" value="1" <?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==1)?'checked':'' ;}else{ echo "";}?>> Yes
+			  			  <input type="radio" name="repeating" value="0"<?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
+					  </p>
 					  <p>Private Group?
 								  <input type="radio" name="privacy" value="1" <?php if(isset($_POST['privacy'])){echo ($_POST['privacy']==1)?'checked':'' ;}else{ echo "";}?>> Yes
 								  <input type="radio" name="privacy" value="0" <?php if(isset($_POST['privacy'])){echo ($_POST['privacy']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
@@ -111,6 +159,7 @@
 						 <input type='hidden' name='input_name' value="<?php echo htmlentities(serialize($emailarray)); ?>" />
 					  <p><input type="submit" name="submit" value="Submit"></p>
 					</form>
+					<p><ul><?php if(isset($_POST['addemail'])){returnemailarray();} ?></ul></p>
 				</section>
 			</div>
 		</div>
