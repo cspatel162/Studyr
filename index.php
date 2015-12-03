@@ -51,6 +51,7 @@
 									<div class="dropdown">
 										<strong>Subject:</strong>
 										<select name="submit" id="dropdownMenu1">
+											<option value="">Subject</option>
 											<?php
 											$stmt = "SELECT DISTINCT courseType FROM class ORDER BY courseType";
 											$results= $conn->query($stmt);
