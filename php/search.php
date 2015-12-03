@@ -42,23 +42,28 @@
 		$results = $conn->query($sql);
 	}
 	if(isset($_POST['submit'])){
-		if($_POST['submit']=='Show All...'){searchclasses('*');} // calling the class search based on what is submitted. 
-		else {searchclasses($_POST['submit']);}
+		searchclasses($_POST['submit']);
+		$searchingfor = $_POST['submit'];
 	}
 	
 	if(isset($_POST['submit_crn'])){
 		if($_POST['submit_crn'] != ''){
 			searchcrn($_POST['submit_crn']);
+			$searchingfor = $_POST['submit_crn'];
 		} else if($_POST['submit_title'] != ''){
 			searchtitle($_POST['submit_title']);
+			$searchingfor = $_POST['submit_title'];
 		} else if($_POST['submit_prof'] != ''){
 			searchprof($_POST['submit_prof']);
+			$searchingfor = $_POST['submit_prof'];
 		}
 	}
 
 	function searcheventsandprint($results){ // does the search for groups that are public for each class - then does all the displaying.
 		global $conn;
+		global $searchingfor;
 		if($results->num_rows > 0){
+			echo "<h3 style=\"color: #7CB4B4;\">Showing results for $searchingfor ...</h3>";
 			foreach ($results as $val){//FIRST prints out the class - THEN searching that courseID within all the study_groups, IF any groups are not private for that class then print them out, otherwise end it. 
 				printf("<li id='result'>%u: %s %u, %s. Professor: %s %s <ul>",$val['crn'],$val['courseType'],$val['courseNumber'],$val['courseTitle'],$val['fname'],$val['lname']);
 				$sql = "SELECT study_groups.* FROM study_groups WHERE study_groups.courseID = ".$val['courseID'];//search for study groups based on their courseID
@@ -75,7 +80,8 @@
 			printf("<li>No courses found!</li>");
 		}
 	}
-?>
+?>					
+					
 					<section id="results"> <!-- Results print within this and therefore can be styled easily.-->
 						<ul id="resultlist">
 						<?php
