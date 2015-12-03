@@ -127,6 +127,6 @@ function getMySQLFormat($dateTime, $round=0) {
 }
 
 // return to calendar page when done
-header("Location:test_calendar.php");
+header("Location:calendar.php");
 
 ?>
