@@ -4,6 +4,11 @@ include_once 'connect.php';
 <html>
     <head>
         <title>Login or Register - Studyr</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -11,51 +16,75 @@ include_once 'connect.php';
     </head>
 
     <body>
-        <section class="rightheader">Studyr</section>
-        <section id="tabs">
-          <ul>
-            <li><a href="#tabs-1">Login</a></li>
-            <li><a href="#tabs-2">Register</a></li>
-          </ul>
-          <section id="tabs-1">
-            <form action="reallogin.php" method="post">
-                <ul>
-                    <li class="sub"><ul>
-                        <li>Email: </li>
-                        <li>Password: </li>
-                    </ul></li>
-                    <li class="sub"><ul>
-                        <li><input type="text" name="email2"></li>
-                        <li><input type="password" name="password"></li>
-                        <li><input class="enter" type="submit" value="Submit"></li>
-                    </ul></li>
-                </ul>
-            </form>
-          </section>
-          <section id="tabs-2">
-            <form onsubmit="return confirm(this)" action="signup.php" method="post">
-                <ul>
-                    <li class="sub"><ul class="labels">
-                        <li id="fname">First name: </li>
-                        <li id="lname">Last name: </li>
-                        <li id="email">Email address: </li>
-                        <li id="echeck">Confirm email: </li>
-                        <li id="pw">Password: </li>
-                        <li id="pwcheck">Confirm password: </li>
-                    </ul></li>
-                    <li class="sub"><ul>
-                        <li><input type="text" name="fname"></li>
-                        <li><input type="text" name="lname"></li>
-                        <li><input type="text" name="email"></li>
-                        <li><input type="text" name="email_check"></li>
-                        <li><input type="password" name="newpassword"></li>
-                        <li><input type="password" name="pass_check"></li>
-                        <li><input class="enter" type="submit" value="Submit"></li>
-                    </ul></li>
-                </ul>
-            </form>
-          </section>
-        </section>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../index.php">
+                        <img alt="Brand" src="../images/logo.png"  width="70px;">
+                    </a>
+
+                    
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <?php 
+                        if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
+                            echo '<li><a href="calendar.php">Calendar</a></li>';
+                            echo '<li><a href="logout.php">Logout</a></li>';
+                        }
+                        else{
+                            echo '<li><a href="login.php">Login or Register</a></li>';
+                        }
+                    ?>
+                </ul>   
+            </div>
+        </nav>
+        <div id="content">
+            <div id="returns"></div>
+            <section id="tabs">
+              <ul>
+                <li><a href="#tabs-1">Login</a></li>
+                <li><a href="#tabs-2">Register</a></li>
+              </ul>
+              <section id="tabs-1">
+                <form action="reallogin.php" method="post">
+                    <ul>
+                        <li class="sub"><ul>
+                            <li>Email: </li>
+                            <li>Password: </li>
+                        </ul></li>
+                        <li class="sub"><ul>
+                            <li><input type="text" name="email2"></li>
+                            <li><input type="password" name="password"></li>
+                            <li><input class="enter btn btn-default" type="submit" value="Submit"></li>
+                        </ul></li>
+                    </ul>
+                </form>
+              </section>
+              <section id="tabs-2">
+                <form id="reg" onsubmit="return confirm(this)" method="post">
+                    <ul>
+                        <li class="sub"><ul class="labels">
+                            <li id="fname">First name: </li>
+                            <li id="lname">Last name: </li>
+                            <li id="email">Email address: </li>
+                            <li id="echeck">Confirm email: </li>
+                            <li id="pw">Password: </li>
+                            <li id="pwcheck">Confirm password: </li>
+                        </ul></li>
+                        <li class="sub"><ul>
+                            <li><input type="text" name="fname"></li>
+                            <li><input type="text" name="lname"></li>
+                            <li><input type="text" name="email"></li>
+                            <li><input type="text" name="email_check"></li>
+                            <li><input type="password" name="newpassword"></li>
+                            <li><input type="password" name="pass_check"></li>
+                            <li><input class="enter btn btn-default" type="submit" value="Submit"></li>
+                        </ul></li>
+                    </ul>
+                </form>
+              </section>
+            </section>
+        </div>
         <script>
             $(function() {
                 $( "#tabs" ).tabs();
@@ -117,6 +146,13 @@ include_once 'connect.php';
                 }
                 return false;
             }
+            $("#reg").submit(function() {
+                var regdata = $(this).serialize();
+                $.post('signup.php', regdata,function(data){
+                    $("#returns").html(data);
+                });
+                return false;
+            });
         </script>
     </body>
 </html>

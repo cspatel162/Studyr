@@ -14,15 +14,11 @@ require 'connect.php';
     if($result){
     	$sql = "INSERT INTO users (fname, lname, email, password) VALUES ('$fname','$lname','$email','$passname')"; // Storing the hashed password and information on the new user
 	    if ($conn->query($sql) === TRUE) {
-	        echo "New record created successfully";
+	        echo "<p>New record created successfully, please login.</p>";
 	    } else {
-	        echo "Error: " . $sql . "<br>" . $conn->error;
+	        echo "<p>Error: " . $conn->error."</p>";
 	    }
  	} else {
- 		echo "Error: that email already exists\n";
- 	}
-
-
-    
+ 		echo "<p>Error: that email already exists</p>";
+ 	}    
 ?>
-<a href="login.php"> go back</a>

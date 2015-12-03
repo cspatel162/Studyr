@@ -7,6 +7,11 @@
 	height: 5%;
 	text-align: left;
 }
+#returns{
+	text-align: center;
+	margin-bottom:0px;
+	padding-bottom:0px;
+}
 .rightheader{
 	height:4%;
 	text-align: right;
@@ -81,7 +86,7 @@ ul{
 #tabs{
 	width:360px;
 	margin:auto;
-	margin-top:120px;
+	margin-top:100px;
 	font-size:.8em;
 }
 .enter{

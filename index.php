@@ -6,12 +6,14 @@
 			$userID = $_COOKIE['userID'];
 			$sql = "SELECT admin FROM users WHERE userID = $userID";
 			$result = $conn->query($sql);
-			foreach($result as $val){
-				if ($val['admin'] == 1){
-					return true;
-				}
-				else{
-					return false;
+			if($result->num_rows > 0){
+				foreach($result as $val){
+					if ($val['admin'] == 1){
+						return true;
+					}
+					else{
+						return false;
+					}
 				}
 			}
 		}
