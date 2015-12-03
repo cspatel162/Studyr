@@ -203,7 +203,8 @@ strong {
 	padding: 20px;
 	text-align: center;
 	border: 5px solid black;
-	box-shadow: 0 0 50px white;
+/*	box-shadow: 0 0 50px white;*/
+	outline: none;
 }
 
 #popupForm h3 {
@@ -221,7 +222,7 @@ strong {
 
 #popupForm #closeButton {
 	background-color: red;
-	box-shadow: 0 0 50px white;	
+/*	box-shadow: 0 0 50px white;	*/
 	color: white;
 	width: 30px;
 	height: 30px;
@@ -235,6 +236,7 @@ strong {
 	position: absolute;
 	left: 95%;
 	top: -15px;
+	outline: none;
 }
 
 #background{
@@ -315,6 +317,7 @@ strong {
     border:none; 
     padding:0;
 	text-align: center;
+	outline: none;
 }
 
 .addButton {

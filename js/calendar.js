@@ -185,11 +185,11 @@ function openPopupForm() {
 	// fade the background and show the form in the center
 	$("#popupForm").css("top", ( $(window).height() - $("#popupForm").height() ) / 2+$(window).scrollTop() + "px");
 	$("#popupForm").css("left", ( $(window).width() - $("#popupForm").width() ) / 2+$(window).scrollLeft() + "px");
-	$("#background").fadeIn("slow");
-	$("#popupForm").fadeIn("slow");
+	$("#background").fadeIn(100);
+	$("#popupForm").fadeIn(100);
 }
 
 function closePopupForm() {
-	$("#background").fadeOut("slow");
-	$("#popupForm").fadeOut("slow");
+	$("#background").fadeOut(100);
+	$("#popupForm").fadeOut(100);
 }
