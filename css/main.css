@@ -98,12 +98,29 @@ ul.input_group {
 	display:inline;
 }
 
+
 .input_group input[type="submit"]{
 	width: 100px;
 	background: white;
 	color: #6A0648;
 }
-
+.input_group input{
+	box-sizing: border-box;
+	display: block;
+}
+.input_group p{
+	padding-left:15px;
+	padding-right:15px;
+}
+.settingshead{
+	border-bottom-style:solid;
+	border-bottom-color:#6A0648;
+	font-size:1.2em;
+	font-weight: bold;
+}
+.btnright{
+	padding-left:190px ! important;
+}
 #buttons {
 	margin-top: 80px;
 }
@@ -158,7 +175,6 @@ ul.input_group {
 #top_calendar a {
 	background: #E0EEF1;
 	width: 100%;
-/*	font-size:15px;*/
 	padding: 10px;
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -171,4 +187,7 @@ ul.input_group {
 #top_calendar a:hover {
 	font-size: 120%;
 	color: #6A0648;
+}
+.widerbtn{
+	width:120px ! important;
 }

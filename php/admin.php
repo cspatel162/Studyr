@@ -1,5 +1,6 @@
 <?php
 	require "connect.php";
+	include_once "page_start.php";
 	function checkadmin(){
 		global $conn;
 		if(isset($_COOKIE['userID'])){
@@ -93,28 +94,42 @@
 <html>
 <head>
 	<title>Admin Tools</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-	<?php tools(); ?>
-	<form method="post" action="admin.php">
-		<p><input type="text" name="adminemail" value="Email to add Admin"></p>
-		<p><input type="submit" name="addAdmin" value="Add Admin"></p>
+	<?php tools(); ?><div style="position:absolute;padding-left:30px;" class="content">
+	<form method="post" action="admin.php" class="input_group">
+		<h5 class="settingshead">Add an admin from existing users</h5>
+		<p><input type="text" name="adminemail" value="Enter user's email"></p>
+		<p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addAdmin" value="Add Admin"></p>
 	</form>
-	<form method="post" action="admin.php">
-		<p><input type="text" name="locationName" value="Location Name"></p>
-		<p><input type="text" name="locationCity" value="Location City"></p>
-		<p><input type="text" name="locationState" value="Location State"></p>
-		<p>Open Time:<input type="time" name="openTime"></p>
-		<p>Close Time:<input type="time" name="closeTime"></p>
-		<p><input type="submit" name="addLocation" value="Add Location"></p>
+
+	<form method="post" action="admin.php" class="input_group">
+		<h5 class="settingshead">Add a location</h5>
+		<ul class="nav">
+			<li><p>Location name: <input type="text" name="locationName" value=""></p></li>
+			<li><p>City: <input type="text" name="locationCity" value=""></p></li>
+			<li><p>State: <input type="text" name="locationState" value=""></p></li>
+			<li><p>Open Time: <input type="time" name="openTime"></p></li>
+			<li><p>Close Time: <input type="time" name="closeTime"></p></li>
+			<li><p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addLocation" value="Add Location"></p></li>
+		</ul>
 	</form>
-	<form method="post" action="admin.php">
-		<p><input type="text" name="pfname" value="Professors First Name"></p>
-		<p><input type="text" name="plname" value="Professors Last Name"></p>
-		<p><input type="submit" name="addProfessor" value="Add Professors"></p>
+
+	<form method="post" action="admin.php" class="input_group">
+		<h5 class="settingshead">Add a professor</h5>
+		<ul class="nav">
+		<li><p>First name: <input type="text" name="pfname" value=""></p></li>
+		<li><p>Last name: <input type="text" name="plname" value=""></p></li>
+		<li><p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addProfessor" value="Add Professors"></p></li>
 	</form>
-	<form method="post" action="admin.php">
-		<p><select name="pid" value="">
+
+	<form method="post" action="admin.php" class="input_group col2">
+		<h5 class="settingshead">Add a course</h5>
+		<p>Professor: <select name="pid" value="">
 			  			  	<option value="">Professor</option>
 			  			  	<?php
 			  			  		global $conn;
@@ -125,12 +140,13 @@
 			  			  	?>
 			  </select>
 		</p>
-		<p><input type="text" name="crn" value="CRN"></p>
-		<p><input type="text" name="courseTitle" value="Course Title"></p>
-		<p><input type="text" name="courseType" value="Course Prefix"></p>
-		<p><input type="text" name="courseNumber" value="Course Number"></p>
-		<p><input type="text" name="description" value="Description of Course"></p>
-		<p><input type="submit" name="addClass" value="Add Course"></p>
+		<p>CRN: <input type="text" name="crn" value=""></p>
+		<p>Title: <input type="text" name="courseTitle" value=""></p>
+		<p>Prefix: <input type="text" name="courseType" value=""></p>
+		<p>Course number: <input type="text" name="courseNumber" value=""></p>
+		<p>Description: <input type="text" name="description" value=""></p>
+		<p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addClass" value="Add Course"></p>
 	</form>
+</div>
 </body>
 </html>
