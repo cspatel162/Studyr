@@ -1,5 +1,5 @@
 <?php 
- include_once "pageStartNoNav.php";
+ include_once "page_start_index.php";
 	$results; // This is so that we can call the results down below where they should actually be output.
 	function searchclasses($prefix){ // Function to search all the classes
 		global $conn;
@@ -10,12 +10,14 @@
 		global $results; // gets the global results and then sets them.
 		$results = $conn->query($sql);
 	}
+
 	function searchcrn($crn){ // Function to search all the classes
 		global $conn;
 		$sql = "SELECT class.*, professors.fname, professors.lname FROM class INNER JOIN professors ON class.professorID = professors.professorID WHERE class.crn = '$crn'"; // if the user clicks on one of the prefixes.
 		global $results; // gets the global results and then sets them.
 		$results = $conn->query($sql);
 	}
+
 	function searchprof($prof){ // Function to search all the classes
 		global $conn;
 		$pos = strrpos($prof, " ");
@@ -32,6 +34,7 @@
 		global $results; // gets the global results and then sets them.
 		$results = $conn->query($sql);
 	}
+
 	function searchtitle($title){ // Function to search all the classes
 		global $conn;
 		$sql = "SELECT class.*, professors.fname, professors.lname FROM class INNER JOIN professors ON class.professorID = professors.professorID WHERE class.courseTitle = '$title'"; // if the user clicks on one of the prefixes.
@@ -73,61 +76,23 @@
 		}
 	}
 ?>
-		<nav id="side" class="leftnavbar"> <!-- SIDE NAV BAT -->
-			<section class="leftheader"> 
-				<h1> Search by..</h1>
-			</section>
-			<section class="search">
-				
-				<form action="search.php" method="POST">
-					<ul class="nav">
-						<li>Subject:</li>
-						<li>Title:</li>
-						<li>Professor:</li>
-						<li>CRN:</li>
-					</ul>
-					<ul class="nav">
-						<li><select name="submit" class="find">
-													<option value="admn">Administration</option><option value="arch">Architecture</option>
-													<option value="arts">Arts</option><option value="astr">Astronomy</option>
-													<option value="bcbp">Biochemistry and Biophysics</option><option value="biol">Biology</option>
-													<option value="bmed">Biomedical Engineering</option><option value="chem">Chemistry</option>
-													<option value="chme">Chemical Engineering</option><option value="civl">Civl Engineering</option>
-													<option value="cogs">Cognitive Science</option><option value="comm">Communication</option>
-													<option value="coop">Cooperative Education</option><option value="csci">Computer Science</option>
-													<option value="econ">Economics</option><option value="ecse">Electrical, Computer, and Systems Engineering</option>
-													<option value="engr">General Engineering</option><option value="enve">Environmental Engineering</option>
-													<option value="epow">Electric Power Engineering</option><option value="ERTH">Earth and Environmental Sciences</option>
-													<option value="esci">Engineering Science</option><option value="ienv">Interdisciplinary Environmental</option>
-													<option value="ihss">Interdisciplinary Studies</option><option value="isci">Interdisciplinary Science</option>
-													<option value="isye">Industrial and Systems Engineering</option><option value="itws">Information Technology and Web Science</option>
-													<option value="lang">Foreign Languages</option><option value="lght">Lighting</option>
-													<option value="mane">Mechanical, Aerospace, and Nuclear Engineering</option><option value="math">Mathematics</option>
-													<option value="matp">Mathematical Programming, Probability, and Statistics</option><option value="mgmt">Management</option>
-													<option value="mtle">Materials Science and Engineering</option><option value="phil">Philosophy</option>
-													<option value="phys">Physics</option><option value="psych">Psychology</option>
-													<option value="stsh">Science and Technology - Humanities</option><option value="stss">Science and Technology - Social Sciences</option>
-													<option value="usaf">Aerospace Studies (Air Force ROTC)</option><option value="usar">Military Science (Army ROTC)</option>
-													<option value="usna">Naval Science (Navy ROTC)</option><option value="writ">Writing</option>
-												</select></li>
-					
-						<li><input type="text" name="submit_title" class="find"></li>
-					
-						<li><input type="text" name="submit_prof" class="find"></li>
-					
-						<li><input type="text" name="submit_crn" class="find"></li>
-						<li><button type="submit" class="find">Search</button></li>
-					</ul>
-				</form>
-			</section>
-		</nav>
-		<section id="results"> <!-- Results print within this and therefore can be styled easily.-->
-			<ul id="resultlist">
-				<?php
-					searcheventsandprint($results);	// get all of the classes and groups and print them out.
-				?>
-		</ul>
-		</section>
-	</section>
-</body>
+					<section id="results"> <!-- Results print within this and therefore can be styled easily.-->
+						<ul id="resultlist">
+						<?php
+							searcheventsandprint($results);	// get all of the classes and groups and print them out.
+						?>
+						</ul>
+					</section>
+				</div>
+			</div>
+		</div>
+		
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		
+<!--		<script src="../js/toggle.js"></script>-->
+	</body>
 </html>
