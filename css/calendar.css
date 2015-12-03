@@ -203,6 +203,7 @@ strong {
 	padding: 20px;
 	text-align: center;
 	border: 5px solid black;
+	box-shadow: 0 0 50px white;
 }
 
 #popupForm h3 {
