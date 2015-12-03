@@ -50,10 +50,16 @@
 		if($_POST['submit_crn'] != ''){
 			searchcrn($_POST['submit_crn']);
 			$searchingfor = $_POST['submit_crn'];
-		} else if($_POST['submit_title'] != ''){
+		}
+	}
+	if(isset($_POST['submit_title'])){
+		if($_POST['submit_title'] != ''){
 			searchtitle($_POST['submit_title']);
 			$searchingfor = $_POST['submit_title'];
-		} else if($_POST['submit_prof'] != ''){
+		}
+	}
+	if(isset($_POST['submit_prof'])){
+		if($_POST['submit_prof'] != ''){
 			searchprof($_POST['submit_prof']);
 			$searchingfor = $_POST['submit_prof'];
 		}
