@@ -179,18 +179,18 @@ TODO:
 				echo "<p id='usefullinks'>Useful Links: </p><ul>";
 				foreach($jsondata as $links){
 					foreach($links as $anchor){
-						echo "<li><a class=\"grouplinks\" href=\"".$anchor['link']."\">".$anchor['title']."</a></li>";
+						echo "<li><a class=\"grouplinks\" target=\"_blank\" href=\"".$anchor['link']."\">".$anchor['title']."</a></li>";
 					}
 				}
 				echo "</ul>";
 				if($isfounder){
 					echo "<form id=\"add\" action=\"group.php?id=$groupID\" method=\"POST\">Name: <input type=\"text\" name=\"title\" >";
 					echo "Link: <input type=\"text\" name=\"link\"><input type=\"hidden\" name=\"jsonf\" value=\"$jsonfile.\"><button type=\"submit\">Add</button></form>";				
-				}
-				echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
-				echo "<input type='text' name='email' value='Member Email'>";
-				echo "<input type='submit' name='addemail' value='Add Member'>";
+					echo "<form method='POST' action='group.php?id=$groupID'>"; // Creates a form that users can use to join the group is public - ONLY shows to users at a public group in which they are not members of.
+					echo "<input type='text' name='email' value='Member Email'>";
+					echo "<input type='submit' name='addemail' value='Add Member'>";
 
+				}
 
 				//--- END SECTION ----
 			}

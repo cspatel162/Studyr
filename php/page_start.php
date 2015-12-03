@@ -67,10 +67,10 @@ TODO:
 						<center><h3><em><?php echo $_COOKIE['fname']." ".$_COOKIE['lname'];?></em></h3></center>
 					</section>
 		
-					<a href="#"><center>Edit Schedule</center></a><br>
-					<a href="#"><center>Create a Study Group</center></a><br>
-					<a href="#"><center>My Study Groups</center></a><br>
-					<a href="#"><center>Join a Study Group</center></a>
+					<a href="myschedule.php"><center>Edit Schedule</center></a><br>
+					<a href="creategroup.php"><center>Create a Study Group</center></a><br>
+					<a href="currentgroups.php"><center>My Study Groups</center></a><br>
+					<a href="../index.php"><center>Join a Study Group</center></a>
 				</div>
 				<div id="bottom">
 					<center id="bot_search"><h3>Upcoming Events</h3></center>

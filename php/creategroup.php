@@ -52,6 +52,11 @@
 			}
 
 		}
+
+		if($_POST['repeating'] == 1){
+
+		}
+		unset($_POST);
 		
 	}
 
@@ -103,6 +108,21 @@
 			  <p>Repeating?
 			  			  <input type="radio" name="repeating" value="1" <?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==1)?'checked':'' ;}else{ echo "";}?>> Yes
 			  			  <input type="radio" name="repeating" value="0"<?php if(isset($_POST['repeating'])){echo ($_POST['repeating']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
+			  <p class="show-repeat-info">
+			  	How Often?
+			  	<select name="howoften">
+			  		<option value="+1 day"> Every Day</option>
+			  		<option value="+2 days"> Every Other Day </option>
+			  		<option value="+3 days"> Every Three Days </option>
+			  		<option value="+5 days"> Every Five Days </option>
+			  		<option value="+7 days"> Every Week </option>
+			  		<option value="+14 days"> Every Two Weeks </option>
+			  	</select>
+			  	<p class="show-repeat-info">
+			  	Till When?
+			  	<input type="date" name="endDate" value="<?php if(isset($_POST['endDate'])){echo $_POST['endDate'];}else{ echo "";}?>">
+			  	</p>
+			  </p>
 			  <p>Private Group?
 			  			  <input type="radio" name="privacy" value="1" <?php if(isset($_POST['privacy'])){echo ($_POST['privacy']==1)?'checked':'' ;}else{ echo "";}?>> Yes
 			  			  <input type="radio" name="privacy" value="0" <?php if(isset($_POST['privacy'])){echo ($_POST['privacy']==0)?'checked':'' ;}else{ echo "";}?>> No</p>
