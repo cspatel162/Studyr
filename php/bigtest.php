@@ -1,33 +1,41 @@
 <?php
-$servername = "localhost";
+	$servername = "localhost";
     $username = "phpuser1";
     $password = "*97BAD3C7F42787ED6270EE7BE634F59E64C23DF2";
     $dbname = "studyr";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password,$dbname);
+	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); 
 
 	//Load test data into DB
 	try{
 	$passname = password_hash('11',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Captain', 'America', 'ca@e.com', $passname,1);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Captain', 'America', 'ca@e.com', '$passname',1);");
 	$passname = password_hash('12',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Black', 'Widow', 'bw@e.com', $passname,0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Black', 'Widow', 'bw@e.com', '$passname',0);");
 	$passname = password_hash('13',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Green', 'Verde', 'gv@e.com', $passname,0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Green', 'Verde', 'gv@e.com', '$passname',0);");
 	$passname = password_hash('14',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Blue', 'Azul', 'ba@e.com', $passname,0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Blue', 'Azul', 'ba@e.com', '$passname',0);");
 	$passname = password_hash('15',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Bruce', 'Banner', 'bb@e.com', $passname,0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Bruce', 'Banner', 'bb@e.com', '$passname',0);");
 	$passname = password_hash('16',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Tony', 'Stark', 'ts@e.com', $passname,0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Tony', 'Stark', 'ts@e.com', '$passname',0);");
 	$passname = password_hash('17',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Red', 'Rojo', 'rr@e.com', $passname,0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Red', 'Rojo', 'rr@e.com', '$passname',0);");
 	$passname = password_hash('18',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Thor', 'Odinson', 'to@e.com', $passname,0);");
-
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Thor', 'Odinson', 'to@e.com', '$passname',0);");
+	$passname = password_hash('19',PASSWORD_DEFAULT);
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Phil', 'Smith', 'ps@e.com', '$passname',0);");
+	$passname = password_hash('20',PASSWORD_DEFAULT);
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Jen', 'Lee', 'jl@e.com', '$passname',0);");
+	$passname = password_hash('21',PASSWORD_DEFAULT);
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('John', 'Goh', 'jg@e.com', '$passname',0);");
+	$passname = password_hash('22',PASSWORD_DEFAULT);
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Kevin', 'Shin', 'ks@e.com', '$passname',0);");
 	} catch (Exception $e){
-		die($e->errorMessage());
+		die($e->$e->getMessage());
 	}
 
 	try{
@@ -44,7 +52,7 @@ $servername = "localhost";
 	$conn->query("INSERT INTO professors (fname, lname) VALUES ('Cheshire', 'Cat');");
 	$conn->query("INSERT INTO professors (fname, lname) VALUES ('Daisy', 'Duck');");
 	} catch (Exception $e){
-		die($e->errorMessage());
+		die($e->getMessage());
 	}
 
 	try{
@@ -63,7 +71,7 @@ $servername = "localhost";
 	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (99015, 'COMM', 'Digital Humanities', 7, 2960);");
 	$conn->query("INSERT INTO class (crn, courseType, courseTitle, professorID, courseNumber) VALUES (97145, 'PSYC', 'Motivation & Performance', 11, 4110);");
 	} catch (Exception $e){
-		die($e->errorMessage());
+		die($e->getMessage());
 	}
 
 
@@ -87,7 +95,7 @@ $servername = "localhost";
 		file_put_contents("../json/studygroup_$i.json", $jsonstart);
 	}
 	} catch (Exception $e){
-		die($e->errorMessage());
+		die($e->getMessage());
 	}
 
 	try{
@@ -95,7 +103,7 @@ $servername = "localhost";
 	$conn->query("INSERT INTO locations (locationName, openTime, closeTime, locationCity, locationState) VALUES ('Folsom Library', '07:30:00 AM', '03:00:00 AM','Troy','New York');");
 
 	} catch (Exception $e){
-		die($e->errorMessage());
+		die($e->getMessage());
 	}
 
 
@@ -126,7 +134,7 @@ $servername = "localhost";
 	$conn->query("INSERT INTO events (userID, eventName, startTime, endTime, locationID, repeating, groupID) 
 				VALUES (12,'Event12', '2015-12-01 07:00:00 PM', '2015-12-01 09:00:00 PM',2,0,12);");
 	} catch (Exception $e){
-		die($e->errorMessage());
+		die($e->getMessage());
 	}
 
 
