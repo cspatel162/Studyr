@@ -101,52 +101,66 @@
 </head>
 <body>
 	<?php tools(); ?><div style="position:absolute;padding-left:30px;" class="content">
-	<form method="post" action="admin.php" class="input_group">
-		<h5 class="settingshead">Add an admin from existing users</h5>
-		<p><input type="text" name="adminemail" value="Enter user's email"></p>
-		<p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addAdmin" value="Add Admin"></p>
-	</form>
-
-	<form method="post" action="admin.php" class="input_group">
-		<h5 class="settingshead">Add a location</h5>
-		<ul class="nav">
-			<li><p>Location name: <input type="text" name="locationName" value=""></p></li>
-			<li><p>City: <input type="text" name="locationCity" value=""></p></li>
-			<li><p>State: <input type="text" name="locationState" value=""></p></li>
-			<li><p>Open Time: <input type="time" name="openTime"></p></li>
-			<li><p>Close Time: <input type="time" name="closeTime"></p></li>
-			<li><p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addLocation" value="Add Location"></p></li>
-		</ul>
-	</form>
-
-	<form method="post" action="admin.php" class="input_group">
-		<h5 class="settingshead">Add a professor</h5>
-		<ul class="nav">
-		<li><p>First name: <input type="text" name="pfname" value=""></p></li>
-		<li><p>Last name: <input type="text" name="plname" value=""></p></li>
-		<li><p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addProfessor" value="Add Professors"></p></li>
-	</form>
-
-	<form method="post" action="admin.php" class="input_group col2">
-		<h5 class="settingshead">Add a course</h5>
-		<p>Professor: <select name="pid" value="">
-			  			  	<option value="">Professor</option>
-			  			  	<?php
-			  			  		global $conn;
-			  			  		$result = $conn->query("SELECT * FROM professors;");
-			  			  		foreach($result as $val){
-			  			  			echo "<option value='".$val['professorID']."'>".$val['fname']." ".$val['lname']."</option>";
-			  			  		}
-			  			  	?>
-			  </select>
-		</p>
-		<p>CRN: <input type="text" name="crn" value=""></p>
-		<p>Title: <input type="text" name="courseTitle" value=""></p>
-		<p>Prefix: <input type="text" name="courseType" value=""></p>
-		<p>Course number: <input type="text" name="courseNumber" value=""></p>
-		<p>Description: <input type="text" name="description" value=""></p>
-		<p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addClass" value="Add Course"></p>
-	</form>
+		<ul class="column">
+			<li>
+				<ul class="col1">
+					<li>
+						<form method="post" action="admin.php" class="input_group">
+							<h5 class="settingshead">Add an admin from existing users</h5>
+							<p><input type="text" name="adminemail" value="Enter user's email"></p>
+							<p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addAdmin" value="Add Admin"></p>
+						</form>
+					</li>
+					<li>
+						<form method="post" action="admin.php" class="input_group">
+							<h5 class="settingshead">Add a location</h5>
+							<ul class="nav">
+								<li><p>Location name: <input type="text" name="locationName" value=""></p></li>
+								<li><p>City: <input type="text" name="locationCity" value=""></p></li>
+								<li><p>State: <input type="text" name="locationState" value=""></p></li>
+								<li><p>Open Time: <input type="time" name="openTime"></p></li>
+								<li><p>Close Time: <input type="time" name="closeTime"></p></li>
+								<li><p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addLocation" value="Add Location"></p></li>
+							</ul>
+						</form>
+					</li>
+					<li>
+						<form method="post" action="admin.php" class="input_group">
+							<h5 class="settingshead">Add a professor</h5>
+							<ul class="nav">
+								<li><p>First name: <input type="text" name="pfname" value=""></p></li>
+								<li><p>Last name: <input type="text" name="plname" value=""></p></li>
+								<li><p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addProfessor" value="Add Professors"></p></li>
+							</ul>
+						</form>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<ul class="col2">
+					<li><form method="post" action="admin.php" class="input_group">
+								<h5 class="settingshead">Add a course</h5>
+								<p>Professor: <select name="pid" value="">
+									  			  	<option value="">Professor</option>
+									  			  	<?php
+									  			  		global $conn;
+									  			  		$result = $conn->query("SELECT * FROM professors;");
+									  			  		foreach($result as $val){
+									  			  			echo "<option value='".$val['professorID']."'>".$val['fname']." ".$val['lname']."</option>";
+									  			  		}
+									  			  	?>
+									  </select>
+								</p>
+								<p>CRN: <input type="text" name="crn" value=""></p>
+								<p>Title: <input type="text" name="courseTitle" value=""></p>
+								<p>Prefix: <input type="text" name="courseType" value=""></p>
+								<p>Course number: <input type="text" name="courseNumber" value=""></p>
+								<p>Description: <input type="text" name="description" value=""></p>
+								<p class="btnright"><input class='btn btn-default widerbtn' type="submit" name="addClass" value="Add Course"></p>
+							</form></li>
+					</ul>
+				</li>
+			</ul>
 </div>
 </body>
 </html>
