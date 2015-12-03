@@ -16,7 +16,7 @@ $userID = $result->fetch_assoc()['userID'];
 
 
 // get the start and end date/times and format them for MySQL
-$time = $_GET['year'] . '-' . $_GET['month'] . '-' . $_GET['day'] . ' ' . $_GET['hour'] . ':00:00';
+$time = $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day'] . ' ' . $_POST['hour'] . ':00:00';
 
 // delete the event into the database
 // there should be only one event at the time, so only the time field is needed

@@ -89,7 +89,7 @@ function updateSchedule() {
 	// find events for each hour specified by the class of the row/column
 	for (var hour = 0; hour < 24; hour++) {
 		for (var day = 0; day < 7; day++) {
-			$.get("check_for_event.php", {year:startYear, month:startMonth, day:startDay+day, hour:hour}, function(data){
+			$.post("check_for_event.php", {year:startYear, month:startMonth, day:startDay+day, hour:hour}, function(data){
 				$(".hour_" + data['hour'] + " .day_" + (data['day']-startDay)).html(data['event_name']);
 				
 				
@@ -155,6 +155,7 @@ function validateForm(event) {
 function addEvent(day, hour) {
 	// set day to the actual day
 	day += startDay;
+	$.post();
 	// initialize the start value to the start time of the timeblock that was clicked
 	$("#popupForm #startDateTime").val("2015-12-" + pad(day) + "T" + pad(hour) + ":00:00");//" + day + "T" + hour + "00:00.00")
 	// add an hour
@@ -174,7 +175,7 @@ function removeEvent(day, hour) {
 	// ensure the user really wants to remove this event
 	if (confirm("Are you sure you want to remove '" + $("#schedule tr.hour_" + hour + " .day_" + day).text().slice(0,-1) + "' from your calendar?")) {
 		// send the data to remove_event.php to remove the event
-		$.get("remove_event.php", {year:startYear, month:startMonth, day:startDay+day, hour:hour}, function() {
+		$.post("remove_event.php", {year:startYear, month:startMonth, day:startDay+day, hour:hour}, function() {
 			// update the schedule once it gets removed
 			updateSchedule();
 		});		
