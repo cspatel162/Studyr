@@ -67,7 +67,6 @@ TODO:
 						<center><h3><em><?php echo $_COOKIE['fname']." ".$_COOKIE['lname'];?></em></h3></center>
 					</section>
 		
-					<a href="myschedule.php"><center>Edit Schedule</center></a><br>
 					<a href="creategroup.php"><center>Create a Study Group</center></a><br>
 					<a href="currentgroups.php"><center>My Study Groups</center></a><br>
 					<a href="../index.php"><center>Join a Study Group</center></a>
