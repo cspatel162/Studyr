@@ -1,5 +1,24 @@
 <?php 
 	require "php/connect.php";
+	function checkadmin2(){
+		global $conn;
+		if(isset($_COOKIE['userID'])){
+			$userID = $_COOKIE['userID'];
+			$sql = "SELECT admin FROM users WHERE userID = $userID";
+			$result = $conn->query($sql);
+			foreach($result as $val){
+				if ($val['admin'] == 1){
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
+		}
+		else{
+			return false;
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +43,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<?php 
 						if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
+							if(checkadmin2()){echo '<li><a href="php/admin.php">Admin</a></li>';}
 							echo '<li><a href="php/calendar.php">Calendar</a></li>';
 							echo '<li><a href="php/logout.php">Logout</a></li>';
 						}
