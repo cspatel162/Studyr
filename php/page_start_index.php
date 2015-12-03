@@ -71,7 +71,9 @@ TODO:
 									<div class="dropdown">
 										<strong>Subject:</strong>
 										<select name="submit" id="dropdownMenu1">
-											<option value="">Subject</option>
+											<option value="<?php if(isset($_POST['submit'])){echo $_POST['submit'];}else{ echo "";}?>">
+												<?php if(isset($_POST['submit'])){$json = file_get_contents("../json/courseprefixes.json");$jsondata = json_decode($json,true); echo $jsondata[$_POST['submit']];}else{ echo "";}?>
+											</option>
 											<?php
 											$stmt = "SELECT DISTINCT courseType FROM class ORDER BY courseType";
 											$results= $conn->query($stmt);
@@ -87,9 +89,9 @@ TODO:
 									</div>
 								</li>
 
-								<li><strong>Title:</strong><input type="text" name="submit_title"></li>
-								<li><strong>Professor:</strong><input type="text" name="submit_prof"></li>
-								<li><strong>CRN:</strong><input type="text" name="submit_crn"></li>
+								<li><strong>Title:</strong><input type="text" name="submit_title" value="<?php if(isset($_POST['submit_title'])){echo $_POST['submit_title'];}else{ echo "";}?>"></li>
+								<li><strong>Professor:</strong><input type="text" name="submit_prof" value="<?php if(isset($_POST['submit_prof'])){echo $_POST['submit_prof'];}else{ echo "";}?>"></li>
+								<li><strong>CRN:</strong><input type="text" name="submit_crn" value="<?php if(isset($_POST['submit_crn'])){echo $_POST['submit_crn'];}else{ echo "";}?>"></li>
 								<li><button type="submit" id="submit" class="btn btn-default">Search</button></li>
 							</ul>
 						</form>
