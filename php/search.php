@@ -37,7 +37,7 @@
 
 	function searchtitle($title){ // Function to search all the classes
 		global $conn;
-		$sql = "SELECT class.*, professors.fname, professors.lname FROM class INNER JOIN professors ON class.professorID = professors.professorID WHERE class.courseTitle = '$title'"; // if the user clicks on one of the prefixes.
+		$sql = "SELECT class.*, professors.fname, professors.lname, levenshtein(class.courseTitle, '$title') AS distance FROM class INNER JOIN professors ON class.professorID = professors.professorID WHERE levenshtein(class.courseTitle, '$title') < 10 ORDER BY distance desc"; // if the user clicks on one of the prefixes.
 		global $results; // gets the global results and then sets them.
 		$results = $conn->query($sql);
 	}
