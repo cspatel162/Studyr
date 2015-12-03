@@ -10,7 +10,7 @@
 	if(isset($_POST['password'])){
 		$pass = $_POST['password'];
 	}
-  
+  $found = false;
   $sql = "SELECT email, password FROM users WHERE email = '$name'"; // gather the hash that is associated with the email.
   $result = $conn->query($sql);
   foreach ($result as $val) { // go through the results
@@ -35,6 +35,6 @@
 	  header("Location:../index.php");
   }
   else{
-  	header("Location:../index.php");
+  	echo "Incorrect password!";
   }
 ?>

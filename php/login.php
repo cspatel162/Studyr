@@ -46,7 +46,7 @@ include_once 'connect.php';
                 <li><a href="#tabs-2">Register</a></li>
               </ul>
               <section id="tabs-1">
-                <form action="reallogin.php" method="post">
+                <form id="log" action="reallogin.php" method="post">
                     <ul>
                         <li class="sub"><ul>
                             <li>Email: </li>
@@ -156,9 +156,18 @@ include_once 'connect.php';
                 }
                 return false;
             }
-            // $("#reg").submit(function() {
-            //         return false;
-            // });
+            $("#log").submit(function() {
+                var logdata = $("#log").serialize();
+                $.post('reallogin.php', logdata,function(data){
+                    if(data=="Incorrect password!"){
+                        $("#returns").html(data);
+                    } else{
+                        window.location.assign("../index.php");
+                    }
+                });
+                return false;
+            });
+            });
         </script>
     </body>
 </html>
