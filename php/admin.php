@@ -1,14 +1,14 @@
 <?php
 	require "connect.php";
 	include_once "page_start.php";
-	function checkadmin(){
+	function checkadmin(){ // function can be called to verify that you are a user
 		global $conn;
-		if(isset($_COOKIE['userID'])){
+		if(isset($_COOKIE['userID'])){ // checks to make sure the cookie has a userid set
 			$userID = $_COOKIE['userID'];
-			$sql = "SELECT admin FROM users WHERE userID = $userID";
+			$sql = "SELECT admin FROM users WHERE userID = $userID"; // pulls the admin column from a specific user
 			$result = $conn->query($sql);
-			foreach($result as $val){
-				if ($val['admin'] == 1){
+			foreach($result as $val){ 
+				if ($val['admin'] == 1){//if 1 it returns true otherwise it returns false. 
 					return true;
 				}
 				else{
@@ -21,14 +21,14 @@
 		}
 	}
 
-	function addAdmin(){
+	function addAdmin(){ // Function to add another user as an admin, takes only an email.
 		global $conn;
 		echo "Adding Admin ".$_POST['adminemail'];
 		$sql = "UPDATE users SET admin = 1 WHERE email = '".$_POST['adminemail']."'";
 		$result = $conn->query($sql);
 	}
 
-	function addLocation(){
+	function addLocation(){ // Function to add another location, requires start time, end time, location name, city and state.
 		global $conn;
 		$locationName = $_POST['locationName'];
 		$locationCity = $_POST['locationCity'];
@@ -40,7 +40,7 @@
 		$result = $conn->query($sql);
 	}
 
-	function addProfessor(){
+	function addProfessor(){ // Adding another professor, takes a first name and last name only.
 		global $conn;
 		echo "Adding Professor ".$_POST['pfname']." ".$_POST['plname'];
 		$pfname = $_POST['pfname'];
@@ -49,7 +49,7 @@
 		$result = $conn->query($sql);
 	}
 	
-	function addClass(){
+	function addClass(){ // function to add a class - requires a professor, course title, CRN, prefix, course number, and optionally takes a description.
 		echo "Adding Class ".$_POST['courseTitle'];
 		global $conn;
 		$courseTitle = $_POST['courseTitle'];
@@ -62,30 +62,30 @@
 		$result = $conn->query($sql);
 	}
 
-	function tools(){
-		if(checkadmin()){
+	function tools(){ // does a second check to ensure you still are an admin and got to this page some how.
+		if(checkadmin()){ 
 			//add admin
-			if(isset($_POST['addAdmin'])){
+			if(isset($_POST['addAdmin'])){ // if the add admin button is selected do the add admin function
 				addAdmin();
 			}
 
 			//add location
-			if(isset($_POST['addLocation'])){
+			if(isset($_POST['addLocation'])){ // same thing as the add admin but for locations
 				addLocation();
 			}
 
 			//add professor
-			if(isset($_POST['addProfessor'])){
+			if(isset($_POST['addProfessor'])){ // now for professors
 				addProfessor();
 			}
 
 			//add class
-			if(isset($_POST['addClass'])){
+			if(isset($_POST['addClass'])){ // finally for classes
 				addClass();
 			}
 		}
 		else{
-			header("Location:../index.php");
+			header("Location:../index.php"); // if you fail the check go back to index.php and does give the user an error.
 		}
 	}
 

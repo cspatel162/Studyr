@@ -27,33 +27,33 @@
 		$conn->query($sql);
 		
 		// Selects the most recently created groupID from the groups created by the founder
-		$group = $conn->query("SELECT groupID FROM study_groups WHERE founderID = $founderID ORDER BY groupID;"); // gather that group ID based on the founder ID ... this is probably not good... - need to fix this. 
-		if($group->num_rows > 0){
+		$group = $conn->query("SELECT groupID FROM study_groups WHERE founderID = $founderID ORDER BY groupID;");  
+		if($group->num_rows > 0){ 
 			while($val = $group->fetch_row()){
 				$groupID = $val[0];
 			}
-			$empty=array("links"=>array());
+			$empty=array("links"=>array()); // start the group json file without anything in it.
 			$jsonstart = json_encode($empty);
 			file_put_contents("../json/studygroup_$groupID.json", $jsonstart);
 			$sql = "UPDATE study_groups SET json='../json/studygroup_$groupID.json' WHERE groupID = $groupID;"; // insert the study group
-			$conn->query($sql);
+			$conn->query($sql); // update the study_group with the json file.
 		}
 		
 		$sql = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($founderID,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // finally add the event into the list - this needs to be adjusted as well to implement the repeating functioniality.
 		$conn->query($sql);
-		for($i=0;$i<count($emailarray);$i++){
-			$userID = "SELECT userID FROM users WHERE email = '$emailarray[$i]'";
-			$results = $conn->query($userID);
-			if($results->num_rows > 0){
-				foreach($results as $userid){
-					$results = $userid['userID'];
+		for($i=0;$i<count($emailarray);$i++){ // check to see if there are any people in the email array which is passed through a hidden variable everytime something is submitted.
+			$userID = "SELECT userID FROM users WHERE email = '$emailarray[$i]'"; // gather the userID based on the email array
+			$results = $conn->query($userID); 
+			if($results->num_rows > 0){ // check to make sure that someone is actually in the array
+				foreach($results as $userid){ // get the user id and set results to that value.
+					$user = $userid['userID'];
 				}
-			$insertevent = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($results,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // finally add the event into the list - this needs to be adjusted as well to implement the repeating functioniality.
-			$results = $conn->query($insertevent);
+			$insertevent = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($user,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // finally add the event into the list - this needs to be adjusted as well to implement the repeating functioniality.
+			$results = $conn->query($insertevent); // insert the actual event for the user.
 			}
 
 		}
-		unset($_POST);
+		unset($_POST); // after you create a group, unset the post and redirect to the page.
 		header("Location:group.php?id=$groupID");
 		
 	}
@@ -63,7 +63,7 @@
 		createthegroup();
 	} 
 
-	function checkemail($email){
+	function checkemail($email){ // takes an email and verifies that it's actually in the database - returns true on true and false on false.
 		global $conn;
 		$sql = "SELECT * FROM users WHERE email = '$email'";
 		$results = $conn->query($sql);
@@ -74,38 +74,38 @@
 		}
 	}
 
-	function returnemailarray(){	
+	function returnemailarray(){//simply prints out all emails in the email array - only called after the email array has been unserialized and therefore we can just call email array	
 		global $emailarray;
 		for($i=0;$i<count($emailarray);$i++){
 				echo "<li>".$emailarray[$i]."</li>";
 		}
 	}
 
-	function getuserID(){
+	function getuserID(){ // takes the emailarray, and gets all userID's for the emails/
 		global $conn;
 		global $emailarray;
 		$userID = $_COOKIE['userID'];
 		$userIDarray = array();
-		array_push($userIDarray,$userID);
+		array_push($userIDarray,$userID); // pushes the current users userID
 		for($i=0;$i<count($emailarray);$i++){
 			$sql = "SELECT userID FROM users WHERE email = '".$emailarray[$i]."'";
 			$results = $conn->query($sql);
-			if($results->num_rows>0){
+			if($results->num_rows>0){ // checks to ensure that there actually is a value in the results
 				foreach($results as $val){
-					array_push($userIDarray,$val['userID']);
+					array_push($userIDarray,$val['userID']); // pushes the userID to the array
 					//echo $val['userID'];
 				}
 			}
 		}
 		//echo json_encode($userIDarray);
  
-		return $userIDarray;
+		return $userIDarray; // returns it to whatever called it.
 	}
 
-	function addemail(){
+	function addemail(){ // does the adding of an email to the email array
 		global $emailarray;
-		$emailarray = unserialize($_POST['input_name']);
-		if (checkemail($_POST['emails'])){
+		$emailarray = unserialize($_POST['input_name']); // take the email array, unserialize it and prepare it to be pushed.
+		if (checkemail($_POST['emails'])){ // checks the email that was submitted - if it exists push it into the email array.
 			array_push($emailarray,$_POST['emails']);
 			for($i=0;$i<count($emailarray);$i++){
 				//echo $emailarray[$i];
