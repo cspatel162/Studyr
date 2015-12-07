@@ -9,9 +9,9 @@ require 'connect.php';
 
 
 
-    $check = "SELECT email FROM users WHERE email = '$email'"; // Checking if the email already exists... TODO - implement this on the login.php so we can give them the error before entering and submiting - or do it some better way.
+    $check = "SELECT email FROM users WHERE email = '$email'"; // Checking if the email already exists
     $result = $conn->query($check);
-    if($result){
+    if(!$result){
     	$sql = "INSERT INTO users (fname, lname, email, password) VALUES ('$fname','$lname','$email','$passname')"; // Storing the hashed password and information on the new user
 	    if ($conn->query($sql) === TRUE) {
 	        echo "<p>New record created successfully, please login.</p>";

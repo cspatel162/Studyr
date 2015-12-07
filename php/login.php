@@ -53,8 +53,8 @@ include_once 'connect.php';
                             <li>Password: </li>
                         </ul></li>
                         <li class="sub"><ul>
-                            <li><input type="text" name="email2"></li>
-                            <li><input type="password" name="password"></li>
+                            <li><input type="text" name="email2" required></li>
+                            <li><input type="password" name="password" required></li>
                             <li><input class="enter btn btn-default" type="submit" value="Submit"></li>
                         </ul></li>
                     </ul>
@@ -72,12 +72,12 @@ include_once 'connect.php';
                             <li id="pwcheck">Confirm password: </li>
                         </ul></li>
                         <li class="sub"><ul>
-                            <li><input type="text" name="fname"></li>
-                            <li><input type="text" name="lname"></li>
-                            <li><input type="text" name="email"></li>
-                            <li><input type="text" name="email_check"></li>
-                            <li><input type="password" name="newpassword"></li>
-                            <li><input type="password" name="pass_check"></li>
+                            <li><input type="text" name="fname"  required></li>
+                            <li><input type="text" name="lname"  required></li>
+                            <li><input type="text" name="email"  required></li>
+                            <li><input type="text" name="email_check"  required></li>
+                            <li><input type="password" name="newpassword"  required></li>
+                            <li><input type="password" name="pass_check"  required></li>
                             <li><input class="enter btn btn-default" type="submit" value="Submit"></li>
                         </ul></li>
                     </ul>
@@ -89,28 +89,10 @@ include_once 'connect.php';
             $(function() {
                 $( "#tabs" ).tabs();
             });
-            function validateName(fname, lname){
-                document.getElementById("fname").className = "";                    
-                document.getElementById("lname").className = "";
-                var reason = "";
-                if(fname == ""){
-                    reason+= "enter first name\n";
-                    document.getElementById("fname").className = "error";
-                }
-                if(lname == ""){
-                    reason+= "enter last name\n";
-                    document.getElementById("lname").className = "error";
-                }
-                return reason;
-            }
             function validateEmail(email, check){
                 document.getElementById("email").className = "";                    
                 document.getElementById("echeck").className = "";
                 var ind = email.indexOf("@");
-                if(email == '' || check == ''){
-                    document.getElementById("email").className = "error";
-                    return "enter and confirm email address\n"
-                }
                 if(ind == -1 || email.substring(ind) != "@rpi.edu"){
                     document.getElementById("email").className = "error";
                     return "enter a valid rpi.edu\n"
@@ -126,10 +108,6 @@ include_once 'connect.php';
             function validatePassword(password, check){
                 document.getElementById("pw").className = "";                    
                 document.getElementById("pwcheck").className = "";
-                if(password == '' || check == ''){
-                    document.getElementById("pw").className = "error";
-                    return "enter and confirm password";
-                }
                 if(password != check){                    
                     document.getElementById("pw").className = "error";                    
                     document.getElementById("pwcheck").className = "error";
@@ -140,7 +118,6 @@ include_once 'connect.php';
             }
             function confirm(frm){
                 var reason = "";
-                reason += validateName(frm.fname.value,frm.lname.value);
                 reason += validateEmail(frm.email.value,frm.email_check.value);
                 reason += validatePassword(frm.newpassword.value,frm.pass_check.value);
 
