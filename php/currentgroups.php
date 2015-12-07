@@ -5,8 +5,8 @@
 
 
 	function fetchDate($datetime){ // gets the date and time, explodes it and then returns 
-		$date = substr($datetime,0, $pos);a user readable value with the Month instead of a number and in a common format.
 		$pos = strrpos($datetime, " ");
+		$date = substr($datetime,0, $pos); //a user readable value with the Month instead of a number and in a common format.
 		$time = substr($datetime,$pos+1,5);
 		$datel =  explode("-",$date);
 		$months = array("00" => "notfound", "01" => "January", "02" => "February", "03" => "March",
