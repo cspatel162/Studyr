@@ -99,7 +99,7 @@ function updateSchedule() {
 				if (data['event_name']) {
 					button = "remove";
 					buttonText = "-";
-					preText = "<br>"; // break is needed so that the 'remove' button can be displayed on the next line after the event title
+					preText = "<br>";
 				}
 				else {
 					button = "add";
@@ -175,8 +175,8 @@ function removeEvent(day, hour) {
 	if (confirm("Are you sure you want to remove '" + $("#schedule tr.hour_" + hour + " .day_" + day).text().slice(0,-1) + "' from your calendar?")) {
 		// send the data to remove_event.php to remove the event
 		$.post("remove_event.php", {year:startYear, month:startMonth, day:startDay+day, hour:hour}, function() {
-			// update the schedule once it gets removed
-			updateSchedule();
+			// reload the page so the calendar & Upcoming Events list gets updated
+			location.reload();
 		});		
 	}
 }
