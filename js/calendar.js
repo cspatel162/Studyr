@@ -99,7 +99,7 @@ function updateSchedule() {
 				if (data['event_name']) {
 					button = "remove";
 					buttonText = "-";
-					preText = "<br>";
+					preText = "<br>"; // break is needed so that the 'remove' button can be displayed on the next line after the event title
 				}
 				else {
 					button = "add";
