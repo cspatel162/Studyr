@@ -62,7 +62,7 @@
                 </form>
               </section>
               <section id="tabs-2">
-                <form id="reg" onsubmit="return confirm(this)" method="post">
+                <form id="register" onsubmit="return confirm(this)" method="post">
                     <ul>
                         <li class="sub"><ul class="labels">
                             <li id="fname">First name: </li>
@@ -90,14 +90,19 @@
             $(function() {
                 $( "#tabs" ).tabs();
             });
+
             function validateEmail(email, check){
                 document.getElementById("email").className = "";
                 document.getElementById("echeck").className = "";
+
+                // checks if email is @rpi.edu
                 var ind = email.indexOf("@");
                 if(ind == -1 || email.substring(ind) != "@rpi.edu"){
                     document.getElementById("email").className = "error";
                     return "enter a valid rpi.edu\n"
                 }
+
+                // checks if emails match
                 if(email != check){
                     document.getElementById("email").className = "error";
                     document.getElementById("echeck").className = "error";
@@ -109,6 +114,8 @@
             function validatePassword(password, check){
                 document.getElementById("pw").className = "";
                 document.getElementById("pwcheck").className = "";
+
+                // checks if passwords match
                 if(password != check){
                     document.getElementById("pw").className = "error";
                     document.getElementById("pwcheck").className = "error";
@@ -117,23 +124,33 @@
                     return "";
                 }
             }
+
+            var valid = false;
+
             function confirm(frm){
                 var reason = "";
                 reason += validateEmail(frm.email.value,frm.email_check.value);
                 reason += validatePassword(frm.newpassword.value,frm.pass_check.value);
-
+                valid = false;
                 if (reason != ''){
                     alert("Please correct the following errors:\n" + reason);
-                    return false;
                 } else{
-                    var regdata = $("#reg").serialize();
-                    $.post('signup.php', regdata,function(data){
-                        $("#returns").html(data);
-                    });
+                    valid = true;
                     return true;
                 }
                 return false;
             }
+
+            $("#register").submit(function() {
+                if(valid){
+                    var regdata = $("#register").serialize();
+                    $.post('signup.php', regdata,function(data){
+                        $("#returns").html(data);
+                    });
+                }
+                return true;
+            });
+
             $("#log").submit(function() {
                 var logdata = $("#log").serialize();
                 $.post('reallogin.php', logdata,function(data){
