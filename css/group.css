@@ -1,238 +1,240 @@
 * {
-	margin: 0px;
-	font-family: 'Lato', sans-serif;
-    font-weight: 400;
+  margin: 0px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
 }
 
 body {
-	background: #fff;
-	min-width: 1200px;
+  background: #fff;
+  min-width: 1200px;
 }
 
 #side {
-	width: 0%;
-	float: left;
-	height: 700px;
-	
-/*
-	padding: 10px;
-	margin-top: -20px;
-	background: #7CB4B4;
-	color: #fff;
-*/
-	
-/*	min-width: 100px;*/
+  width: 0%;
+  float: left;
+  height: 700px;  
+  /*
+  padding: 10px;
+  margin-top: -20px;
+  background: #7CB4B4;
+  color: #fff;
+  min-width: 100px;
+  */
 }
 
 #side select{
-	width: 150px;
-	margin-left: 6px;
-	margin-bottom: 5px;
+  width: 150px;
+  margin-left: 6px;
+  margin-bottom: 5px;
 }
 
 #side input {
-	width: 150px;
-	margin-left: 10px;
-	margin-bottom: 5px;
-	outline: none;
-	font: 8px;
-	padding: 5px;
-	color: black;
+  width: 150px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  outline: none;
+  font: 8px;
+  padding: 5px;
+  color: black;
 }
 
 .form_val {
-	display: inline;
+  display: inline;
 }
 
 strong {
-	width: 100px;
-	display: inline-block;
-	
+  width: 100px;
+  display: inline-block;  
 }
 
 #submit {
-	margin-top: 20px;
-	margin-left: 185px;
+  margin-top: 20px;
+  margin-left: 185px;
 }
 
 #sub_but {
-	color: black;
+  color: black;
 }
 
 .dropdown-menu {
-	color: black;
-	margin: 5px;
-	padding: 5px;
+  color: black;
+  margin: 5px;
+  padding: 5px;
 }
 
 #dropdownMenu1{
-	margin-left: 5px;
-	margin-bottom: 5px;
-	width: 150px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  width: 150px;
 }
 
 #main {
-	width: 100%;
-	float: left;
-	margin-top: -20px;
-	min-height: 720px;
-	background: #fff;
-	min-width: 800px;
-	border-left: 1px inset ;
+  width: 100%;
+  float: left;
+  margin-top: -20px;
+  min-height: 720px;
+  background: #fff;
+  min-width: 800px;
+  border-left: 1px inset ;
 }
 
 #welcome {
-	margin-top:80px;
-	color: #7CB4B4;
+  margin-top:80px;
+  color: #7CB4B4;
 }
 
 #search {
-	width: 500px;
-	padding: 10px;
-	margin-top: 50px;
-	outline: none;
-	border: 1px solid black;
+  width: 500px;
+  padding: 10px;
+  margin-top: 50px;
+  outline: none;
+  border: 1px solid black;
 }
 
 .input_group {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .input_group button{
-	width: 100px;
-	background: white;
-	color: #6A0648;
+  width: 100px;
+  background: white;
+  color: #6A0648;
 }
 
 #buttons {
-	margin-top: 80px;
+  margin-top: 80px;
 }
 
 #top {
-	width: 100%;
-	float: left;
-	height: 720px;
-	padding: 10px;
-	margin-top: -20px;
-	background: #7CB4B4;
-	color: #fff;
-	padding-left: 20px;
-	
+  width: 100%;
+  float: left;
+  height: 720px;
+  padding: 10px;
+  margin-top: -20px;
+  background: #7CB4B4;
+  color: #fff;
+  padding-left: 20px;  
 }
 
 #bottom {
-	background: #E0EEF1;
-	margin-top: 300px;
-	min-height: 400px;
-	margin-bottom: 0px;
+  background: #E0EEF1;
+  margin-top: 300px;
+  min-height: 400px;
+  margin-bottom: 0px;
 }
 
 #bot_search {
-	color: #000;
-	padding: 1px;
+  color: #000;
+  padding: 1px;
 }
 
 #toggle {
-	background: white;
-	border: none;
-	outline: none;
+  background: white;
+  border: none;
+  outline: none;
 }
 
 .scrollable-menu {
-    height: auto;
-    max-height: 300px;
-    overflow-x: hidden;
+  height: auto;
+  max-height: 300px;
+  overflow-x: hidden;
 }
 
-
-/**/
 #top_calendar {
-	padding: 0px;
-	width: 100%;
-	float: left;
-	height: 320px;
-	margin-top: -20px;
-	background: #7CB4B4;
-	color: #fff;
+  padding: 0px;
+  width: 100%;
+  float: left;
+  height: 320px;
+  margin-top: -20px;
+  background: #7CB4B4;
+  color: #fff;
 }
 
 #top_calendar a {
-	background: #E0EEF1;
-	width: 100%;
-	font-size:15px;
-	padding: 10px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	display: inline-block;
-	margin-top: 5px;
-	text-decoration: none;
-	color: black;
+  background: #E0EEF1;
+  width: 100%;
+  font-size:15px;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: inline-block;
+  margin-top: 5px;
+  text-decoration: none;
+  color: black;
 }
 
 #top_calendar a:hover {
-/*	width: 140%;*/
-	font-size: 140%;
-	color: #6A0648;
+/*  width: 140%;*/
+  font-size: 140%;
+  color: #6A0648;
 }
 
-
 #side_menu {
-	width: 25%;
-	float: left;
-	height: 700px;
-	
+  width: 25%;
+  float: left;
+  height: 700px;  
 }
 
 #calendar {
-	width: 75%;
-	float: left;
-	margin-top: -20px;
-	min-height: 720px;
-	background: #fff;
-	min-width: 800px;
-	border-left: 1px inset ;
-	padding-top:20px;
-	padding-left: 20px; 
+  width: 75%;
+  float: left;
+  margin-top: -20px;
+  min-height: 720px;
+  background: #fff;
+  min-width: 800px;
+  border-left: 1px inset ;
+  padding-top:20px;
+  padding-left: 20px; 
 }
+
 #map {
   width: 80%;
   height: 50%;
   margin: auto;
 }
+
 .settingshead{
-	border-bottom-style:solid;
-	border-bottom-color:#6A0648;
-	font-size:1.2em;
-	font-weight: bold;
-	width:400px;
-	margin-top:20px;
+  border-bottom-style:solid;
+  border-bottom-color:#6A0648;
+  font-size:1.2em;
+  font-weight: bold;
+  width:400px;
+  margin-top:20px;
 }
+
 .btnright{
-	margin-left:130px ! important;
+  margin-left:130px ! important;
 }
+
 #txtpadlink{
-	margin-left:15px;
+  margin-left:15px;
 }
+
 #txtpadname{
-	margin-left:4px;
+  margin-left:4px;
 }
+
 #memberlist h4{
-	line-height: 0px;
+  line-height: 0px;
 }
+
 #groups ul{
-	list-style-type: none;
-	padding-left: 0px;
+  list-style-type: none;
+  padding-left: 0px;
 }
+
 .currentgroup{
-	border-bottom-style:solid;
-	border-bottom-color:#6A0648;
-	margin-left: -10px;
-	padding:10px 10px 5px 10px;
+  border-bottom-style:solid;
+  border-bottom-color:#6A0648;
+  margin-left: -10px;
+  padding:10px 10px 5px 10px;
 }
+
 .owngroup{
-	background-color: #E0EEF1; 
+  background-color: #E0EEF1; 
 }
+
 .atitle{
-	font-size: 1.3em;
-	padding-right:10px;
+  font-size: 1.3em;
+  padding-right:10px;
 }
