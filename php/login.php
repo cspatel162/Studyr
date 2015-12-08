@@ -1,5 +1,27 @@
 <?php //we can include other PHP Files here to keep the index as clear as possible
     include_once 'connect.php';
+
+    function signup(){
+     global $conn;
+     $fname = $_POST['fname'];
+     $lname = $_POST['lname'];
+     $email = $_POST['email'];
+     $pass = $_POST['newpassword'];
+     $passname = password_hash($pass,PASSWORD_DEFAULT); // Hashes and salts the password
+     $check = "SELECT email FROM users WHERE email = '$email'"; // Checking if the email already exists
+     $result = $conn->query($check);
+     if($result->num_rows == 0){
+       $sql = "INSERT INTO users (fname, lname, email, password) VALUES ('$fname','$lname','$email','$passname')"; // Storing the hashed password and information on the new user
+       if ($conn->query($sql) === TRUE) {
+         echo "<p>New record created successfully, please login.</p>";
+       } else {
+         echo "<p>Error: " . $conn->error."</p>";
+       }
+     } else {
+       echo "<p>Error: that email already exists</p>";
+     }    
+    }
+
 ?>
 
 <html>
@@ -40,7 +62,12 @@
             </div>
         </nav>
         <div id="content">
-            <div id="returns"></div>
+            <div id="returns"><?php 
+                if(isset($_POST['regsubmit'])){
+                    signup();
+                } 
+            ?>
+            </div>
             <section id="tabs">
               <ul>
                 <li><a href="#tabs-1">Login</a></li>
@@ -62,7 +89,7 @@
                 </form>
               </section>
               <section id="tabs-2">
-                <form id="register" onsubmit="return confirm(this)" method="post">
+                <form id="register" onsubmit="return confirm(this);" method="post">
                     <ul>
                         <li class="sub"><ul class="labels">
                             <li id="fname">First name: </li>
@@ -79,7 +106,7 @@
                             <li><input type="text" name="email_check"  required></li>
                             <li><input type="password" name="newpassword"  required></li>
                             <li><input type="password" name="pass_check"  required></li>
-                            <li><input class="enter btn btn-default" type="submit" value="Submit"></li>
+                            <li><input class="enter btn btn-default" name="regsubmit" type="submit" value="Submit"></li>
                         </ul></li>
                     </ul>
                 </form>
@@ -144,7 +171,8 @@
             $("#register").submit(function() {
                 if(valid){
                     var regdata = $("#register").serialize();
-                    $.post('signup.php', regdata,function(data){
+                    $.post('login.php', regdata,function(data){
+                        //alert(data);
                         $("#returns").html(data);
                     });
                 }
