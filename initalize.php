@@ -11,29 +11,29 @@
 	//Load test data into DB
 	try{
 	$passname = password_hash('11',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Captain', 'America', 'ca@e.com', '$passname',1);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Captain', 'America', 'ca@rpi.edu', '$passname',1);");
 	$passname = password_hash('12',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Black', 'Widow', 'bw@e.com', '$passname',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Black', 'Widow', 'bw@rpi.edu', '$passname',0);");
 	$passname = password_hash('13',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Green', 'Verde', 'gv@e.com', '$passname',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Green', 'Verde', 'gv@rpi.edu', '$passname',0);");
 	$passname = password_hash('14',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Blue', 'Azul', 'ba@e.com', '$passname',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Blue', 'Azul', 'ba@rpi.edu', '$passname',0);");
 	$passname = password_hash('15',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Bruce', 'Banner', 'bb@e.com', '$passname',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Bruce', 'Banner', 'bb@rpi.edu', '$passname',0);");
 	$passname = password_hash('16',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Tony', 'Stark', 'ts@e.com', '$passname',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Tony', 'Stark', 'ts@rpi.edu', '$passname',0);");
 	$passname = password_hash('17',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Red', 'Rojo', 'rr@e.com', '$passname',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Red', 'Rojo', 'rr@rpi.edu', '$passname',0);");
 	$passname = password_hash('18',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Thor', 'Odinson', 'to@e.com', '$passname',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Thor', 'Odinson', 'to@rpi.edu', '$passname',0);");
 	$passname = password_hash('19',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Phil', 'Smith', 'ps@e.com', '$passname',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Phil', 'Smith', 'ps@rpi.edu', '$passname',0);");
 	$passname = password_hash('20',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Jen', 'Lee', 'jl@e.com', '$passname',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Jen', 'Lee', 'jl@rpi.edu', '$passname',0);");
 	$passname = password_hash('21',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('John', 'Goh', 'jg@e.com', '$passname',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('John', 'Goh', 'jg@rpi.edu', '$passname',0);");
 	$passname = password_hash('22',PASSWORD_DEFAULT);
-	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Kevin', 'Shin', 'ks@e.com', '$passname',0);");
+	$conn->query("INSERT INTO studyr.users (fname, lname, email, password, admin) VALUES ('Kevin', 'Shin', 'ks@rpi.edu', '$passname',0);");
 	} catch (Exception $e){
 		die($e->$e->getMessage());
 	}
