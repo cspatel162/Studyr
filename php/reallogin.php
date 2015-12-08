@@ -1,5 +1,5 @@
 <?php // This file is called from the login.php file, and is used to create the cookies, and verify the username and password match was entered.
-	include_once "connect.php"; 
+	include_once "connect.php";
 	if(isset($_POST['email2'])){ // get the email from the post and the password
 		$name = $_POST['email2'];
 	}
@@ -28,7 +28,8 @@
 	  $userID = $row["userID"];
 
 	  $conn->close();
-		setcookie("username",$name,time()+86400,"/"); // sets the cookie last one day and sets all the information, then forward them back to the splashpage
+
+	  setcookie("username",$name,time()+86400,"/"); // sets the cookie last one day and sets all the information, then forward them back to the splashpage
 	  setcookie("fname",$fname,time()+86400,"/");
 	  setcookie("lname",$lname,time()+86400,"/");
 	  setcookie("userID",$userID,time()+86400,"/");

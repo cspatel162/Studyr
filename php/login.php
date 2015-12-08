@@ -1,6 +1,7 @@
-<?php //we can include other PHP Files here to keep the index as clear as possible 
-include_once 'connect.php';
+<?php //we can include other PHP Files here to keep the index as clear as possible
+    include_once 'connect.php';
 ?>
+
 <html>
     <head>
         <title>Login or Register - Studyr</title>
@@ -8,7 +9,7 @@ include_once 'connect.php';
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-        
+
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -23,10 +24,10 @@ include_once 'connect.php';
                         <img alt="Brand" src="../images/logo.png"  width="70px;">
                     </a>
 
-                    
+
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <?php 
+                    <?php
                         if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
                             echo '<li><a href="calendar.php">Calendar</a></li>';
                             echo '<li><a href="logout.php">Logout</a></li>';
@@ -35,7 +36,7 @@ include_once 'connect.php';
                             echo '<li><a href="login.php">Login or Register</a></li>';
                         }
                     ?>
-                </ul>   
+                </ul>
             </div>
         </nav>
         <div id="content">
@@ -90,15 +91,15 @@ include_once 'connect.php';
                 $( "#tabs" ).tabs();
             });
             function validateEmail(email, check){
-                document.getElementById("email").className = "";                    
+                document.getElementById("email").className = "";
                 document.getElementById("echeck").className = "";
                 var ind = email.indexOf("@");
                 if(ind == -1 || email.substring(ind) != "@rpi.edu"){
                     document.getElementById("email").className = "error";
                     return "enter a valid rpi.edu\n"
                 }
-                if(email != check){                    
-                    document.getElementById("email").className = "error";                    
+                if(email != check){
+                    document.getElementById("email").className = "error";
                     document.getElementById("echeck").className = "error";
                     return "emails do not match\n";
                 } else {
@@ -106,10 +107,10 @@ include_once 'connect.php';
                 }
             }
             function validatePassword(password, check){
-                document.getElementById("pw").className = "";                    
+                document.getElementById("pw").className = "";
                 document.getElementById("pwcheck").className = "";
-                if(password != check){                    
-                    document.getElementById("pw").className = "error";                    
+                if(password != check){
+                    document.getElementById("pw").className = "error";
                     document.getElementById("pwcheck").className = "error";
                     return "passwords do not match";
                 } else {

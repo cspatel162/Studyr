@@ -1,7 +1,8 @@
 <?php // This is used as the main starting page, basically it sets some of the basic navigation and things like that, can be used on most pages that users have already logged in for.
 /*
-TODO: 
+TODO:
 */
+	//Connect to databse
 	require "connect.php";
 	if(!isset($_COOKIE['userID'])){ // checks if the user is logged in based on their cookies, if they are not force them back to the login page.
 		header("Location:login.php");
@@ -17,7 +18,8 @@ TODO:
 		return $months[$datel[1]] . " ". $datel[2] . ", " . $datel[0] . " " .$time;
 	}
 
-	function events(){ // check for events based on the users id from the cookies. 
+	//prints upcoming events
+	function events(){ // check for events based on the users id from the cookies.
 		global $conn;
 		date_default_timezone_set("America/New_York");
 		$eventmax = date('Y-m-d H:i:s', strtotime("+5 days")); // add an hour to the event for the end time
@@ -34,6 +36,8 @@ TODO:
 			}
 		}
 	}
+
+	//checks if user is an admin
 	function checkadmin1(){
 		global $conn;
 		if(isset($_COOKIE['userID'])){
@@ -59,34 +63,39 @@ TODO:
 <html>
 	<head>
 		<title> Studyr </title>
+		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-		<!-- Optional theme -->
+		<!-- Bootstrap Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-		
+
+		<!-- jQuery CDN -->
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-		
+
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-		
-		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="../css/calendar.css">
-		<script src="../js/creategrouptime.js"></script>
 
+		<!-- Google Font -->
+		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+		<!-- Custom Stylesheet -->
+		<link rel="stylesheet" href="../css/calendar.css">
+
+		<!-- Script to help find times -->
+		<script src="../js/creategrouptime.js"></script>
 	</head>
 	<body>
+		<!-- Bootstrap Navigation -->
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="../index.php">
 						<img alt="Brand" src="../images/logo.png" width="70px;">
 					</a>
-
-					
 				</div>
 				<ul class="nav navbar-nav navbar-right">
-					<?php 
+					<?php
 						if(isset($_COOKIE['userID'])){ // Checks if the user is logged in and if so, supply them with some pages they can click other wise they can only go back to the main page.
 							if(checkadmin1()){echo '<li><a href="admin.php">Admin</a></li>';}
 							echo '<li><a href="calendar.php">Calendar</a></li>';
@@ -94,18 +103,18 @@ TODO:
 						}
 					?>
 
-				</ul>	
+				</ul>
 			</div>
 		</nav>
-		
+
+
 		<div id="content">
 			<div id="side_menu">
 				<div id="top_calendar">
-					<section class="leftheader"> 
+					<section class="leftheader">
 						<center><h3><em><?php echo $_COOKIE['fname']." ".$_COOKIE['lname'];?></em></h3></center>
-					</section>
-					<br>
-<!--					<a href="#"><center>Edit Schedule</center></a><br>-->
+					</section></br>
+
 					<a href="creategroup.php"><center>Create a Study Group</center></a><br>
 					<a href="currentgroups.php"><center>My Study Groups</center></a><br>
 					<a href="../index.php"><center>Join a Study Group</center></a>
@@ -113,12 +122,12 @@ TODO:
 				<div id="bottom">
 					<center id="bot_search"><h3>Upcoming Events</h3></center>
 					<ul>
+						<!-- Prints all upcoming events -->
 						<?php
-							events(); // Calls the event function to print out events in this section. 
+							events(); // Calls the event function to print out events in this section.
 						?>
-					</ul>	
+					</ul>
 				</div>
 			</div>
+			<!-- Content box -->
 			<div id="calendar">
-				
-				

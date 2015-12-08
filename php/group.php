@@ -1,15 +1,11 @@
 <?php
-/* 
-TODO:
-
-*/
 	require "connect.php";
 	include_once "page_start.php";
-	
+
 	global $conn;
 	$groupID = $_GET['id'];
 	$sql = "SELECT * FROM study_groups WHERE groupID = $groupID";
-	$sql2 = "SELECT * FROM events WHERE groupID = $groupID";	
+	$sql2 = "SELECT * FROM events WHERE groupID = $groupID";
 	$locationName;
 	$locationCity;
 	$locationState;
@@ -50,12 +46,12 @@ TODO:
 			$passfail = true;
 			foreach($events as $check){
 				if($check['userID'] == $userID){
-					$eventbool = true;; // save the event ID so we can pull info later - as well this is a check to find out if the user is apart of this group or not. 
+					$eventbool = true;; // save the event ID so we can pull info later - as well this is a check to find out if the user is apart of this group or not.
 				}
 				array_push($members,$check['userID']);
 			}
 		}
-	}	
+	}
 
 	function joingroup($events){ // if the join group button is hit
 		global $conn; // get all of the neccessary information and create the data.
@@ -73,7 +69,7 @@ TODO:
 			$locationID = $data['locationID'];
 			$repeat = $data['repeating'];
 		}	 // gathered all data needed when joining an event and now create the event
-		$insertforevent = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($userID,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; // 
+		$insertforevent = "INSERT INTO events (userID,eventName,startTime,endTime,locationID,repeating,groupID) values($userID,'$eventTitle','$meetingDateTime','$meetingEndDateTime',$locationID,$repeat,$groupID)"; //
 		$insertresult = $conn->query($insertforevent);
 		unset($_POST); // unset post so that the user can not hit the join button over and over and over and create multiple events that are exactly the same
 		header("Location:group.php?id=$groupID"); // reload the page as well so that the new information shows up and that the post is truly unset.
@@ -124,7 +120,7 @@ TODO:
 	}
 
 
-	if(isset($_POST['addemail'])){ // submit button calling the add memeber 
+	if(isset($_POST['addemail'])){ // submit button calling the add memeber
 		addMember($events);
 	}
 
@@ -141,7 +137,7 @@ TODO:
 
 	function deletegroup(){ // deleting the group if youre a founder
 		global $conn;
-		$groupID  = $_GET['id']; 
+		$groupID  = $_GET['id'];
 		$sql = "DELETE FROM events WHERE groupID = $groupID"; // delete all events where the groupID is the same
 		$results = $conn->query($sql);
 		$sql2 = "DELETE FROM study_groups WHERE groupID = $groupID"; // delete the study group itself
@@ -167,8 +163,8 @@ TODO:
 		global $conn;
 		global $userID;
 		$isfounder = false;
-		if($passfail == true){ // part of the group/public group 
-			//--- SECTION:VIEWABLE TO ALL USERS ---- 
+		if($passfail == true){ // part of the group/public group
+			//--- SECTION:VIEWABLE TO ALL USERS ----
 
 			$classname = "SELECT class.courseTitle FROM class INNER JOIN study_groups ON class.courseID = study_groups.courseID WHERE study_groups.groupID = $groupID"; // Select the courseTitle
 			$course = $conn->query($classname);
@@ -185,7 +181,7 @@ TODO:
 			}
 			echo "</ul></section>";
 			//--- END SECTION ----
-			if($eventbool == true){ 
+			if($eventbool == true){
 				//--- SECTION:VIEWABLE TO ONLY MEMBERS OF THE GROUP ----
 				$locationID;
 				foreach ($events as $vent){
@@ -210,7 +206,7 @@ TODO:
 				$json = file_get_contents($jsonfile);
 				$jsondata = json_decode($json,true);
 
-				echo "<strong>Useful Links:</strong><ul>"; // display the useful links to the users 
+				echo "<strong>Useful Links:</strong><ul>"; // display the useful links to the users
 				foreach($jsondata as $links){
 					foreach($links as $anchor){
 						echo "<li><a class=\"grouplinks\" target='_blank' href=\"".$anchor['link']."\">".$anchor['title']."</a></li>";
@@ -220,7 +216,7 @@ TODO:
 				if($isfounder){ // STUFF FOR THE FOUNDER ONLY
 					echo "<h5 class='settingshead'>Add a link</h5>";
 					echo "<form id=\"add\" action=\"group.php?id=$groupID\" method=\"POST\">Name: <input  id='txtpadname' type=\"text\" name=\"title\" ><button class='btn btn-default btnright' type=\"submit\">Add</button><br>"; // form to add useful links
-					echo "Link: <input id='txtpadlink' type=\"text\" name=\"link\"><input type=\"hidden\" name=\"jsonf\" value=\"$jsonfile.\"></form>";				
+					echo "Link: <input id='txtpadlink' type=\"text\" name=\"link\"><input type=\"hidden\" name=\"jsonf\" value=\"$jsonfile.\"></form>";
 					echo "<h5 class='settingshead'>Add a member</h5>";
 					echo "<form method='POST' action='group.php?id=$groupID'>"; //For for the founder to add a member
 					echo "<input type='text' name='email' value='Member Email'>";
@@ -237,7 +233,7 @@ TODO:
 
 				//--- END SECTION ----
 			}
-			else{ 
+			else{
 				//--- SECTION:VIEWABLE TO ALL USERS SIGNED IN----
 				if ($userID == 0){
 					echo "<h5 class='settingshead'> Join this Group </h5>";
@@ -259,6 +255,7 @@ TODO:
 		}
 	}
 ?>
+
 <html>
 	<head>
 		<title> Group Page </title>
