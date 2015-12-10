@@ -1,6 +1,17 @@
 <?php
+session_start();
+
 include_once "connect.php";
 require_once '../google-api-php-client-1.1.6/src/Google/autoload.php';
+
+// check if the startDateTime and endDateTime are set
+if (isset($_GET['startDateTime']) && isset($_GET['endDateTime'])) {
+	// set the session variables since this page will get redirected and the GET data will be lost
+	$_SESSION['startDateTime'] = $_GET['startDateTime'];
+	$_SESSION['endDateTime'] = $_GET['endDateTime'];
+}
+
+// otherwise that means this page was redirected from Google authorization, and not from calendar.php
 
 // ---------------------------------- GOOGLE CALENDAR CONFIGURATION ----------------------------------
 $client = new Google_Client();
@@ -46,15 +57,17 @@ $service = new Google_Service_Calendar($client);
 // use the user's primary calendar
 $calendarID = 'primary';
 
-// create a DateTime object for the max time limit
-$max_time = new DateTime();
-// the max time will be two weeks after the current day
-$max_time->add(date_interval_create_from_date_string("2 weeks"));
+// create DateTime object for the time limits
+$min_time = new DateTime($_SESSION['startDateTime']);
+$max_time = new DateTime($_SESSION['endDateTime']);
+// need to add 5 hours to account for time zone since javascript date doesn't include timezone in return value
+$min_time->add(date_interval_create_from_date_string("5 hours"));
+$max_time->add(date_interval_create_from_date_string("5 hours"));
 
 // set the appropriate optional parameters
 // timeMin is today
 $optionalParameters = array(
-    'timeMin' => date('c'),
+    'timeMin' => $min_time->format(DateTime::RFC3339),
 	'timeMax' => $max_time->format(DateTime::RFC3339),
     'singleEvents' => TRUE
 );
